@@ -2,7 +2,9 @@
 using Project.MappingProfile;
 using Project.Models;
 using Project.Repository.Route;
-using Project.Services;
+using Project.Repository.Train;
+using Project.Services.Route;
+using Project.Services.Train;
 namespace Project
 {
     public class Program
@@ -20,10 +22,17 @@ namespace Project
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //AutoMapper Config
+            builder.Services.AddAutoMapper(typeof(TrainProfile));
             builder.Services.AddAutoMapper(typeof(RouteProfile));
+
+            //Config DI
             builder.Services.AddScoped<IRouteRepository, RouteRepository>();
             builder.Services.AddScoped<IRouteService, RouteService>();
 
+            builder.Services.AddScoped<ITrainRepository, TrainRepository>();
+            builder.Services.AddScoped<ITrainService, TrainServices>();
             var app = builder.Build();
 
             // Kiểm tra kết nối database và log kết quả

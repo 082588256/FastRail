@@ -1,7 +1,7 @@
 ﻿using Project.DTOs;
 using Project.Repository.Route;
 
-namespace Project.Services
+namespace Project.Services.Route
 {
     public class RouteService : IRouteService
     {

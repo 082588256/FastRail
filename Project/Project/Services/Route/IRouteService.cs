@@ -1,6 +1,6 @@
 ﻿using Project.DTOs;
 
-namespace Project.Services
+namespace Project.Services.Route
 {
     public interface IRouteService
     {

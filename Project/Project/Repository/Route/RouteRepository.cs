@@ -47,7 +47,7 @@ namespace Project.Repository.Route
 
             foreach (var existing in candidates)
             {
-                
+
                 var existingSegments = existing.Segments.ToList();
                 var routeSegments = route.Segments.ToList();
 
@@ -73,7 +73,7 @@ namespace Project.Repository.Route
         }
         private bool IsValidSegmentSequence(Models.Route route)
         {
-            var segments = route.Segments.OrderBy(s=>s.Order).ToList();
+            var segments = route.Segments.OrderBy(s => s.Order).ToList();
 
             if (segments == null || segments.Count == 0) return false;
 
@@ -100,8 +100,8 @@ namespace Project.Repository.Route
             var route = await _context.Routes.Include(r => r.Segments)
                 .FirstOrDefaultAsync(r => r.RouteId == id);
 
-            if (route == null) return false;
 
+            if (route == null) return false;
             _context.RouteSegments.RemoveRange(route.Segments);
             _context.Routes.Remove(route);
             await _context.SaveChangesAsync();
@@ -160,5 +160,5 @@ namespace Project.Repository.Route
     }
 }
 
-        
+
 

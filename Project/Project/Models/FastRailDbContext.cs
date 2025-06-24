@@ -17,6 +17,7 @@ namespace Project.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Route>().ToTable("Route");
             modelBuilder.Entity<RouteSegment>().ToTable("RouteSegment");
+            modelBuilder.Entity<Train>().ToTable("Train");
 
             modelBuilder.Entity<Payment>()
                 .Property(p => p.Amount)
