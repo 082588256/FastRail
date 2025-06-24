@@ -19,6 +19,10 @@ namespace Project.Repository.Route
         {
             var route = _mapper.Map<Models.Route>(dto);
 
+            for (int i = 0; i < route.Segments.Count; i++)
+            {
+                route.Segments.ElementAt(i).Order = i;
+            }
             if (!IsValidSegmentSequence(route))
                 return (false, "Segments are invalid or not sequential", 0);
 
@@ -34,7 +38,7 @@ namespace Project.Repository.Route
         private async Task<bool> IsDuplicateRouteAsync(Models.Route route, int? excludeRouteId = null)
         {
             var candidates = await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.SegmentId))
+                .Include(r => r.Segments.OrderBy(s => s.Order))
                 .Where(r =>
                     r.DepartureStationId == route.DepartureStationId &&
                     r.ArrivalStationId == route.ArrivalStationId &&
@@ -69,7 +73,7 @@ namespace Project.Repository.Route
         }
         private bool IsValidSegmentSequence(Models.Route route)
         {
-            var segments = route.Segments.ToList();
+            var segments = route.Segments.OrderBy(s=>s.Order).ToList();
 
             if (segments == null || segments.Count == 0) return false;
 
@@ -108,7 +112,7 @@ namespace Project.Repository.Route
         public async Task<IEnumerable<RouteDTO>> GetAllAsync()
         {
             return await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.SegmentId))
+                .Include(r => r.Segments.OrderBy(s => s.Order))
                 .ProjectTo<RouteDTO>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
@@ -116,7 +120,7 @@ namespace Project.Repository.Route
         public async Task<RouteDTO?> GetByIdAsync(int id)
         {
             var route = await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.SegmentId))
+                .Include(r => r.Segments.OrderBy(s => s.Order))
                 .FirstOrDefaultAsync(r => r.RouteId == id);
 
             return route == null ? null : _mapper.Map<RouteDTO>(route);
@@ -132,6 +136,11 @@ namespace Project.Repository.Route
 
             var updated = _mapper.Map<Models.Route>(dto);
             updated.RouteId = id;
+
+            for (int i = 0; i < updated.Segments.Count; i++)
+            {
+                updated.Segments.ElementAt(i).Order = i;
+            }
 
             if (!IsValidSegmentSequence(updated))
                 return (false, "Segments are invalid or not sequential");
