@@ -15,7 +15,16 @@ namespace Project.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Additional model configuration can go here
+            modelBuilder.Entity<Route>().ToTable("Route");
+            modelBuilder.Entity<RouteSegment>().ToTable("RouteSegment");
+
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Amount)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Ticket>()
+                .Property(t => t.Price)
+                .HasPrecision(18, 2);
         }
     }
     

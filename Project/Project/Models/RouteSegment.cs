@@ -11,6 +11,8 @@ namespace Project.Models
         public int FromStationId { get; set; }
         public int ToStationId { get; set; }
 
+        public int Order {  get; set; }
+
         public Route? Route { get; set; }
     }
 
