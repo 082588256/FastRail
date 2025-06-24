@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project.MappingProfile;
 using Project.Models;
+using Project.Repository.Route;
+using Project.Services;
 namespace Project
 {
     public class Program
@@ -17,6 +20,9 @@ namespace Project
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(typeof(RouteProfile));
+            builder.Services.AddScoped<IRouteRepository, RouteRepository>();
+            builder.Services.AddScoped<IRouteService, RouteService>();
 
             var app = builder.Build();
 
