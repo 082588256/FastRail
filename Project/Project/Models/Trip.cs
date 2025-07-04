@@ -7,6 +7,7 @@ namespace Project.Models
         [Key]
         public int TripId { get; set; }
 
+        public int ?TrainId { get; set; }
         public int DepartureStationId { get; set; }
         public int ArrivalStationId { get; set; }
         public DateTime DepartureTime { get; set; }
@@ -16,6 +17,8 @@ namespace Project.Models
         public Station? ArrivalStation { get; set; }
 
         public ICollection<Ticket>? Tickets { get; set; }
+
+        public Train ?Train { get; set; }
     }
 
 }

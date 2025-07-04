@@ -1,0 +1,63 @@
+## Build results
+bin/
+obj/
+out/
+[Aa]rtifacts/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## VS Code settings
+.vscode/
+
+## Visual Studio folder
+.vs/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Publish files
+wwwroot/dist/
+wwwroot/node_modules/
+dist/
+node_modules/
+bower_components/
+
+## Logs
+*.log
+logs/
+*.tlog
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Environment files
+*.env
+.env.*
+
+## Rider
+.idea/
+*.sln.iml
+
+## Test Results
+TestResults/
+*.coverage
+*.coveragexml
+*.testsettings
+*.vsp
+*.vspscc
+
+## NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+.nuget/
+
+# Others
+_ReSharper*/
+*.resharper
+*.DotSettings.user
