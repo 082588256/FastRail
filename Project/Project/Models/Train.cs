@@ -6,12 +6,19 @@ namespace Project.Models
     {
         [Key]
         public int TrainId { get; set; }
-        public string Name { get; set; }
-        public string? TrainType { get; set; }
-        public int NumberOfCarriages { get; set; }
-        public string? Status { get; set; }
+        public string TrainNumber { get; set; } = string.Empty;
+        public string? TrainName { get; set; }
+        public string TrainType { get; set; } = string.Empty;
+        public int TotalCarriages { get; set; }
+        public int? MaxSpeed { get; set; }
+        public string? Manufacturer { get; set; }
+        public int? YearOfManufacture { get; set; }
+        public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public ICollection<Carriage>? Carriages { get; set; }
+        // Navigation properties
+        public virtual ICollection<Carriage> Carriages { get; set; } = new List<Carriage>();
+        public virtual ICollection<Trip> Trips { get; set; } = new List<Trip>();
     }
 
 }
