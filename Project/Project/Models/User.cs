@@ -7,16 +7,22 @@ namespace Project.Models
     {
         [Key]
         public int UserId { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string FullName { get; set; } = string.Empty;
+        public string? Phone { get; set; }
+        public string PasswordHash { get; set; } = string.Empty;
+        public DateTime? DateOfBirth { get; set; }
+        public string? Gender { get; set; }
+        public string? Address { get; set; }
+        public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-        public string Username { get; set; }
-        public string Fullname { get; set; }
-        public string Email { get; set; }
-        public string PhoneNum { get; set; }
-        public string PasswordHash { get; set; }
-        public DateTime CreatedAt { get; set; }
-
-        public ICollection<Notification>? Notifications { get; set; }
-        public ICollection<Role>? Roles { get; set; }
+        // Navigation properties
+        public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+        public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+        public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
     }
-
 }
