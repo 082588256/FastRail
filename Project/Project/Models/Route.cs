@@ -12,6 +12,8 @@ namespace Project.Models
         public int ArrivalStationId { get; set; }
 
         public ICollection<RouteSegment>? Segments { get; set; }
+
+        public ICollection<Trip>? Trips { get; set; } = new List<Trip>();
     }
 
 }

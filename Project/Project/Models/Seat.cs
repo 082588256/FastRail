@@ -10,6 +10,8 @@ namespace Project.Models
         public int CarriageId { get; set; }
         public string? SeatType { get; set; }
 
+        public string? SeatName { get; set; }
+        public bool? Status { get; set; }
         public Carriage? Carriage { get; set; }
     }
 

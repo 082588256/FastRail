@@ -1,10 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Project.DTOs;
 using Project.MappingProfile;
 using Project.Models;
+using Project.Repository.Carriage;
 using Project.Repository.Route;
+using Project.Repository.Seat;
 using Project.Repository.Train;
+using Project.Repository.Trip;
+using Project.Services.Carriage;
 using Project.Services.Route;
+using Project.Services.Seat;
 using Project.Services.Train;
+using Project.Services.Trip;
+using Project.Utils.Validation;
+
 namespace Project
 {
     public class Program
@@ -26,6 +36,8 @@ namespace Project
             //AutoMapper Config
             builder.Services.AddAutoMapper(typeof(TrainProfile));
             builder.Services.AddAutoMapper(typeof(RouteProfile));
+            builder.Services.AddAutoMapper(typeof(CarriageProfile));
+            builder.Services.AddAutoMapper(typeof(TripProfile));
 
             //Config DI
             builder.Services.AddScoped<IRouteRepository, RouteRepository>();
@@ -33,6 +45,16 @@ namespace Project
 
             builder.Services.AddScoped<ITrainRepository, TrainRepository>();
             builder.Services.AddScoped<ITrainService, TrainServices>();
+
+            builder.Services.AddScoped<ICarriageRepository, CarriageRepository>(); 
+            builder.Services.AddScoped<ICarriageService, CarriageService>();
+            builder.Services.AddScoped<ISeatRepository, SeatRepository>();
+            builder.Services.AddScoped<ISeatService, SeatService>();
+            builder.Services.AddScoped<ItripRepository, TripRepository>();  
+            builder.Services.AddScoped<ITripService, TripService>();    
+
+            //Add Fluent Validation 
+            builder.Services.AddScoped<IValidator<TripDTO>, TripValidator>();
             var app = builder.Build();
 
             // Kiểm tra kết nối database và log kết quả
