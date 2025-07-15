@@ -9,5 +9,6 @@ namespace Project.Repository.Route
         Task<(bool Success, string Message, int RouteId)> CreateAsync(RouteDTO dto);
         Task<(bool Success, string Message)> UpdateAsync(int id, RouteDTO dto);
         Task<bool> DeleteAsync(int id);
+        Task<bool> checkduplicateRouteCode(string routeCode);
     }
 }
