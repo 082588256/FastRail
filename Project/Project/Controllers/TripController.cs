@@ -1,87 +1,32 @@
-﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project.DTOs;
-using Project.Services.Trip;
-
+using Project.Services;
 namespace Project.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class TripController : ControllerBase
+    [Route("api/[controller]")]
+    public class TripsController : ControllerBase
     {
-        private readonly ITripService _tripService;
-        public TripController(ITripService tripService)
+        private readonly ITripService _tripSearchService;
+
+        public TripsController(ITripService tripSearchService)
         {
-            _tripService = tripService;
+            _tripSearchService = tripSearchService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> getTrips()
+        [HttpPost("search")]
+        public async Task<ActionResult<List<TripSearchResponse>>> SearchTrips([FromBody] TripSearchRequest request)
         {
-            var trips= await _tripService.GetAllAsync();
+            var trips = await _tripSearchService.SearchTripsAsync(request);
             return Ok(trips);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> getTripById([FromRoute] int id)
+        [HttpGet("{tripId}/seats")]
+        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(int tripId)
         {
-            var existing = await _tripService.GetByIdAsync(id);
-            return existing == null ? NotFound() : Ok(existing);
-
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> createTrip([FromBody] TripDTO dto)
-        {
-            var result= await _tripService.CreateAsync(dto);
-            if(result.Success)
-            {
-                return Ok(new
-                {
-                    success = result.Success,
-                    message = result.Message,
-                    tripId = result.TripId
-                }); ;
-            }
-            else
-            {
-                return BadRequest(result.Message);
-            }
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> updateTrip([FromRoute] int id, [FromBody] TripDTO dto)
-        {
-            var existing= await _tripService.GetByIdAsync(id);
-            if(existing == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                var result= await _tripService.UpdateAsync(id, dto);
-                if(result.Success)
-                {
-                    return Ok(new
-                    {
-                        success = result.Success,
-                        message = result.Message,
-                        
-                    });
-                }
-            }
-            return BadRequest();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> deleteTrip([FromRoute]int id)
-        {
-           var result=  await _tripService.DeleteAsync(id);
-            if (result)
-            {
-                return NoContent();
-            }
-            return NotFound();
+            var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId);
+            return Ok(seats);
         }
     }
 }
+

@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace Project.Models;
-
-[Table("Role")]
-[Index("RoleName", Name = "UQ__Role__8A2B6160C7716B96", IsUnique = true)]
-public partial class Role
+namespace Project.Models
 {
-    [Key]
-    public int RoleId { get; set; }
+    public class Role
+    {
+        [Key]
+        public int RoleId { get; set; }
+        public string RoleName { get; set; } = string.Empty;
+        public string? Description { get; set; }
+        public bool IsActive { get; set; } = true;
 
-    [Required]
-    [StringLength(50)]
-    [Unicode(false)]
-    public string RoleName { get; set; }
+        // Navigation properties
+        public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+    }
 
-    [StringLength(255)]
-    public string Description { get; set; }
+    public class UserRole
 
-    public bool? IsActive { get; set; }
+    {
+        [Key]
+        public int UserRoleId { get; set; }
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
+        public DateTime AssignedAt { get; set; } = DateTime.UtcNow;
 
-    [InverseProperty("Role")]
-    public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+        // Navigation properties
+        public virtual User User { get; set; } = null!;
+        public virtual Role Role { get; set; } = null!;
+    }
+
 }
+

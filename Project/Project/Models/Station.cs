@@ -1,61 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace Project.Models;
-
-[Table("Station")]
-[Index("City", Name = "IX_Station_City")]
-[Index("Province", Name = "IX_Station_Province")]
-[Index("StationCode", Name = "IX_Station_StationCode")]
-[Index("StationCode", Name = "UQ__Station__D388561872B61742", IsUnique = true)]
-public partial class Station
+namespace Project.Models
 {
-    [Key]
-    public int StationId { get; set; }
+    public class Station
+    {
+        [Key]
+        public int StationId { get; set; }
+        public string StationName { get; set; } = string.Empty;
+        public string StationCode { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string Province { get; set; } = string.Empty;
+        public string? Address { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
+        public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    [Required]
-    [StringLength(100)]
-    public string StationName { get; set; }
+        // Navigation properties
+        public virtual ICollection<Route> DepartureRoutes { get; set; } = new List<Route>();
+        public virtual ICollection<Route> ArrivalRoutes { get; set; } = new List<Route>();
+        public virtual ICollection<RouteSegment> FromSegments { get; set; } = new List<RouteSegment>();
+        public virtual ICollection<RouteSegment> ToSegments { get; set; } = new List<RouteSegment>();
+    }
 
-    [Required]
-    [StringLength(10)]
-    [Unicode(false)]
-    public string StationCode { get; set; }
-
-    [Required]
-    [StringLength(50)]
-    public string City { get; set; }
-
-    [Required]
-    [StringLength(50)]
-    public string Province { get; set; }
-
-    [StringLength(255)]
-    public string Address { get; set; }
-
-    [Column(TypeName = "decimal(10, 8)")]
-    public decimal? Latitude { get; set; }
-
-    [Column(TypeName = "decimal(11, 8)")]
-    public decimal? Longitude { get; set; }
-
-    public bool? IsActive { get; set; }
-
-    [Column(TypeName = "datetime")]
-    public DateTime? CreatedAt { get; set; }
-
-    [InverseProperty("ArrivalStation")]
-    public virtual ICollection<Route> RouteArrivalStations { get; set; } = new List<Route>();
-
-    [InverseProperty("DepartureStation")]
-    public virtual ICollection<Route> RouteDepartureStations { get; set; } = new List<Route>();
-
-    [InverseProperty("FromStation")]
-    public virtual ICollection<RouteSegment> RouteSegmentFromStations { get; set; } = new List<RouteSegment>();
-
-    [InverseProperty("ToStation")]
-    public virtual ICollection<RouteSegment> RouteSegmentToStations { get; set; } = new List<RouteSegment>();
 }
+

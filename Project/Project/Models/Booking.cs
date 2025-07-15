@@ -1,83 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-
-namespace Project.Models;
-
-[Table("Booking")]
-[Index("BookingCode", Name = "IX_Booking_Code")]
-[Index("ExpirationTime", Name = "IX_Booking_ExpirationTime")]
-[Index("BookingStatus", Name = "IX_Booking_Status")]
-[Index("TripId", Name = "IX_Booking_Trip")]
-[Index("UserId", Name = "IX_Booking_User")]
-[Index("BookingCode", Name = "UQ__Booking__C6E56BD5070982A8", IsUnique = true)]
-public partial class Booking
+namespace Project.Models
 {
-    [Key]
-    public int BookingId { get; set; }
+    public class Booking
+    {
+        public int BookingId { get; set; }
 
-    public int UserId { get; set; }
+        // UserId có thể null cho guest booking
+        public int? UserId { get; set; }
+        public User? User { get; set; }
 
-    public int TripId { get; set; }
+        public int TripId { get; set; }
+        public Trip Trip { get; set; } = null!;
 
-    [Required]
-    [StringLength(20)]
-    [Unicode(false)]
-    public string BookingCode { get; set; }
+        public string BookingCode { get; set; } = string.Empty;
+        public string BookingStatus { get; set; } = string.Empty; // Temporary, Confirmed, Cancelled, Expired
+        public string? PaymentStatus { get; set; }
 
-    [StringLength(20)]
-    [Unicode(false)]
-    public string BookingStatus { get; set; }
+        public decimal TotalPrice { get; set; }
+        public DateTime? ExpirationTime { get; set; }
 
-    [Column(TypeName = "decimal(12, 2)")]
-    public decimal TotalPrice { get; set; }
+        // Thông tin hành khách (bắt buộc)
+        public string PassengerName { get; set; } = string.Empty;
+        public string PassengerPhone { get; set; } = string.Empty;
+        public string PassengerEmail { get; set; } = string.Empty;
+        public string? PassengerIdCard { get; set; }
+        public DateTime? PassengerDateOfBirth { get; set; }
 
-    [Column(TypeName = "datetime")]
-    public DateTime? ExpirationTime { get; set; }
+        // Thông tin liên hệ (cho guest booking)
+        public string? ContactName { get; set; }
+        public string? ContactPhone { get; set; }
+        public string? ContactEmail { get; set; }
 
-    [StringLength(100)]
-    [Unicode(false)]
-    public string PaymentTransactionId { get; set; }
+        // Timestamps
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ConfirmedAt { get; set; }
+        public DateTime? CancelledAt { get; set; }
 
-    [StringLength(50)]
-    [Unicode(false)]
-    public string PaymentMethod { get; set; }
+        // Navigation properties
+        public ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();
+        public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
-    [StringLength(20)]
-    [Unicode(false)]
-    public string PaymentStatus { get; set; }
-
-    [StringLength(500)]
-    public string Notes { get; set; }
-
-    [Column(TypeName = "datetime")]
-    public DateTime? CreatedAt { get; set; }
-
-    [Column(TypeName = "datetime")]
-    public DateTime? ConfirmedAt { get; set; }
-
-    [Column(TypeName = "datetime")]
-    public DateTime? CancelledAt { get; set; }
-
-    [InverseProperty("Booking")]
-    public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
-
-    [InverseProperty("Booking")]
-    public virtual ICollection<PriceCalculationLog> PriceCalculationLogs { get; set; } = new List<PriceCalculationLog>();
-
-    [InverseProperty("Booking")]
-    public virtual ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();
-
-    [InverseProperty("Booking")]
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
-
-    [ForeignKey("TripId")]
-    [InverseProperty("Bookings")]
-    public virtual Trip Trip { get; set; }
-
-    [ForeignKey("UserId")]
-    [InverseProperty("Bookings")]
-    public virtual User User { get; set; }
+        // Helper properties
+        public bool IsGuestBooking => !UserId.HasValue;
+        public string ContactInfo => IsGuestBooking ?
+            $"{ContactName} - {ContactPhone}" :
+            $"{User?.FullName} - {User?.Phone}";
+    }
 }
+
