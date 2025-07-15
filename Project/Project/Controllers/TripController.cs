@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Project.DTOs;
 using Project.Services;
 namespace Project.Controllers
@@ -29,3 +29,4 @@ namespace Project.Controllers
         }
     }
 }
+

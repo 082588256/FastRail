@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project;
 using Project.Services;
 
@@ -32,3 +32,4 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+

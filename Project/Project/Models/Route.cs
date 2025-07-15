@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Project.Models
 {
@@ -22,3 +22,4 @@ namespace Project.Models
         public virtual ICollection<Fare> Fares { get; set; } = new List<Fare>();
     }
 }
+

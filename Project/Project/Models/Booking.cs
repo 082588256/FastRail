@@ -1,4 +1,4 @@
-﻿namespace Project.Models
+namespace Project.Models
 {
     public class Booking
     {
@@ -47,3 +47,4 @@
             $"{User?.FullName} - {User?.Phone}";
     }
 }
+

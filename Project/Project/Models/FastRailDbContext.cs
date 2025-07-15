@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
 namespace Project
@@ -187,3 +187,4 @@ namespace Project
         }
     }
 }
+
