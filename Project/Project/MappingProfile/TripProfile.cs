@@ -10,7 +10,7 @@ namespace Project.MappingProfile
         {
 
             CreateMap<Trip, TripDTO>()
-            .ForMember(dest => dest.TrainName, opt => opt.MapFrom(src => src.Train.Name))
+            .ForMember(dest => dest.TrainName, opt => opt.MapFrom(src => src.Train.TrainName))
             .ForMember(dest => dest.RouteName, opt => opt.MapFrom(src => src.Route.RouteName));
 
             CreateMap<TripDTO, Trip>();

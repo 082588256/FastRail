@@ -14,7 +14,7 @@ namespace Project.Services.Train
         public async Task<(bool success, string message, int id)> CreateTrainAsync(TrainDTO trainDTO)
         {
             var existing = await _trainRepository.GetAllAsync();
-            if (existing.Any(t => t.Name.Trim().ToLower() == trainDTO.Name.Trim().ToLower()))
+            if (existing.Any(t => t.TrainName.Trim().ToLower() == trainDTO.TrainName.Trim().ToLower()))
             {
                 return (false, "Train name already exists", 0);
             }
@@ -42,7 +42,7 @@ namespace Project.Services.Train
             if (existing == null)
                 return (false, "Train not found");
 
-            if (trainDTO.NumberOfCarriages < 1)
+            if (trainDTO.TotalCarriages < 1)
                 return (false, "Train must have at least one carriage");
 
             return await _trainRepository.UpdateAsync(id, trainDTO);

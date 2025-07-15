@@ -117,7 +117,7 @@ namespace Project.Services
             }
         }
 
-        private string GenerateConfirmationEmailContent(Booking booking, Ticket ticket, Seat seat)
+        private string GenerateConfirmationEmailContent(Booking booking, Ticket ticket, Models.Seat seat)
         {
             return $@"
             <!DOCTYPE html>

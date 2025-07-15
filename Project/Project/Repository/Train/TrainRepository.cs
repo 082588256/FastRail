@@ -20,7 +20,7 @@ namespace Project.Repository.Train
         {
             var train = _mapper.Map<Models.Train>(dto);
 
-            _dbContext.Trains.Add(train);
+            _dbContext.Train.Add(train);
             await _dbContext.SaveChangesAsync();
 
             return (true, "Created", train.TrainId);
@@ -32,7 +32,7 @@ namespace Project.Repository.Train
             if (train != null)
             {
                 var trainMapped= _mapper.Map<Models.Train>(train);
-                _dbContext.Trains.Remove(trainMapped);
+                _dbContext.Train.Remove(trainMapped);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
@@ -44,30 +44,33 @@ namespace Project.Repository.Train
 
         public async Task<IEnumerable<TrainDTO>> GetAllAsync()
         {
-            return await _dbContext.Trains.ProjectTo<TrainDTO>(_mapper.ConfigurationProvider).ToListAsync();
+            return await _dbContext.Train.ProjectTo<TrainDTO>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
         public async Task<TrainDTO?> GetByIdAsync(int id)
         {
-            var train = await _dbContext.Trains.FindAsync(id);
+            var train = await _dbContext.Train.FindAsync(id);
             return train == null ? null : _mapper.Map<TrainDTO>(train);
         }
 
         public async Task<(bool Success, string Message)> UpdateAsync(int id, TrainDTO dto)
         {
-            var train = await _dbContext.Trains.FindAsync(id);
+            var train = await _dbContext.Train.FindAsync(id);
             if (train == null)
                 return (false, "Train not found");
 
             
-            train.Name = dto.Name;
+            train.TrainNumber = dto.TrainNumber;
+            train.TrainName = dto.TrainName;
             train.TrainType = dto.TrainType;
-            train.NumberOfCarriages = dto.NumberOfCarriages;
-            train.Status = dto.Status;
+            train.TotalCarriages = dto.TotalCarriages;
+            train.MaxSpeed = dto.MaxSpeed;
+            train.Manufacturer = dto.Manufacturer;
+            train.YearOfManufacture = dto.YearOfManufacture;
+            train.IsActive = dto.IsActive;
 
             await _dbContext.SaveChangesAsync();
-
-            return (true, "Updated");
+            return (true, "Train updated successfully");
         }
     }
 }

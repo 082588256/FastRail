@@ -31,7 +31,7 @@ namespace Project.Services.Trip
                 return(false,validation.ToString(), 0);
             }
 
-            bool isConflict = await _context.Trips.AnyAsync(t =>
+            bool isConflict = await _context.Trip.AnyAsync(t =>
                t.TrainId == dto.TrainId &&
                ((dto.DepartureTime >= t.DepartureTime && dto.DepartureTime < t.ArrivalTime) ||
                 (dto.ArrivalTime > t.DepartureTime && dto.ArrivalTime <= t.ArrivalTime)));
@@ -41,7 +41,7 @@ namespace Project.Services.Trip
                 return (false, "Tàu đã có lịch trình khác trong khoảng thời gian này", 0);
             }
 
-            var segments = await _context.RouteSegments
+            var segments = await _context.RouteSegment
             .Where(s => s.RouteId == dto.RouteId)
             .ToListAsync();
 
