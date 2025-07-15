@@ -245,7 +245,7 @@ namespace Project.Services
         /// <summary>
         /// Tính giá theo logic business (backup khi không có trong DB)
         /// </summary>
-        private decimal CalculatePriceByBusinessLogic(Seat seat, RouteSegment segment, Trip trip)
+        private decimal CalculatePriceByBusinessLogic(Models.Seat seat, RouteSegment segment, Models.Trip trip)
         {
             // Base price theo loại ghế
             decimal basePrice = GetBasePriceBySeatClass(seat.SeatClass);

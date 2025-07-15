@@ -8,7 +8,7 @@ namespace Project.MappingProfile
     {
         public RouteProfile() {
             CreateMap<Models.Route, RouteDTO>()
-               .ForMember(dest => dest.Segments, opt => opt.MapFrom(src => src.Segments.OrderBy(s => s.SegmentId)))
+               .ForMember(dest => dest.Segments, opt => opt.MapFrom(src => src.RouteSegments.OrderBy(s => s.SegmentId)))
                .ReverseMap();
 
             CreateMap<RouteSegment, RouteSegmentDTO>().ReverseMap();

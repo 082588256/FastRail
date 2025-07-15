@@ -19,9 +19,9 @@ namespace Project.Repository.Route
         {
             var route = _mapper.Map<Models.Route>(dto);
 
-            for (int i = 0; i < route.Segments.Count; i++)
+            for (int i = 0; i < route.RouteSegments.Count; i++)
             {
-                route.Segments.ElementAt(i).Order = i;
+                route.RouteSegments.ElementAt(i).Order = i;
             }
             if (!IsValidSegmentSequence(route))
                 return (false, "Segments are invalid or not sequential", 0);
@@ -29,7 +29,7 @@ namespace Project.Repository.Route
             if (await IsDuplicateRouteAsync(route))
                 return (false, "A route with the same path already exists", 0);
 
-            _context.Routes.Add(route);
+            _context.Route.Add(route);
             await _context.SaveChangesAsync();
 
             return (true, "Created", route.RouteId);
@@ -37,8 +37,8 @@ namespace Project.Repository.Route
 
         private async Task<bool> IsDuplicateRouteAsync(Models.Route route, int? excludeRouteId = null)
         {
-            var candidates = await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.Order))
+            var candidates = await _context.Route
+                .Include(r => r.RouteSegments.OrderBy(s => s.Order))
                 .Where(r =>
                     r.DepartureStationId == route.DepartureStationId &&
                     r.ArrivalStationId == route.ArrivalStationId &&
@@ -48,14 +48,14 @@ namespace Project.Repository.Route
             foreach (var existing in candidates)
             {
 
-                var existingSegments = existing.Segments.ToList();
-                var routeSegments = route.Segments.ToList();
+                var existingSegments = existing.RouteSegments.ToList();
+                var routeSegments = route.RouteSegments.ToList();
 
                 if (existingSegments.Count != routeSegments.Count)
                     continue;
 
                 bool same = true;
-                for (int i = 0; i < existing.Segments.Count; i++)
+                for (int i = 0; i < existing.RouteSegments.Count; i++)
                 {
                     var a = existingSegments[i];
                     var b = routeSegments[i];
@@ -73,7 +73,7 @@ namespace Project.Repository.Route
         }
         private bool IsValidSegmentSequence(Models.Route route)
         {
-            var segments = route.Segments.OrderBy(s => s.Order).ToList();
+            var segments = route.RouteSegments.OrderBy(s => s.Order).ToList();
 
             if (segments == null || segments.Count == 0) return false;
 
@@ -97,13 +97,13 @@ namespace Project.Repository.Route
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var route = await _context.Routes.Include(r => r.Segments)
+            var route = await _context.Route.Include(r => r.RouteSegments)
                 .FirstOrDefaultAsync(r => r.RouteId == id);
 
 
             if (route == null) return false;
-            _context.RouteSegments.RemoveRange(route.Segments);
-            _context.Routes.Remove(route);
+            _context.RouteSegment.RemoveRange(route.RouteSegments);
+            _context.Route.Remove(route);
             await _context.SaveChangesAsync();
 
             return true;
@@ -111,16 +111,16 @@ namespace Project.Repository.Route
 
         public async Task<IEnumerable<RouteDTO>> GetAllAsync()
         {
-            return await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.Order))
+            return await _context.Route
+                .Include(r => r.RouteSegments.OrderBy(s => s.Order))
                 .ProjectTo<RouteDTO>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
         public async Task<RouteDTO?> GetByIdAsync(int id)
         {
-            var route = await _context.Routes
-                .Include(r => r.Segments.OrderBy(s => s.Order))
+            var route = await _context.Route
+                .Include(r => r.RouteSegments.OrderBy(s => s.Order))
                 .FirstOrDefaultAsync(r => r.RouteId == id);
 
             return route == null ? null : _mapper.Map<RouteDTO>(route);
@@ -128,7 +128,7 @@ namespace Project.Repository.Route
 
         public async Task<(bool Success, string Message)> UpdateAsync(int id, RouteDTO dto)
         {
-            var existing = await _context.Routes.Include(r => r.Segments)
+            var existing = await _context.Route.Include(r => r.RouteSegments)
                .FirstOrDefaultAsync(r => r.RouteId == id);
 
             if (existing == null)
@@ -137,9 +137,9 @@ namespace Project.Repository.Route
             var updated = _mapper.Map<Models.Route>(dto);
             updated.RouteId = id;
 
-            for (int i = 0; i < updated.Segments.Count; i++)
+            for (int i = 0; i < updated.RouteSegments.Count; i++)
             {
-                updated.Segments.ElementAt(i).Order = i;
+                updated.RouteSegments.ElementAt(i).Order = i;
             }
 
             if (!IsValidSegmentSequence(updated))
@@ -148,11 +148,11 @@ namespace Project.Repository.Route
             if (await IsDuplicateRouteAsync(updated, excludeRouteId: id))
                 return (false, "A route with the same path already exists");
 
-            _context.RouteSegments.RemoveRange(existing.Segments);
+            _context.RouteSegment.RemoveRange(existing.RouteSegments);
             existing.RouteName = updated.RouteName;
             existing.DepartureStationId = updated.DepartureStationId;
             existing.ArrivalStationId = updated.ArrivalStationId;
-            existing.Segments = updated.Segments;
+            existing.RouteSegments = updated.RouteSegments;
 
             await _context.SaveChangesAsync();
             return (true, "Updated");
