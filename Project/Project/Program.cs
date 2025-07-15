@@ -54,6 +54,7 @@ builder.Services.AddScoped<IValidator<TripDTO>, TripValidator>();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddLogging();
 var app = builder.Build();
 
 // Configure pipeline
