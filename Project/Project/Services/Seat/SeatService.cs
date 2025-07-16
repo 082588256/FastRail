@@ -16,7 +16,7 @@ namespace Project.Services.Seat
         }
         public async Task<(bool Success, string Message, int SeatId)> CreateAsync(SeatDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.SeatName))
+            if (string.IsNullOrWhiteSpace(dto.SeatNumber))
                 return (false, "Seat number is required", 0);
 
             var carriageDto= await _carriageRepository.GetByIdAsync(dto.CarriageId);
@@ -26,7 +26,7 @@ namespace Project.Services.Seat
             }
             
 
-           if(_repository.CheckDuplicateSeatName(dto.SeatName, dto.CarriageId).Result)
+           if(_repository.CheckDuplicateSeatName(dto.SeatNumber, dto.CarriageId).Result)
             {
                 return (false, "Duplicate Seat number in same carriage", 0);
             }
@@ -45,7 +45,7 @@ namespace Project.Services.Seat
 
         public async Task<(bool Success, string Message)> UpdateAsync(int id, SeatDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.SeatName))
+            if (string.IsNullOrWhiteSpace(dto.SeatNumber))
                 return (false, "Seat number is required");
 
             var carriageDto = await _carriageRepository.GetByIdAsync(dto.CarriageId);
@@ -54,7 +54,7 @@ namespace Project.Services.Seat
                 return (false, "Carriage not found");
             }
 
-            if (_repository.CheckDuplicateSeatName(dto.SeatName, dto.CarriageId).Result)
+            if (_repository.CheckDuplicateSeatName(dto.SeatNumber, dto.CarriageId).Result)
             {
                 return (false, "Duplicate Seat number in same carriage");
             }
