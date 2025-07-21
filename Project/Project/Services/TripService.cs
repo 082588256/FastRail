@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.DTOs;
+using Project.Models;
 
 namespace Project.Services
 {
     public interface ITripService
     {
         Task<List<TripSearchResponse>> SearchTripsAsync(TripSearchRequest request);
-        Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId);
+        Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId, int fromStationId, int toStationId);
     }
 
     public class TripService : ITripService
@@ -23,14 +24,17 @@ namespace Project.Services
         public async Task<List<TripSearchResponse>> SearchTripsAsync(TripSearchRequest request)
         {
             var searchDate = request.TravelDate.Date;
-
+            var fromName = request.DepartureStationName;
+            var toName = request.ArrivalStationName;
             // Tìm chuyến tàu theo ngày
             var query = _context.Trip
+
                 .Include(t => t.Train)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.DepartureStation)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.ArrivalStation)
+
                 .Where(t => t.IsActive);
 
             // If both station names are empty, get trips for the next 90 days (to include September/October trips)
@@ -59,7 +63,7 @@ namespace Project.Services
 
             var trips = await query.ToListAsync();
             var result = new List<TripSearchResponse>();
-            foreach (var trip in trips)
+             foreach (var trip in trips)
             {
                 //// Đếm ghế trống đơn giản
                 //var totalSeats = await _context.Seat
@@ -89,50 +93,89 @@ namespace Project.Services
                     EstimatedDurationMinutes = (int)(trip.ArrivalTime - trip.DepartureTime).TotalMinutes
                 });
             }
+
             return result;
         }
-        public async Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId)
+
+        public async Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId, int fromStationId, int toStationId)
         {
-            // Lấy tất cả ghế của chuyến tàu
+            // 1. Lấy trip và thông tin route
+            var trip = await _context.Trip
+                .Include(t => t.Route)
+                .FirstOrDefaultAsync(t => t.TripId == tripId);
+
+            var routeId = trip.RouteId;
+
+            // 2. Lấy danh sách RouteSegment của toàn bộ tuyến
+            var segments = await _context.RouteSegment
+                .Where(rs => rs.RouteId == routeId)
+                .OrderBy(rs => rs.Order)
+                .ToListAsync();
+
+            // 3. Tìm Order của từ và đến
+            var fromOrder = segments.FirstOrDefault(s => s.FromStationId == fromStationId)?.Order ?? -1;
+            var toOrder = segments.FirstOrDefault(s => s.ToStationId == toStationId)?.Order ?? -1;
+
+            if (fromOrder == -1 || toOrder == -1 || fromOrder > toOrder)
+                return new List<SeatAvailabilityResponse>(); // invalid segment range
+
+            // 4. Lấy các RouteSegmentId người dùng sẽ đi qua
+            var desiredSegmentIds = segments
+                .Where(s => s.Order >= fromOrder && s.Order < toOrder)
+                .Select(s => s.SegmentId)
+                .ToList();
+
+            // 5. Lấy tất cả ghế của đoàn tàu thuộc trip
             var allSeats = await _context.Seat
                 .Include(s => s.Carriage)
                 .Where(s => s.Carriage.Train.Trips.Any(t => t.TripId == tripId) && s.IsActive)
                 .ToListAsync();
 
-            // Lấy ghế đã đặt
+            // 6. Tìm các ghế đã bị đặt trong bất kỳ segment nào giao với desired segments
             var bookedSeatIds = await _context.SeatSegment
                 .Where(ss => ss.TripId == tripId &&
-                            (ss.Status == "Booked" || ss.Status == "TemporaryReserved"))
+                             desiredSegmentIds.Contains(ss.SegmentId) &&
+                             (ss.Status == "Booked" || ss.Status == "TemporaryReserved"))
                 .Select(ss => ss.SeatId)
+                .Distinct()
                 .ToListAsync();
 
-            var result = new List<SeatAvailabilityResponse>();
-
-            foreach (var seat in allSeats)
+            // 7. Chuẩn bị danh sách trả về
+            var result = allSeats.Select(seat =>
             {
-                if (!bookedSeatIds.Contains(seat.SeatId))
+                var isAvailable = !bookedSeatIds.Contains(seat.SeatId);
+                decimal price = seat.SeatClass switch
                 {
-                    // Tính giá đơn giản
-                    decimal price = seat.SeatClass switch
-                    {
-                        "Economy" => 50000m,
-                        "Business" => 100000m,
-                        "VIP" => 200000m,
-                        _ => 50000m
-                    };
-                    result.Add(new SeatAvailabilityResponse
-                    {
-                        SeatId = seat.SeatId,
-                        SeatNumber = seat.SeatNumber,
-                        CarriageNumber = seat.Carriage.CarriageNumber,
-                        SeatType = seat.SeatType,
-                        SeatClass = seat.SeatClass,
-                        Price = price,
-                        IsAvailable = true
-                    });
-                }
-            }
-            return result.OrderBy(s => s.CarriageNumber).ThenBy(s => s.SeatNumber).ToList();
+                    "Economy" => 50000m,
+                    "Business" => 100000m,
+                    "VIP" => 200000m,
+                    _ => 50000m
+                };
+
+                return new SeatAvailabilityResponse
+                {
+                    SeatId = seat.SeatId,
+                    SeatNumber = seat.SeatNumber,
+                    CarriageNumber = seat.Carriage.CarriageNumber,
+                    SeatType = seat.SeatType,
+                    SeatClass = seat.SeatClass,
+                    Price = price,
+                    IsAvailable = isAvailable
+                };
+            })
+            .OrderBy(s => s.CarriageNumber)
+            .ThenBy(s => s.SeatNumber)
+            .ToList();
+
+            return result;
+        }
+        public Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId, int seatId)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -280,10 +280,12 @@ document.addEventListener('DOMContentLoaded', function() {
         loginBtn.querySelector('.btn-text').textContent = 'Signing In...';
 
         try {
+
             // Use the correct backend API base URL for development
             // Change this to your production API URL as needed
             const apiBaseUrl = 'http://localhost:5014';
             const response = await fetch(`${apiBaseUrl}/api/auth/staff/login`, {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Project.DTO;
 using Project.DTOs;
 using Project.Services;
+
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
+
 
 namespace Project.Controllers
 {
@@ -54,6 +56,7 @@ namespace Project.Controllers
                 var isValid = await _authService.ValidateStaffTokenAsync(token);
                 if (!isValid)
                 {
+
                     return Unauthorized(new ApiResponse<TicketDetailsResponse>
                     {
                         Success = false,
@@ -65,6 +68,7 @@ namespace Project.Controllers
                 if (string.IsNullOrWhiteSpace(request.QRCodeData))
                 {
                     return BadRequest(new ApiResponse<TicketDetailsResponse>
+
                     {
                         Success = false,
                         Message = "QR code data is required",
@@ -77,6 +81,7 @@ namespace Project.Controllers
                 if (string.IsNullOrWhiteSpace(ticketCode))
                 {
                     return BadRequest(new ApiResponse<TicketDetailsResponse>
+
                     {
                         Success = false,
                         Message = "Invalid QR code format",
@@ -85,6 +90,7 @@ namespace Project.Controllers
                 }
 
                 // Get booking details by ticket code
+
                 var ticket = await _context.Ticket
                     .Include(t => t.Booking)
                     .Include(t => t.Trip)
@@ -92,6 +98,7 @@ namespace Project.Controllers
                 if (ticket == null)
                 {
                     return NotFound(new ApiResponse<TicketDetailsResponse>
+
                     {
                         Success = false,
                         Message = "Ticket not found",
@@ -100,10 +107,12 @@ namespace Project.Controllers
                 }
 
                 // Validate ticket for boarding
+
                 var validationResult = await ValidateTicketForBoarding(ticket.Booking.BookingStatus, ticket.Trip.DepartureTime);
                 if (!validationResult.IsValid)
                 {
                     return BadRequest(new ApiResponse<TicketDetailsResponse>
+
                     {
                         Success = false,
                         Message = validationResult.Message,
@@ -112,6 +121,7 @@ namespace Project.Controllers
                 }
 
                 _logger.LogInformation("Ticket {TicketCode} scanned successfully by staff", ticketCode);
+
 
                 // Map Ticket to TicketDetailsResponse before returning
                 var ticketDetails = new TicketDetailsResponse
@@ -220,6 +230,7 @@ namespace Project.Controllers
 
                 // Mark ticket as checked in
                 var checkInResult = await _bookingService.ConfirmBookingAsync(ticket.BookingId, "QR_SCAN");
+
                 if (!checkInResult)
                 {
                     return BadRequest(new ApiResponse<object>
@@ -272,6 +283,7 @@ namespace Project.Controllers
         }
 
         [HttpPost("scan-image")]
+
         public async Task<ActionResult<ApiResponse<TicketScanResponse>>> ScanTicketFromImage(
             [FromForm] ScanImageRequest request,
             [FromHeader(Name = "Authorization")] string? authorization)
@@ -434,6 +446,7 @@ namespace Project.Controllers
 
             // Check if trip time is valid (within 2 hours before departure)
             var timeUntilDeparture = departureTime - DateTime.UtcNow;
+
             if (timeUntilDeparture.TotalHours > 2)
             {
                 return (false, "Boarding is only allowed within 2 hours before departure");

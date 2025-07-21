@@ -124,41 +124,43 @@ namespace Project
 
             // Booking configurations
             modelBuilder.Entity<Booking>(entity =>
-            {
-                entity.HasKey(e => e.BookingId);
-                entity.Property(e => e.BookingCode).HasMaxLength(20).IsRequired();
-                entity.Property(e => e.BookingStatus).HasMaxLength(20).HasDefaultValue("Temporary");
-                entity.Property(e => e.PaymentStatus).HasMaxLength(20).HasDefaultValue("Pending");
-                //entity.Property(e => e.PaymentMethod).HasMaxLength(50);
-                //entity.Property(e => e.PaymentTransactionId).HasMaxLength(100);
-                //entity.Property(e => e.Notes).HasMaxLength(500);
+{
+    entity.HasKey(e => e.BookingId);
+    entity.Property(e => e.BookingCode).HasMaxLength(20).IsRequired();
+    entity.Property(e => e.BookingStatus).HasMaxLength(20).HasDefaultValue("Temporary");
+    entity.Property(e => e.TotalPrice).HasColumnType("decimal(12,2)").IsRequired();
+    entity.Property(e => e.PaymentStatus).HasMaxLength(20).HasDefaultValue("Pending");
+    //entity.Property(e => e.PaymentMethod).HasMaxLength(50);
+    //entity.Property(e => e.PaymentTransactionId).HasMaxLength(100);
+    //entity.Property(e => e.Notes).HasMaxLength(500);
 
-                entity.HasIndex(e => e.BookingCode).IsUnique();
-            });
-            modelBuilder.Entity<Booking>().ToTable("Booking");
+    entity.HasIndex(e => e.BookingCode).IsUnique();
+});
+modelBuilder.Entity<Booking>().ToTable("Booking"); 
 
-            // Ticket configurations
-            modelBuilder.Entity<Ticket>(entity =>
-            {
-                entity.HasKey(e => e.TicketId);
-                entity.Property(e => e.TicketCode).HasMaxLength(50).IsRequired();
-                entity.Property(e => e.PassengerName).HasMaxLength(100).IsRequired();
-                entity.Property(e => e.PassengerIdCard).HasMaxLength(20);
-                entity.Property(e => e.PassengerPhone).HasMaxLength(20);
-                entity.Property(e => e.TotalPrice).HasColumnType("decimal(12,2)").IsRequired();
-                entity.Property(e => e.DiscountAmount).HasColumnType("decimal(12,2)").HasDefaultValue(0);
-                entity.Property(e => e.FinalPrice).HasColumnType("decimal(12,2)").IsRequired();
-                entity.Property(e => e.Status).HasMaxLength(20).HasDefaultValue("Valid");
-                entity.Property(e => e.Notes).HasMaxLength(500);
+// Ticket configurations
+modelBuilder.Entity<Ticket>(entity =>
+{
+    entity.HasKey(e => e.TicketId);
+    entity.Property(e => e.TicketCode).HasMaxLength(50).IsRequired();
+    entity.Property(e => e.PassengerName).HasMaxLength(100).IsRequired();
+    entity.Property(e => e.PassengerIdCard).HasMaxLength(20);
+    entity.Property(e => e.PassengerPhone).HasMaxLength(20);
+    entity.Property(e => e.TotalPrice).HasColumnType("decimal(12,2)").IsRequired();
+    entity.Property(e => e.DiscountAmount).HasColumnType("decimal(12,2)").HasDefaultValue(0);
+    entity.Property(e => e.FinalPrice).HasColumnType("decimal(12,2)").IsRequired();
+    entity.Property(e => e.Status).HasMaxLength(20).HasDefaultValue("Valid");
+    entity.Property(e => e.Notes).HasMaxLength(500);
 
-                entity.HasIndex(e => e.TicketCode).IsUnique();
+    entity.HasIndex(e => e.TicketCode).IsUnique();
 
-                entity.Property(e => e.UserId).IsRequired(false);
-                entity.HasOne(e => e.User)
-                      .WithMany(u => u.Tickets)
-                      .HasForeignKey(e => e.UserId)
-                      .OnDelete(DeleteBehavior.SetNull);
-            });
+    // Từ nhánh Khanh
+    entity.Property(e => e.UserId).IsRequired(false);
+    entity.HasOne(e => e.User)
+          .WithMany(u => u.Tickets)
+          .HasForeignKey(e => e.UserId)
+          .OnDelete(DeleteBehavior.SetNull);
+});
 
             // Fare configurations
             modelBuilder.Entity<Fare>(entity =>
@@ -193,4 +195,5 @@ namespace Project
         }
     }
 }
+
 

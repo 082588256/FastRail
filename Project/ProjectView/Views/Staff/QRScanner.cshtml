@@ -381,6 +381,7 @@ let currentTicketCode = null;
 let staffToken = null;
 let staffUser = null;
 
+
 // Use the correct backend API base URL for development
 // Change this to your production API URL as needed
 const apiBaseUrl = 'http://localhost:5014';
@@ -390,6 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
     staffToken = localStorage.getItem('staffToken');
     const staffUserStr = localStorage.getItem('staffUser');
     
+
     console.log('[DEBUG] staffToken:', staffToken);
     console.log('[DEBUG] staffUserStr:', staffUserStr);
     if (!staffToken || !staffUserStr) {
@@ -460,7 +462,6 @@ async function scanUploadedImage() {
     try {
         const formData = new FormData();
         formData.append('QRImage', uploadedImageFile);
-
         const response = await fetch(`${apiBaseUrl}/api/qrscanner/scan-image`, {
             method: 'POST',
             headers: {
@@ -513,7 +514,6 @@ async function scanTicket(ticketCode) {
         scannerArea.classList.add('active');
         scanBtn.disabled = true;
         scanBtn.innerHTML = '<span class="loading-spinner"></span> Scanning...';
-
         const response = await fetch(`${apiBaseUrl}/api/qrscanner/scan`, {
             method: 'POST',
             headers: {
@@ -557,6 +557,7 @@ function displayTicketInfo(ticket) {
 
     // Set status
     const isValid = (ticket.bookingStatus || ticket.status) === 'Confirmed' || (ticket.status === 'Valid');
+
     ticketStatus.textContent = isValid ? 'Valid' : 'Invalid';
     ticketStatus.className = `ticket-status ${isValid ? 'status-valid' : 'status-invalid'}`;
 
@@ -597,6 +598,7 @@ function displayTicketInfo(ticket) {
         <div class="detail-group">
             <div class="detail-label">Price</div>
             <div class="detail-value">${ticket.totalPrice != null ? Number(ticket.totalPrice).toLocaleString() : 'N/A'} VND</div>
+
         </div>
     `;
 

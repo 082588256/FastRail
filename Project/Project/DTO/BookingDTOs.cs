@@ -4,10 +4,11 @@
 
     public class CreateBookingRequest
     {
-        
         public int? UserId { get; set; }
         public int TripId { get; set; }
-        public int SeatId { get; set; }
+        public int DepartureStationId { get; set; }
+        public int ArrivalStationId { get; set; }
+
 
         // Guest contact info
         public string? ContactName { get; set; }
@@ -20,10 +21,22 @@
         public string PassengerEmail { get; set; } = string.Empty;
         public string? PassengerIdCard { get; set; }
         public DateTime? PassengerDateOfBirth { get; set; }
-
         // Guest identifier
         public bool IsGuestBooking => !UserId.HasValue;
     }
+
+    public class PassengerTicketRequest
+    {
+        public int SeatId { get; set; }
+
+        // Thông tin hành khách cho vé này
+        public string PassengerName { get; set; } = string.Empty;
+        public string PassengerPhone { get; set; } = string.Empty;
+        public string PassengerEmail { get; set; } = string.Empty;
+        public string? PassengerIdCard { get; set; }
+        public DateTime? PassengerDateOfBirth { get; set; }
+    }
+
 
     public class GuestBookingLookupRequest
     {
@@ -182,7 +195,8 @@
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public int EstimatedDurationMinutes { get; set; }
-
+        public int TrainId { get; set; }
+        public int TotalSeats { get; set; }
         //public int TotalSeats { get; set; }
         //public int AvailableSeats { get; set; }
         //public int BookedSeats { get; set; }
@@ -216,7 +230,7 @@
         public bool IsAvailable { get; set; }
         public bool IsWindow { get; set; }
         public bool IsAisle { get; set; }
-        public string? Features { get; set; } // "WiFi, Power outlet"
+        
     }
 
     public class TripDetailsResponse

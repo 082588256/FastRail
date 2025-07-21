@@ -90,29 +90,39 @@ namespace Project.Controllers
         {
             try
             {
-                _logger.LogInformation("Creating {BookingType} booking for trip {TripId}, seat {SeatId}",
-                    request.IsGuestBooking ? "guest" : "user",
-                    request.TripId, request.SeatId);
-                if (request.TripId <= 0 || request.SeatId <= 0)
+                _logger.LogInformation("Creating {BookingType} booking for trip {TripId}",
+                    request.IsGuestBooking ? "guest" : "user", request.TripId);
+
+                if (request.TripId <= 0)
                 {
                     return BadRequest(new ApiResponse<CreateBookingResponse>
                     {
                         Success = false,
-                        Message = "Thông tin chuyến tàu và ghế không hợp lệ",
+                        Message = "TripId không hợp lệ",
                         RequestId = HttpContext.TraceIdentifier
                     });
                 }
+
                 if (!request.IsGuestBooking && (!request.UserId.HasValue || request.UserId <= 0))
                 {
                     return BadRequest(new ApiResponse<CreateBookingResponse>
                     {
                         Success = false,
-                        Message = "User ID không hợp lệ cho user booking",
+                        Message = "UserId không hợp lệ cho user booking",
                         RequestId = HttpContext.TraceIdentifier
                     });
                 }
 
-                // Tạo booking và ticket
+
+                if (request.Tickets == null || !request.Tickets.Any())
+                {
+                    return BadRequest(new ApiResponse<CreateBookingResponse>
+                    {
+                        Success = false,
+                        Message = "Danh sách vé không được để trống",
+                        RequestId = HttpContext.TraceIdentifier
+                    });
+                }
                 var result = await _bookingService.CreateTemporaryBookingAsync(request);
 
                 if (result.Success)
@@ -121,6 +131,7 @@ namespace Project.Controllers
                         request.IsGuestBooking ? "guest" : "user",
                         result.BookingId,
                         result.BookingCode);
+
 
                     // Generate QR from TicketCode (assume TicketCode is returned in result)
                     var qrData = await _qrService.GenerateQRCodeAsync(result.TicketCode);
@@ -146,8 +157,7 @@ namespace Project.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating {BookingType} booking",
-                    request.IsGuestBooking ? "guest" : "user");
+                _logger.LogError(ex, "Error creating {BookingType} booking", request.IsGuestBooking ? "guest" : "user");
                 return StatusCode(500, new ApiResponse<CreateBookingResponse>
                 {
                     Success = false,

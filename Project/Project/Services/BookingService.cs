@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Project.DTOs;
+using Project.Services.Route;
 
 namespace Project.Services
 {
@@ -26,12 +27,16 @@ namespace Project.Services
         private readonly FastRailDbContext _context;
         private readonly IPricingService _pricingService;
         private readonly ILogger<BookingService> _logger;
+        private readonly IRouteService _routeService;   
+        private readonly ISeatService _seatService;
 
-        public BookingService(FastRailDbContext context, IPricingService pricingService, ILogger<BookingService> logger)
+        public BookingService(FastRailDbContext context, IPricingService pricingService, ILogger<BookingService> logger, IRouteService routeService, ISeatService seatService)
         {
             _context = context;
             _pricingService = pricingService;
             _logger = logger;
+            _routeService = routeService;
+            _seatService = seatService;
         }
 
         /// <summary>
@@ -159,7 +164,11 @@ namespace Project.Services
                     Message = "System error while creating booking and ticket"
                 };
             }
+
+            CreateBookingResponse Fail(string msg) => new CreateBookingResponse { Success = false, Message = msg };
         }
+
+
 
         /// <summary>
         /// 🔍 Tra cứu booking guest
@@ -211,6 +220,7 @@ namespace Project.Services
                 //}
 
                 return MapToTicketDetailsResponse(booking);
+
             }
             catch (Exception ex)
             {
@@ -263,7 +273,7 @@ namespace Project.Services
                 return new List<TicketDetailsResponse>();
             }
         }
-
+        
         #region Existing Methods (Updated)
 
         public async Task<TicketDetailsResponse?> GetBookingByCodeAsync(string bookingCode)
@@ -301,14 +311,14 @@ namespace Project.Services
 
         #region Private Helper Methods
 
-        private async Task<bool> IsSeatAvailableAsync(int tripId, int seatId)
+        public async Task<bool> IsSeatAvailableForSegmentsAsync(int tripId, int seatId, List<int> segmentIds)
         {
-            var isBooked = await _context.SeatSegment
-                .AnyAsync(ss => ss.TripId == tripId &&
-                               ss.SeatId == seatId &&
-                               (ss.Status == "Booked" || ss.Status == "TemporaryReserved"));
-
-            return !isBooked;
+            return !await _context.SeatSegment
+                .AnyAsync(ss =>
+                    ss.TripId == tripId &&
+                    ss.SeatId == seatId &&
+                    segmentIds.Contains(ss.SegmentId) &&
+                    (ss.Status == "TemporaryReserved" || ss.Status == "Booked"));
         }
 
         private static string GenerateBookingCode(bool isGuestBooking)
@@ -322,8 +332,10 @@ namespace Project.Services
             return $"TK{DateTime.UtcNow:yyyyMMddHHmmss}{Random.Shared.Next(1000, 9999)}";
         }
 
+
         // Replace MapToBookingDetailsResponse with MapToTicketDetailsResponse
         private static TicketDetailsResponse MapToTicketDetailsResponse(Booking booking)
+
         {
             var seat = booking.SeatSegments.FirstOrDefault()?.Seat;
             var ticket = booking.Tickets.FirstOrDefault();
@@ -378,8 +390,7 @@ namespace Project.Services
                 booking.BookingStatus = "Confirmed";
                 booking.ConfirmedAt = DateTime.UtcNow;
                 booking.PaymentStatus = "Completed";
-
-                // Update seat segments
+              // Update seat segments
                 foreach (var seatSegment in booking.SeatSegments)
                 {
                     seatSegment.Status = "Booked";
@@ -400,6 +411,7 @@ namespace Project.Services
                         PassengerPhone = booking.ContactPhone ?? "",
                         TotalPrice = 0, // Set to 0 or calculate as needed
                         FinalPrice = 0, // Set to 0 or calculate as needed
+
                         Status = "Valid",
                         PurchaseTime = DateTime.UtcNow
                     };
@@ -426,7 +438,9 @@ namespace Project.Services
             }
         }
 
+
         public async Task<TicketDetailsResponse?> GetBookingDetailsAsync(int bookingId)
+
         {
             try
             {
@@ -444,8 +458,8 @@ namespace Project.Services
                             .ThenInclude(s => s.Carriage)
                     .Include(b => b.Tickets)
                     .FirstOrDefaultAsync(b => b.BookingId == bookingId);
-
                 return booking != null ? MapToTicketDetailsResponse(booking) : null;
+
             }
             catch (Exception ex)
             {
@@ -557,8 +571,8 @@ namespace Project.Services
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
-
                 return bookings.Select(MapToTicketDetailsResponse).ToList();
+
             }
             catch (Exception ex)
             {

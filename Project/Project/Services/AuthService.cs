@@ -27,6 +27,7 @@ namespace Project.Services
         {
             try
             {
+
                 // Trim email and password to avoid issues with extra spaces
                 var inputEmail = request.Email.Trim();
                 var inputPassword = request.Password.Trim();
@@ -40,6 +41,7 @@ namespace Project.Services
                 if (user == null)
                 {
                     _logger.LogWarning("Login failed: user not found or inactive. Email: {Email}", inputEmail);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -52,6 +54,7 @@ namespace Project.Services
                 if (!hasStaffRole)
                 {
                     _logger.LogWarning("Login failed: user does not have STAFF role. Email: {Email}", inputEmail);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -59,10 +62,12 @@ namespace Project.Services
                     };
                 }
 
+
                 // Verify password (trim both input and db value)
                 if (!VerifyPassword(inputPassword, user.PasswordHash))
                 {
                     _logger.LogWarning("Login failed: password mismatch. Email: {Email}, InputPassword: '{InputPassword}', DbPassword: '{DbPassword}'", inputEmail, inputPassword, user.PasswordHash);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -120,6 +125,7 @@ namespace Project.Services
                 if (string.IsNullOrEmpty(token))
                     return false;
 
+
                 // Validate JWT token
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
@@ -134,6 +140,7 @@ namespace Project.Services
                     ValidIssuer = issuer,
                     ValidateAudience = true,
                     ValidAudience = audience,
+
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
@@ -222,6 +229,7 @@ namespace Project.Services
             var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
             var audience = _configuration["Jwt:Audience"] ?? "FastRailStaff";
 
+
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
@@ -247,6 +255,7 @@ namespace Project.Services
         {
             // Compare trimmed values to avoid issues with extra spaces
             return password.Trim() == passwordHash.Trim();
+
         }
     }
 } 

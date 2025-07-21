@@ -6,6 +6,7 @@ using ZXing;
 using ZXing.Common;
 using ZXing.Windows.Compatibility;
 
+
 namespace Project.Services
 {
     public class QRService : IQRService
@@ -112,6 +113,7 @@ namespace Project.Services
             }
         }
 
+
         /// <summary>
         /// Decodes a QR code from an image byte array using ZXing.Net.
         /// Supports common image formats (JPG, PNG, BMP).
@@ -161,6 +163,7 @@ namespace Project.Services
                 _logger.LogError(ex, "Error decoding QR code from image");
                 throw new InvalidOperationException("Failed to decode QR code from image. Please ensure the image is clear and contains a valid QR code.", ex);
             }
+
         }
 
         private string GenerateChecksum(string ticketCode)

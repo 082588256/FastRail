@@ -1,14 +1,17 @@
-﻿using Project.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.DTOs;
 using Project.Repository.Route;
 
 namespace Project.Services.Route
 {
     public class RouteService : IRouteService
     {
+        private readonly FastRailDbContext _context;
         private readonly IRouteRepository _routeRepository;
-        public RouteService(IRouteRepository repository)
+        public RouteService(IRouteRepository repository, FastRailDbContext context)
         {
             _routeRepository = repository;
+            _context = context;
         }
         public async Task<(bool Success, string Message, int RouteId)> CreateRouteAsync(RouteDTO dto)
         {
@@ -69,6 +72,25 @@ namespace Project.Services.Route
                 return (false, "Total duration of segments is less than the estimated route duration");
             }
             return await _routeRepository.UpdateAsync(id, dto);
+        }
+
+        public async Task<List<int>> GetSegmentIdsByRouteAsync(int routeId, int fromStationId, int toStationId)
+        {
+            var segments = await _context.RouteSegment
+                .Where(rs => rs.RouteId == routeId)
+                .OrderBy(rs => rs.Order)
+                .ToListAsync();
+
+            var start = segments.FirstOrDefault(s => s.FromStationId == fromStationId);
+            var end = segments.FirstOrDefault(s => s.ToStationId == toStationId);
+
+            if (start == null || end == null || start.Order > end.Order)
+                return new List<int>();
+
+            return segments
+                .Where(s => s.Order >= start.Order && s.Order <= end.Order)
+                .Select(s => s.SegmentId)
+                .ToList();
         }
     }
 }
