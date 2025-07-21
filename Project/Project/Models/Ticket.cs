@@ -8,7 +8,7 @@ namespace Project.Models
         [Key]
         public int TicketId { get; set; }
         public int BookingId { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int TripId { get; set; }
         public string TicketCode { get; set; } = string.Empty;
         public string PassengerName { get; set; } = string.Empty;
@@ -24,7 +24,7 @@ namespace Project.Models
 
         // Navigation properties
         public virtual Booking Booking { get; set; } = null!;
-        public virtual User User { get; set; } = null!;
+        public virtual User? User { get; set; }
         public virtual Trip Trip { get; set; } = null!;
         public virtual ICollection<TicketSegment> TicketSegments { get; set; } = new List<TicketSegment>();
     }

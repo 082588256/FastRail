@@ -17,6 +17,7 @@ namespace Project.Controllers
         private readonly ITripService _tripService;
         private readonly IPricingService _pricingService;
         private readonly ILogger<BookingController> _logger;
+        private readonly IQRService _qrService;
 
         public BookingController(
             IBookingService bookingService,
@@ -24,7 +25,8 @@ namespace Project.Controllers
             IEmailService emailService,
             ITripService tripService,
             IPricingService pricingService,
-            ILogger<BookingController> logger)
+            ILogger<BookingController> logger,
+            IQRService qrService)
         {
             _bookingService = bookingService;
             _paymentService = paymentService;
@@ -32,6 +34,7 @@ namespace Project.Controllers
             _tripService = tripService;
             _pricingService = pricingService;
             _logger = logger;
+            _qrService = qrService;
         }
         [HttpPost("guest-lookup")]
         public async Task<ActionResult> LookupGuestBooking( GuestBookingLookupRequest request)
@@ -40,7 +43,7 @@ namespace Project.Controllers
             {
                 if (string.IsNullOrWhiteSpace(request.BookingCode))
                 {
-                    return BadRequest(new ApiResponse<BookingDetailsResponse>
+                    return BadRequest(new ApiResponse<TicketDetailsResponse>
                     {
                         Success = false,
                         Message = "Vui lòng nhập mã booking",
@@ -53,7 +56,7 @@ namespace Project.Controllers
 
                 if (booking == null)
                 {
-                    return NotFound(new ApiResponse<BookingDetailsResponse>
+                    return NotFound(new ApiResponse<TicketDetailsResponse>
                     {
                         Success = false,
                         Message = "Không tìm thấy booking hoặc thông tin tra cứu không đúng",
@@ -61,7 +64,7 @@ namespace Project.Controllers
                     });
                 }
 
-                return Ok(new ApiResponse<BookingDetailsResponse>
+                return Ok(new ApiResponse<TicketDetailsResponse>
                 {
                     Success = true,
                     Data = booking,
@@ -72,7 +75,7 @@ namespace Project.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error looking up guest booking with code {BookingCode}", request.BookingCode);
-                return StatusCode(500, new ApiResponse<BookingDetailsResponse>
+                return StatusCode(500, new ApiResponse<TicketDetailsResponse>
                 {
                     Success = false,
                     Message = "Lỗi hệ thống",
@@ -83,7 +86,7 @@ namespace Project.Controllers
 
 
         [HttpPost("create-temporary")]
-        public async Task<ActionResult<ApiResponse<CreateBookingResponse>>> CreateTemporaryBooking([FromForm] CreateBookingRequest request)
+        public async Task<ActionResult<ApiResponse<CreateBookingResponse>>> CreateTemporaryBooking([FromBody] CreateBookingRequest request)
         {
             try
             {
@@ -109,30 +112,7 @@ namespace Project.Controllers
                     });
                 }
 
-                // Kiểm tra chuyến tàu có tồn tại và còn hoạt động
-                //var tripExists = await _tripService.IsTripActiveAsync(request.TripId);
-                //if (!tripExists)
-                //{
-                //    return BadRequest(new ApiResponse<CreateBookingResponse>
-                //    {
-                //        Success = false,
-                //        Message = "Chuyến tàu không tồn tại hoặc đã ngưng hoạt động",
-                //        RequestId = HttpContext.TraceIdentifier
-                //    });
-                //}
-
-                //// Kiểm tra ghế có available không
-                //var seatAvailable = await _tripService.IsSeatAvailableAsync(request.TripId, request.SeatId);
-                //if (!seatAvailable)
-                //{
-                //    return BadRequest(new ApiResponse<CreateBookingResponse>
-                //    {
-                //        Success = false,
-                //        Message = "Ghế đã có người đặt hoặc không tồn tại",
-                //        RequestId = HttpContext.TraceIdentifier
-                //    });
-                //}
-                // Tạo booking
+                // Tạo booking và ticket
                 var result = await _bookingService.CreateTemporaryBookingAsync(request);
 
                 if (result.Success)
@@ -142,16 +122,16 @@ namespace Project.Controllers
                         result.BookingId,
                         result.BookingCode);
 
-                    var responseMessage = request.IsGuestBooking
-                        ? "Đặt chỗ thành công! Vui lòng lưu mã booking và hoàn tất thanh toán trong 5 phút."
-                        : "Đặt chỗ thành công! Vui lòng hoàn tất thanh toán trong 5 phút.";
+                    // Generate QR from TicketCode (assume TicketCode is returned in result)
+                    var qrData = await _qrService.GenerateQRCodeAsync(result.TicketCode);
 
                     return Ok(new ApiResponse<CreateBookingResponse>
                     {
                         Success = true,
                         Data = result,
-                        Message = responseMessage,
-                        RequestId = HttpContext.TraceIdentifier
+                        Message = "Booking and ticket created successfully!",
+                        RequestId = HttpContext.TraceIdentifier,
+                        Errors = null
                     });
                 }
                 else

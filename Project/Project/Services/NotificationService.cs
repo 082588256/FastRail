@@ -149,7 +149,7 @@ namespace Project.Services
                     
                     <div style='background-color: #e8f5e8; padding: 20px; margin: 20px 0; border-radius: 5px;'>
                         <h3>Thông tin thanh toán</h3>
-                        <p><strong>Tổng tiền:</strong> {booking.TotalPrice:N0} VND</p>
+                        <p><strong>Tổng tiền:</strong> {ticket.TotalPrice:N0} VND</p>
                         <p><strong>Trạng thái:</strong> Đã thanh toán</p>
                         <p><strong>Thời gian:</strong> {booking.ConfirmedAt:dd/MM/yyyy HH:mm}</p>
                     </div>
@@ -158,7 +158,7 @@ namespace Project.Services
                         <h3>⚠️ Lưu ý quan trọng</h3>
                         <ul>
                             <li>Vui lòng có mặt tại ga trước giờ khởi hành ít nhất 30 phút</li>
-                            <li>Mang theo giấy tờ tùy thân để kiểm tra</li>
+                            <li>Mang theo giấy tờ tuỳ thân để kiểm tra</li>
                             <li>Giữ gìn vé và mã vé để sử dụng khi cần</li>
                         </ul>
                     </div>

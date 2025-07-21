@@ -25,16 +25,39 @@ namespace Project.Services
             var searchDate = request.TravelDate.Date;
 
             // Tìm chuyến tàu theo ngày
-            var trips = await _context.Trip
+            var query = _context.Trip
                 .Include(t => t.Train)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.DepartureStation)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.ArrivalStation)
-                .Where(t => t.DepartureTime.Date == searchDate && t.IsActive)
-                .Where(t=>t.Route.DepartureStation.StationName == request.DepartureStationName &&
-                            t.Route.ArrivalStation.StationName == request.ArrivalStationName)
-                .ToListAsync();
+                .Where(t => t.IsActive);
+
+            // If both station names are empty, get trips for the next 90 days (to include September/October trips)
+            if (string.IsNullOrEmpty(request.DepartureStationName) && string.IsNullOrEmpty(request.ArrivalStationName))
+            {
+                var startDate = DateTime.Today;
+                var endDate = DateTime.Today.AddDays(90);
+                query = query.Where(t => t.DepartureTime.Date >= startDate && t.DepartureTime.Date <= endDate);
+            }
+            else
+            {
+                // Use the specific search date
+                query = query.Where(t => t.DepartureTime.Date == searchDate);
+            }
+
+            // Only filter by station names if they are provided
+            if (!string.IsNullOrEmpty(request.DepartureStationName))
+            {
+                query = query.Where(t => t.Route.DepartureStation.StationName == request.DepartureStationName);
+            }
+            
+            if (!string.IsNullOrEmpty(request.ArrivalStationName))
+            {
+                query = query.Where(t => t.Route.ArrivalStation.StationName == request.ArrivalStationName);
+            }
+
+            var trips = await query.ToListAsync();
             var result = new List<TripSearchResponse>();
             foreach (var trip in trips)
             {
