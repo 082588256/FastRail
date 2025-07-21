@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Project.DTOs;
+using Project.Services.Route;
 
 namespace Project.Services
 {
@@ -26,12 +27,16 @@ namespace Project.Services
         private readonly FastRailDbContext _context;
         private readonly IPricingService _pricingService;
         private readonly ILogger<BookingService> _logger;
+        private readonly IRouteService _routeService;   
+        private readonly ISeatService _seatService;
 
-        public BookingService(FastRailDbContext context, IPricingService pricingService, ILogger<BookingService> logger)
+        public BookingService(FastRailDbContext context, IPricingService pricingService, ILogger<BookingService> logger, IRouteService routeService, ISeatService seatService)
         {
             _context = context;
             _pricingService = pricingService;
             _logger = logger;
+            _routeService = routeService;
+            _seatService = seatService;
         }
 
         /// <summary>
@@ -43,141 +48,133 @@ namespace Project.Services
 
             try
             {
-                // Validate thông tin hành khách (bắt buộc cho cả user và guest)
-                if (string.IsNullOrWhiteSpace(request.PassengerName))
+                if (request.Tickets == null || !request.Tickets.Any())
+                    return Fail("Danh sách vé không được để trống");
+
+                foreach (var t in request.Tickets)
                 {
-                    return new CreateBookingResponse
-                    {
-                        Success = false,
-                        Message = "Tên hành khách không được để trống"
-                    };
+                    if (string.IsNullOrWhiteSpace(t.PassengerName))
+                        return Fail("Tên hành khách không được để trống");
+
+                    if (string.IsNullOrWhiteSpace(t.PassengerPhone))
+                        return Fail("Số điện thoại hành khách không được để trống");
+
+                    if (string.IsNullOrWhiteSpace(t.PassengerEmail))
+                        return Fail("Email hành khách không được để trống");
                 }
 
-                if (string.IsNullOrWhiteSpace(request.PassengerPhone))
-                {
-                    return new CreateBookingResponse
-                    {
-                        Success = false,
-                        Message = "Số điện thoại hành khách không được để trống"
-                    };
-                }
-
-                if (string.IsNullOrWhiteSpace(request.PassengerEmail))
-                {
-                    return new CreateBookingResponse
-                    {
-                        Success = false,
-                        Message = "Email hành khách không được để trống"
-                    };
-                }
-
-                // Validate thông tin liên hệ cho guest booking
+                var firstTicket = request.Tickets.First();
                 if (request.IsGuestBooking)
                 {
-                    if (string.IsNullOrWhiteSpace(request.ContactName))
-                        request.ContactName = request.PassengerName;
-
-                    if (string.IsNullOrWhiteSpace(request.ContactPhone))
-                        request.ContactPhone = request.PassengerPhone;
-
-                    if (string.IsNullOrWhiteSpace(request.ContactEmail))
-                        request.ContactEmail = request.PassengerEmail;
+                    request.ContactName ??= firstTicket.PassengerName;
+                    request.ContactPhone ??= firstTicket.PassengerPhone;
+                    request.ContactEmail ??= firstTicket.PassengerEmail;
                 }
 
-                // Kiểm tra ghế có available không
-                var seatAvailable = await IsSeatAvailableAsync(request.TripId, request.SeatId);
-                if (!seatAvailable)
-                {
-                    return new CreateBookingResponse
-                    {
-                        Success = false,
-                        Message = "Ghế đã có người đặt hoặc không tồn tại"
-                    };
-                }
+                var trip = await _context.Trip.Include(t => t.Route)
+                                              .FirstOrDefaultAsync(t => t.TripId == request.TripId);
+                if (trip == null)
+                    return Fail("Không tìm thấy chuyến đi");
 
-                // Tính giá
-                var totalPrice = await _pricingService.CalculateTotalPriceAsync(request.SeatId, new List<int> { 1 });
+                var segmentIds = await _routeService.GetSegmentIdsByRouteAsync(
+                    trip.RouteId, request.DepartureStationId, request.ArrivalStationId);
 
-                // Tạo booking code
+                if (!segmentIds.Any())
+                    return Fail("Không hợp lệ: các chặng không tồn tại trong tuyến");
+
                 var bookingCode = GenerateBookingCode(request.IsGuestBooking);
 
-                // Tạo booking
                 var booking = new Booking
                 {
-                    UserId = request.UserId, // Có thể null cho guest
-                    TripId = request.TripId,
-                    BookingCode = bookingCode,
+                    TripId = trip.TripId,
                     BookingStatus = "Temporary",
-                    TotalPrice = totalPrice,
                     ExpirationTime = DateTime.UtcNow.AddMinutes(5),
-
-                    // Thông tin hành khách
-                    PassengerName = request.PassengerName.Trim(),
-                    PassengerPhone = request.PassengerPhone.Trim(),
-                    PassengerEmail = request.PassengerEmail.Trim(),
-                    PassengerIdCard = request.PassengerIdCard?.Trim(),
-                    PassengerDateOfBirth = request.PassengerDateOfBirth,
-
-                    // Thông tin liên hệ (cho guest)
-                    ContactName = request.ContactName?.Trim(),
-                    ContactPhone = request.ContactPhone?.Trim(),
-                    ContactEmail = request.ContactEmail?.Trim(),
-
-                    CreatedAt = DateTime.UtcNow
+                    UserId = request.UserId,
+                    BookingCode = bookingCode,
+                    ContactName = request.ContactName ?? string.Empty,
+                    ContactPhone = request.ContactPhone ?? string.Empty,
+                    ContactEmail = request.ContactEmail ?? string.Empty,
+                    Tickets = new List<Ticket>()
                 };
 
+                decimal totalBookingPrice = 0;
+
+                foreach (var ticketReq in request.Tickets)
+                {
+                    var isAvailable = await _seatService.IsSeatAvailableForSegmentsAsync(
+                        request.TripId, ticketReq.SeatId, segmentIds);
+
+                    if (!isAvailable)
+                        return Fail($"Ghế {ticketReq.SeatId} đã được đặt");
+
+                    var seat = await _context.Seat.FirstOrDefaultAsync(s => s.SeatId == ticketReq.SeatId);
+                    if (seat == null)
+                        throw new Exception($"❌ SeatId {ticketReq.SeatId} không tồn tại trong DB");
+
+                    var ticket = new Ticket
+                    {
+                        TicketCode = $"{bookingCode}-{ticketReq.SeatId}",
+                        TripId = request.TripId,
+                        PassengerName = ticketReq.PassengerName,
+                        PassengerPhone = ticketReq.PassengerPhone,
+                        PassengerIdCard = ticketReq.PassengerIdCard,
+                        TotalPrice = 0
+                    };
+
+                    foreach (var segmentId in segmentIds)
+                    {
+                        _context.SeatSegment.Add(new SeatSegment
+                        {
+                            TripId = request.TripId,
+                            SeatId = ticketReq.SeatId,
+                            SegmentId = segmentId,
+                            Status = "TemporaryReserved",
+                            ReservedAt = DateTime.UtcNow,
+                            Booking = booking
+                        });
+
+                        var segmentPrice = await _pricingService.CalculateSegmentPriceAsync(
+                            request.TripId, ticketReq.SeatId, segmentId);
+
+                        ticket.TotalPrice += segmentPrice;
+                    }
+
+                    totalBookingPrice += ticket.TotalPrice;
+                    booking.Tickets.Add(ticket);
+                }
+
+                booking.TotalPrice = totalBookingPrice;
                 _context.Bookings.Add(booking);
                 await _context.SaveChangesAsync();
-
-                // Đánh dấu ghế tạm giữ
-                var seatSegment = new SeatSegment
-                {
-                    TripId = request.TripId,
-                    SeatId = request.SeatId,
-                    SegmentId = 1, // Đơn giản hóa cho PRN
-                    BookingId = booking.BookingId,
-                    Status = "TemporaryReserved",
-                    ReservedAt = DateTime.UtcNow
-                };
-
-                _context.SeatSegment.Add(seatSegment);
-                await _context.SaveChangesAsync();
-
                 await transaction.CommitAsync();
-
-                _logger.LogInformation("Created {BookingType} booking {BookingId} with code {BookingCode}",
-                    request.IsGuestBooking ? "guest" : "user",
-                    booking.BookingId,
-                    bookingCode);
 
                 return new CreateBookingResponse
                 {
                     Success = true,
                     BookingId = booking.BookingId,
-                    BookingCode = bookingCode,
-                    TotalPrice = totalPrice,
+                    BookingCode = booking.BookingCode,
+                    TotalPrice = totalBookingPrice,
                     ExpirationTime = booking.ExpirationTime,
                     IsGuestBooking = request.IsGuestBooking,
                     LookupPhone = request.IsGuestBooking ? request.ContactPhone : null,
                     LookupEmail = request.IsGuestBooking ? request.ContactEmail : null,
-                    Message = request.IsGuestBooking ?
-                        "Đặt chỗ thành công! Vui lòng lưu mã booking để tra cứu." :
-                        "Đặt chỗ thành công! Vui lòng hoàn tất thanh toán trong 5 phút."
+                    Message = request.IsGuestBooking
+                        ? "Đặt chỗ thành công! Vui lòng lưu mã booking để tra cứu."
+                        : "Đặt chỗ thành công! Vui lòng hoàn tất thanh toán trong 5 phút."
                 };
             }
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                _logger.LogError(ex, "Error creating temporary booking for trip {TripId}, seat {SeatId}",
-                    request.TripId, request.SeatId);
+                _logger.LogError(ex, "Booking lỗi: {Message} | StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
 
-                return new CreateBookingResponse
-                {
-                    Success = false,
-                    Message = "Lỗi hệ thống khi tạo booking"
-                };
+                return Fail("Lỗi hệ thống khi tạo booking");
             }
+
+            CreateBookingResponse Fail(string msg) => new CreateBookingResponse { Success = false, Message = msg };
         }
+
+
 
         /// <summary>
         /// 🔍 Tra cứu booking guest
@@ -210,24 +207,6 @@ namespace Project.Services
                 {
                     return null;
                 }
-
-                //// Validate thông tin tra cứu cho guest booking
-                //if (booking.IsGuestBooking)
-                //{
-                //    bool phoneMatch = string.IsNullOrWhiteSpace(request.Phone) ||
-                //                    booking.ContactPhone == request.Phone ||
-                //                    booking.PassengerPhone == request.Phone;
-
-                //    bool emailMatch = string.IsNullOrWhiteSpace(request.Email) ||
-                //                    booking.ContactEmail?.ToLower() == request.Email?.ToLower() ||
-                //                    booking.PassengerEmail?.ToLower() == request.Email?.ToLower();
-
-                //    if (!phoneMatch && !emailMatch)
-                //    {
-                //        return null; // Không match thông tin tra cứu
-                //    }
-                //}
-
                 return MapToBookingDetailsResponse(booking);
             }
             catch (Exception ex)
@@ -236,53 +215,6 @@ namespace Project.Services
                 return null;
             }
         }
-
-        /// <summary>
-        /// 📋 Lấy booking của guest theo phone/email
-        /// </summary>
-        public async Task<List<BookingDetailsResponse>> GetGuestBookingsAsync(string phone, string email)
-        {
-            try
-            {
-                var query = _context.Bookings
-                    .Include(b => b.Trip)
-                        .ThenInclude(t => t.Train)
-                    .Include(b => b.Trip)
-                        .ThenInclude(t => t.Route)
-                            .ThenInclude(r => r.DepartureStation)
-                    .Include(b => b.Trip)
-                        .ThenInclude(t => t.Route)
-                            .ThenInclude(r => r.ArrivalStation)
-                    .Include(b => b.SeatSegments)
-                        .ThenInclude(ss => ss.Seat)
-                            .ThenInclude(s => s.Carriage)
-                    .Include(b => b.Tickets)
-                    .Where(b => b.UserId == null); // Chỉ guest bookings
-
-                if (!string.IsNullOrWhiteSpace(phone))
-                {
-                    query = query.Where(b => b.ContactPhone == phone || b.PassengerPhone == phone);
-                }
-
-                if (!string.IsNullOrWhiteSpace(email))
-                {
-                    query = query.Where(b => b.ContactEmail.ToLower() == email.ToLower() ||
-                                           b.PassengerEmail.ToLower() == email.ToLower());
-                }
-
-                var bookings = await query
-                    .OrderByDescending(b => b.CreatedAt)
-                    .ToListAsync();
-
-                return bookings.Select(MapToBookingDetailsResponse).ToList();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error getting guest bookings for phone {Phone}, email {Email}", phone, email);
-                return new List<BookingDetailsResponse>();
-            }
-        }
-
         #region Existing Methods (Updated)
 
         public async Task<BookingDetailsResponse?> GetBookingByCodeAsync(string bookingCode)
@@ -320,14 +252,14 @@ namespace Project.Services
 
         #region Private Helper Methods
 
-        private async Task<bool> IsSeatAvailableAsync(int tripId, int seatId)
+        public async Task<bool> IsSeatAvailableForSegmentsAsync(int tripId, int seatId, List<int> segmentIds)
         {
-            var isBooked = await _context.SeatSegment
-                .AnyAsync(ss => ss.TripId == tripId &&
-                               ss.SeatId == seatId &&
-                               (ss.Status == "Booked" || ss.Status == "TemporaryReserved"));
-
-            return !isBooked;
+            return !await _context.SeatSegment
+                .AnyAsync(ss =>
+                    ss.TripId == tripId &&
+                    ss.SeatId == seatId &&
+                    segmentIds.Contains(ss.SegmentId) &&
+                    (ss.Status == "TemporaryReserved" || ss.Status == "Booked"));
         }
 
         private static string GenerateBookingCode(bool isGuestBooking)
@@ -398,6 +330,11 @@ namespace Project.Services
         }
 
         public Task<UserBookingStatsResponse> GetUserBookingStatsAsync(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<BookingDetailsResponse>> GetGuestBookingsAsync(string phone, string email)
         {
             throw new NotImplementedException();
         }

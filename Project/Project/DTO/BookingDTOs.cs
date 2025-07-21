@@ -4,17 +4,13 @@
 
     public class CreateBookingRequest
     {
-        
         public int? UserId { get; set; }
         public int TripId { get; set; }
-        public int SeatId { get; set; }
+        public int DepartureStationId { get; set; }
+        public int ArrivalStationId { get; set; }
 
-        // Thông tin hành khách (bắt buộc cho cả user và guest)
-        public string PassengerName { get; set; } = string.Empty;
-        public string PassengerPhone { get; set; } = string.Empty;
-        public string PassengerEmail { get; set; } = string.Empty;
-        public string? PassengerIdCard { get; set; }
-        public DateTime? PassengerDateOfBirth { get; set; }
+        // Danh sách vé muốn đặt: mỗi ghế kèm thông tin hành khách riêng để có thể đặt nhiều vé và gán thông tin hành khách lên từng vé trong một booking 
+        public List<PassengerTicketRequest> Tickets { get; set; } = new();
 
         // Thông tin liên hệ (cho guest booking)
         public string? ContactName { get; set; }
@@ -24,6 +20,19 @@
         // Guest identifier
         public bool IsGuestBooking => !UserId.HasValue;
     }
+
+    public class PassengerTicketRequest
+    {
+        public int SeatId { get; set; }
+
+        // Thông tin hành khách cho vé này
+        public string PassengerName { get; set; } = string.Empty;
+        public string PassengerPhone { get; set; } = string.Empty;
+        public string PassengerEmail { get; set; } = string.Empty;
+        public string? PassengerIdCard { get; set; }
+        public DateTime? PassengerDateOfBirth { get; set; }
+    }
+
 
     public class GuestBookingLookupRequest
     {
@@ -191,7 +200,8 @@
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public int EstimatedDurationMinutes { get; set; }
-
+        public int TrainId { get; set; }
+        public int TotalSeats { get; set; }
         //public int TotalSeats { get; set; }
         //public int AvailableSeats { get; set; }
         //public int BookedSeats { get; set; }
@@ -225,7 +235,7 @@
         public bool IsAvailable { get; set; }
         public bool IsWindow { get; set; }
         public bool IsAisle { get; set; }
-        public string? Features { get; set; } // "WiFi, Power outlet"
+        
     }
 
     public class TripDetailsResponse
