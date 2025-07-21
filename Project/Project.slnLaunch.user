@@ -7,10 +7,6 @@
         "Action": "Start"
       },
       {
-        "Path": "ProjectView\\ProjectView.csproj",
-        "Action": "Start"
-      },
-      {
         "Path": "WebApplication1\\WebApplication1.csproj",
         "Action": "Start"
       }
