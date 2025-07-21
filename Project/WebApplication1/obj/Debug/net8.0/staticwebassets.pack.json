@@ -1,812 +1,808 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\animate.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\animate.css",
       "PackagePath": "staticwebassets\\css\\animate.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\bootstrap-select.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\bootstrap-select.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap-select.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\bootstrap.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\bootstrap.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\font-awesome.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\font-awesome.min.css",
       "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\hover-min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\hover-min.css",
       "PackagePath": "staticwebassets\\css\\hover-min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\images\\bx_loader.gif",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\images\\bx_loader.gif",
       "PackagePath": "staticwebassets\\css\\images\\bx_loader.gif"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\images\\controls.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\images\\controls.png",
       "PackagePath": "staticwebassets\\css\\images\\controls.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\jquery.bxslider.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\jquery.bxslider.min.css",
       "PackagePath": "staticwebassets\\css\\jquery.bxslider.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\magnific-popup.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\magnific-popup.css",
       "PackagePath": "staticwebassets\\css\\magnific-popup.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\owl.carousel.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\owl.carousel.css",
       "PackagePath": "staticwebassets\\css\\owl.carousel.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\owl.theme.default.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\owl.theme.default.min.css",
       "PackagePath": "staticwebassets\\css\\owl.theme.default.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\responsive.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\responsive.css",
       "PackagePath": "staticwebassets\\css\\responsive.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\site.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\css\\style.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\favicon.ico",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\FontAwesome.otf",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\FontAwesome.otf",
       "PackagePath": "staticwebassets\\fonts\\FontAwesome.otf"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.eot",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.eot",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.eot"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.svg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.svg",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.svg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.ttf",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.ttf",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.ttf"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.woff",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.woff",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.woff2",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\fonts\\fontawesome-webfont.woff2",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff2"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\booking-bg-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\booking-bg-1-1.png",
       "PackagePath": "staticwebassets\\images\\background\\booking-bg-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\feature-bg-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\feature-bg-1-1.png",
       "PackagePath": "staticwebassets\\images\\background\\feature-bg-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\footer-bg-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\footer-bg-1-1.png",
       "PackagePath": "staticwebassets\\images\\background\\footer-bg-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\inner-banner-bg-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\inner-banner-bg-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\background\\inner-banner-bg-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\team-bg-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\team-bg-1-1.png",
       "PackagePath": "staticwebassets\\images\\background\\team-bg-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\background\\testi-bg-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\background\\testi-bg-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\background\\testi-bg-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\auhor-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\auhor-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\auhor-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-4.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-4.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-4.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-5.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-5.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-5.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-6.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-1-6.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-1-6.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-2-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-2-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-2-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-2-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\blog-2-2.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\blog-2-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\comment-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\comment-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\comment-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\comment-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\comment-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\comment-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\lp-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\lp-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\lp-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\lp-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\blog\\single-blog-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\blog\\single-blog-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\blog\\single-blog-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\brand\\brand-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\brand\\brand-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\brand\\brand-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-4.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-4.jpg",
       "PackagePath": "staticwebassets\\images\\brand\\brand-1-4.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-5.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\brand\\brand-1-5.jpg",
       "PackagePath": "staticwebassets\\images\\brand\\brand-1-5.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-144x144.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-144x144.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-144x144.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-192x192.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-192x192.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-192x192.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-36x36.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-36x36.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-36x36.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-48x48.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-48x48.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-48x48.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-72x72.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-72x72.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-72x72.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-96x96.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\android-icon-96x96.png",
       "PackagePath": "staticwebassets\\images\\favicon\\android-icon-96x96.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-114x114.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-114x114.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-114x114.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-120x120.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-120x120.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-120x120.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-144x144.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-144x144.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-144x144.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-152x152.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-152x152.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-152x152.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-180x180.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-180x180.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-180x180.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-57x57.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-57x57.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-57x57.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-60x60.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-60x60.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-60x60.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-72x72.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-72x72.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-72x72.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-76x76.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-76x76.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-76x76.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-precomposed.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon-precomposed.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon-precomposed.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\apple-icon.png",
       "PackagePath": "staticwebassets\\images\\favicon\\apple-icon.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\browserconfig.xml",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\browserconfig.xml",
       "PackagePath": "staticwebassets\\images\\favicon\\browserconfig.xml"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-16x16.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-16x16.png",
       "PackagePath": "staticwebassets\\images\\favicon\\favicon-16x16.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-32x32.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-32x32.png",
       "PackagePath": "staticwebassets\\images\\favicon\\favicon-32x32.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-96x96.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon-96x96.png",
       "PackagePath": "staticwebassets\\images\\favicon\\favicon-96x96.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon.ico",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\favicon.ico",
       "PackagePath": "staticwebassets\\images\\favicon\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\manifest.json",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\manifest.json",
       "PackagePath": "staticwebassets\\images\\favicon\\manifest.json"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-144x144.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-144x144.png",
       "PackagePath": "staticwebassets\\images\\favicon\\ms-icon-144x144.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-150x150.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-150x150.png",
       "PackagePath": "staticwebassets\\images\\favicon\\ms-icon-150x150.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-310x310.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-310x310.png",
       "PackagePath": "staticwebassets\\images\\favicon\\ms-icon-310x310.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-70x70.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\favicon\\ms-icon-70x70.png",
       "PackagePath": "staticwebassets\\images\\favicon\\ms-icon-70x70.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-1.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-2.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-2.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-2.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-3.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-3.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-3.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-4.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-4.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-4.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-5.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-5.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-5.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-6.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\pricing\\pricing-1-6.png",
       "PackagePath": "staticwebassets\\images\\pricing\\pricing-1-6.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\psds\\cta-moc-1-1.psd",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\psds\\cta-moc-1-1.psd",
       "PackagePath": "staticwebassets\\images\\psds\\cta-moc-1-1.psd"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\about-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\about-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\about-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\book-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\book-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\book-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\choise-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\choise-1-1.png",
       "PackagePath": "staticwebassets\\images\\resources\\choise-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\cta-moc-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\cta-moc-1-1.png",
       "PackagePath": "staticwebassets\\images\\resources\\cta-moc-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\history-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\history-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\history-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\logo-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\logo-1-1.png",
       "PackagePath": "staticwebassets\\images\\resources\\logo-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\map-pin-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\map-pin-1-1.png",
       "PackagePath": "staticwebassets\\images\\resources\\map-pin-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\offer-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\offer-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\offer-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\offer-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\preloader.gif",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\preloader.gif",
       "PackagePath": "staticwebassets\\images\\resources\\preloader.gif"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\single-taxi-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\single-taxi-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\single-taxi-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\testi-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\testi-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\testi-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\resources\\testi-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\video-1-1.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\video-1-1.png",
       "PackagePath": "staticwebassets\\images\\resources\\video-1-1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\zigzag-box-2.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\zigzag-box-2.png",
       "PackagePath": "staticwebassets\\images\\resources\\zigzag-box-2.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\resources\\zigzag-box.png",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\resources\\zigzag-box.png",
       "PackagePath": "staticwebassets\\images\\resources\\zigzag-box.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\slider\\slider-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\slider\\slider-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-2-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-2-1.jpg",
       "PackagePath": "staticwebassets\\images\\slider\\slider-2-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-2-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\slider\\slider-2-2.jpg",
       "PackagePath": "staticwebassets\\images\\slider\\slider-2-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-1.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-1.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-1.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-2.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-2.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-2.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-3.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-3.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-3.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-4.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-4.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-4.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-5.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-5.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-5.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-6.jpg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\images\\team\\team-1-6.jpg",
       "PackagePath": "staticwebassets\\images\\team\\team-1-6.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\appointment.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\appointment.php",
       "PackagePath": "staticwebassets\\inc\\appointment.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\PHPMailerAutoload.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\PHPMailerAutoload.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\PHPMailerAutoload.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmailer.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmailer.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\class.phpmailer.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmaileroauth.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmaileroauth.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\class.phpmaileroauth.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmaileroauthgoogle.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.phpmaileroauthgoogle.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\class.phpmaileroauthgoogle.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.pop3.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.pop3.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\class.pop3.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.smtp.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\class.smtp.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\class.smtp.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\get_oauth_token.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\phpmailer\\get_oauth_token.php",
       "PackagePath": "staticwebassets\\inc\\phpmailer\\get_oauth_token.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\sendemail-with-autoresponder.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\sendemail-with-autoresponder.php",
       "PackagePath": "staticwebassets\\inc\\sendemail-with-autoresponder.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\inc\\sendmail.php",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\inc\\sendmail.php",
       "PackagePath": "staticwebassets\\inc\\sendmail.php"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap-select.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\gmaps.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\gmaps.js",
       "PackagePath": "staticwebassets\\js\\gmaps.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\jquery.bxslider.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\jquery.bxslider.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.bxslider.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\jquery.counterup.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\jquery.counterup.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.counterup.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\jquery.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\jquery.js",
       "PackagePath": "staticwebassets\\js\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\jquery.magnific-popup.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\jquery.magnific-popup.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.magnific-popup.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\map-helper.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\map-helper.js",
       "PackagePath": "staticwebassets\\js\\map-helper.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\site.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\theme.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\theme.js",
       "PackagePath": "staticwebassets\\js\\theme.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\validate.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\validate.js",
       "PackagePath": "staticwebassets\\js\\validate.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
       "PackagePath": "staticwebassets\\js\\waypoints.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\Read Me.txt",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\Read Me.txt",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\Read Me.txt"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo-files\\demo.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo-files\\demo.css",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\demo-files\\demo.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo-files\\demo.js",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo-files\\demo.js",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\demo-files\\demo.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo.html",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\demo.html",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\demo.html"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.eot",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.eot",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\fonts\\conexi-icon.eot"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.svg",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.svg",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\fonts\\conexi-icon.svg"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.ttf",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.ttf",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\fonts\\conexi-icon.ttf"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.woff",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\fonts\\conexi-icon.woff",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\fonts\\conexi-icon.woff"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\selection.json",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\selection.json",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\selection.json"
     },
     {
-      "Id": "C:\\Users\\admin\\Downloads\\PRN232\\Project\\FastRail\\FastRail\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\style.css",
+      "Id": "D:\\HOC\\PRN232\\project\\Project\\WebApplication1\\wwwroot\\plugins\\conexi-icon\\style.css",
       "PackagePath": "staticwebassets\\plugins\\conexi-icon\\style.css"
-    },
-    {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props",
