@@ -27,14 +27,21 @@ namespace Project.Services
         {
             try
             {
-                // Find user by email
+
+                // Trim email and password to avoid issues with extra spaces
+                var inputEmail = request.Email.Trim();
+                var inputPassword = request.Password.Trim();
+
+                // Find user by email (case-insensitive)
                 var user = await _context.User
                     .Include(u => u.UserRoles)
                         .ThenInclude(ur => ur.Role)
-                    .FirstOrDefaultAsync(u => u.Email.ToLower() == request.Email.ToLower() && u.IsActive);
+                    .FirstOrDefaultAsync(u => u.Email.ToLower() == inputEmail.ToLower() && u.IsActive);
 
                 if (user == null)
                 {
+                    _logger.LogWarning("Login failed: user not found or inactive. Email: {Email}", inputEmail);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -46,6 +53,8 @@ namespace Project.Services
                 var hasStaffRole = user.UserRoles.Any(ur => ur.Role.RoleName.ToLower() == "staff");
                 if (!hasStaffRole)
                 {
+                    _logger.LogWarning("Login failed: user does not have STAFF role. Email: {Email}", inputEmail);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -53,9 +62,12 @@ namespace Project.Services
                     };
                 }
 
-                // Verify password
-                if (!VerifyPassword(request.Password, user.PasswordHash))
+
+                // Verify password (trim both input and db value)
+                if (!VerifyPassword(inputPassword, user.PasswordHash))
                 {
+                    _logger.LogWarning("Login failed: password mismatch. Email: {Email}, InputPassword: '{InputPassword}', DbPassword: '{DbPassword}'", inputEmail, inputPassword, user.PasswordHash);
+
                     return new LoginResponse
                     {
                         Success = false,
@@ -113,20 +125,22 @@ namespace Project.Services
                 if (string.IsNullOrEmpty(token))
                     return false;
 
-                // Check if token exists in active tokens
-                if (!_activeTokens.ContainsKey(token))
-                    return false;
 
                 // Validate JWT token
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
+                var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
+                var audience = _configuration["Jwt:Audience"] ?? "FastRailStaff";
 
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidateAudience = true,
+                    ValidAudience = audience,
+
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
@@ -142,7 +156,24 @@ namespace Project.Services
         {
             try
             {
-                if (!_activeTokens.TryGetValue(token, out string? email))
+                // Extract email from JWT token
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
+                var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
+                var audience = _configuration["Jwt:Audience"] ?? "FastRailStaff";
+                var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidateAudience = true,
+                    ValidAudience = audience,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                var email = principal.FindFirst(ClaimTypes.Email)?.Value;
+                if (string.IsNullOrEmpty(email))
                     return null;
 
                 var user = await _context.User
@@ -195,6 +226,9 @@ namespace Project.Services
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
+            var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
+            var audience = _configuration["Jwt:Audience"] ?? "FastRailStaff";
+
 
             var claims = new List<Claim>
             {
@@ -208,7 +242,9 @@ namespace Project.Services
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(8),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = issuer,
+                Audience = audience
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -217,8 +253,9 @@ namespace Project.Services
 
         private bool VerifyPassword(string password, string passwordHash)
         {
-            // Simple password verification - in production, use proper hashing
-            return password == passwordHash; // This is for demo purposes
+            // Compare trimmed values to avoid issues with extra spaces
+            return password.Trim() == passwordHash.Trim();
+
         }
     }
 } 

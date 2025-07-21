@@ -2,6 +2,10 @@ using QRCoder;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text.Json;
+using ZXing;
+using ZXing.Common;
+using ZXing.Windows.Compatibility;
+
 
 namespace Project.Services
 {
@@ -109,12 +113,57 @@ namespace Project.Services
             }
         }
 
+
+        /// <summary>
+        /// Decodes a QR code from an image byte array using ZXing.Net.
+        /// Supports common image formats (JPG, PNG, BMP).
+        /// Returns the decoded ticket code if successful, or throws a descriptive exception.
+        /// </summary>
+        /// <param name="imageData">The image data as a byte array.</param>
+        /// <returns>The decoded ticket code as a string.</returns>
         public async Task<string> DecodeQRCodeFromImageAsync(byte[] imageData)
         {
-            // For production, you would integrate with a QR code scanning service
-            // or use a different library that supports decoding
-            // For now, we'll throw an exception indicating this feature needs implementation
-            throw new NotImplementedException("QR code image decoding is not implemented in this version. Please use manual input.");
+            if (imageData == null || imageData.Length == 0)
+                throw new ArgumentException("Image data cannot be null or empty", nameof(imageData));
+
+            try
+            {
+                using var ms = new MemoryStream(imageData);
+                using var bitmap = new System.Drawing.Bitmap(ms);
+
+                var reader = new BarcodeReader
+                {
+                    AutoRotate = true,
+                    TryInverted = true,
+                    Options = new DecodingOptions
+                    {
+                        PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.QR_CODE },
+                        TryHarder = true
+                    }
+                };
+
+                var result = reader.Decode(bitmap);
+                if (result == null || string.IsNullOrWhiteSpace(result.Text))
+                {
+                    _logger.LogWarning("No QR code found in the provided image.");
+                    return string.Empty;
+                }
+
+                // Optionally, validate/parse the QR code content as in DecodeQRCodeAsync
+                var ticketCode = await DecodeQRCodeAsync(result.Text);
+                return ticketCode;
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex, "Invalid image data provided for QR decoding.");
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error decoding QR code from image");
+                throw new InvalidOperationException("Failed to decode QR code from image. Please ensure the image is clear and contains a valid QR code.", ex);
+            }
+
         }
 
         private string GenerateChecksum(string ticketCode)

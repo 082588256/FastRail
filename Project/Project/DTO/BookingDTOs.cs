@@ -9,14 +9,18 @@
         public int DepartureStationId { get; set; }
         public int ArrivalStationId { get; set; }
 
-        // Danh sách vé muốn đặt: mỗi ghế kèm thông tin hành khách riêng để có thể đặt nhiều vé và gán thông tin hành khách lên từng vé trong một booking 
-        public List<PassengerTicketRequest> Tickets { get; set; } = new();
 
-        // Thông tin liên hệ (cho guest booking)
+        // Guest contact info
         public string? ContactName { get; set; }
         public string? ContactPhone { get; set; }
         public string? ContactEmail { get; set; }
 
+        // Passenger info (for ticket creation)
+        public string PassengerName { get; set; } = string.Empty;
+        public string PassengerPhone { get; set; } = string.Empty;
+        public string PassengerEmail { get; set; } = string.Empty;
+        public string? PassengerIdCard { get; set; }
+        public DateTime? PassengerDateOfBirth { get; set; }
         // Guest identifier
         public bool IsGuestBooking => !UserId.HasValue;
     }
@@ -70,66 +74,28 @@
         public string BookingCode { get; set; } = string.Empty;
         public decimal TotalPrice { get; set; }
         public DateTime? ExpirationTime { get; set; }
-        public string Message { get; set; } = string.Empty;
-        public List<int>? SegmentIds { get; set; }
+        public string? TicketCode { get; set; } // Add this property
         public bool IsGuestBooking { get; set; }
-
-        // Thông tin tra cứu cho guest
         public string? LookupPhone { get; set; }
         public string? LookupEmail { get; set; }
+        public string Message { get; set; } = string.Empty;
     }
 
     public class BookingDetailsResponse
     {
         public int BookingId { get; set; }
         public string BookingCode { get; set; } = string.Empty;
-        public string TripCode { get; set; } = string.Empty;
-        public string TrainNumber { get; set; } = string.Empty;
-
-        // Thông tin hành khách
-        public string PassengerName { get; set; } = string.Empty;
-        public string PassengerPhone { get; set; } = string.Empty;
-        public string PassengerEmail { get; set; } = string.Empty;
-        public string? PassengerIdCard { get; set; }
-        public DateTime? PassengerDateOfBirth { get; set; }
-
-        // Thông tin chuyến tàu
-        public string DepartureStation { get; set; } = string.Empty;
-        public string ArrivalStation { get; set; } = string.Empty;
-        public DateTime DepartureTime { get; set; }
-        public DateTime ArrivalTime { get; set; }
-        public int EstimatedDurationMinutes { get; set; }
-
-        // Thông tin ghế
-        public string SeatNumber { get; set; } = string.Empty;
-        public string CarriageNumber { get; set; } = string.Empty;
-        public string SeatClass { get; set; } = string.Empty;
-        public string SeatType { get; set; } = string.Empty;
-
-        // Thông tin giá và thanh toán
-        public decimal TotalPrice { get; set; }
-        public string Currency { get; set; } = "VND";
-        public string BookingStatus { get; set; } = string.Empty; // Temporary, Confirmed, Cancelled, Expired
+        public string BookingStatus { get; set; } = string.Empty;
         public string? PaymentStatus { get; set; }
-
-        // Thông tin vé
-        public string? TicketCode { get; set; }
-        public string? TicketStatus { get; set; }
-
-        // Timestamps
         public DateTime CreatedAt { get; set; }
         public DateTime? ConfirmedAt { get; set; }
         public DateTime? CancelledAt { get; set; }
         public DateTime? ExpirationTime { get; set; }
-
-        // Guest booking info
         public bool IsGuestBooking { get; set; }
         public string? ContactInfo { get; set; }
         public string? ContactName { get; set; }
         public string? ContactPhone { get; set; }
         public string? ContactEmail { get; set; }
-
-        // Additional info
         public List<string>? Notes { get; set; }
         public bool CanCancel { get; set; }
         public bool CanExtend { get; set; }
@@ -170,6 +136,35 @@
         public DateTime? NextTripDate { get; set; }
         public List<string>? FavoriteRoutes { get; set; }
         public List<string>? PreferredSeatClasses { get; set; }
+    }
+
+    public class TicketDetailsResponse
+    {
+        public int BookingId { get; set; }
+        public string BookingCode { get; set; } = string.Empty;
+        public string BookingStatus { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ConfirmedAt { get; set; }
+        public DateTime? ExpirationTime { get; set; }
+        public bool IsGuestBooking { get; set; }
+        public string? ContactInfo { get; set; }
+        public string? ContactName { get; set; }
+        public string? ContactPhone { get; set; }
+        public string? ContactEmail { get; set; }
+        public string? TicketCode { get; set; }
+        public string? PassengerName { get; set; }
+        public string? PassengerPhone { get; set; }
+        public string? PassengerIdCard { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string? Status { get; set; }
+        public string? TripCode { get; set; }
+        public string? TrainNumber { get; set; }
+        public string? DepartureStation { get; set; }
+        public string? ArrivalStation { get; set; }
+        public DateTime? DepartureTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
+        public string? SeatNumber { get; set; }
+        public string? CarriageNumber { get; set; }
     }
 
     #endregion

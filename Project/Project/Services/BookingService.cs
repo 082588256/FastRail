@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Project.DTOs;
 using Project.Services.Route;
@@ -9,16 +9,16 @@ namespace Project.Services
     {
         Task<CreateBookingResponse> CreateTemporaryBookingAsync(CreateBookingRequest request);
         Task<bool> ConfirmBookingAsync(int bookingId, string? transactionId = null);
-        Task<BookingDetailsResponse?> GetBookingDetailsAsync(int bookingId);
+        Task<TicketDetailsResponse?> GetBookingDetailsAsync(int bookingId);
         Task<Booking?> GetBookingByIdAsync(int bookingId);
-        Task<BookingDetailsResponse?> GetBookingByCodeAsync(string bookingCode);
+        Task<TicketDetailsResponse?> GetBookingByCodeAsync(string bookingCode);
         Task<bool> CancelBookingAsync(int bookingId);
         Task<bool> ExtendBookingAsync(int bookingId);
-        Task<List<BookingDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10);
+        Task<List<TicketDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10);
 
         // Guest booking methods
-        Task<BookingDetailsResponse?> LookupGuestBookingAsync(GuestBookingLookupRequest request);
-        Task<List<BookingDetailsResponse>> GetGuestBookingsAsync(string phone, string email);
+        Task<TicketDetailsResponse?> LookupGuestBookingAsync(GuestBookingLookupRequest request);
+        Task<List<TicketDetailsResponse>> GetGuestBookingsAsync(string phone, string email);
         Task<UserBookingStatsResponse> GetUserBookingStatsAsync(int userId);
     }
 
@@ -48,127 +48,121 @@ namespace Project.Services
 
             try
             {
-                if (request.Tickets == null || !request.Tickets.Any())
-                    return Fail("Danh sách vé không được để trống");
-
-                foreach (var t in request.Tickets)
-                {
-                    if (string.IsNullOrWhiteSpace(t.PassengerName))
-                        return Fail("Tên hành khách không được để trống");
-
-                    if (string.IsNullOrWhiteSpace(t.PassengerPhone))
-                        return Fail("Số điện thoại hành khách không được để trống");
-
-                    if (string.IsNullOrWhiteSpace(t.PassengerEmail))
-                        return Fail("Email hành khách không được để trống");
-                }
-
-                var firstTicket = request.Tickets.First();
+                // Validate guest contact info
                 if (request.IsGuestBooking)
                 {
-                    request.ContactName ??= firstTicket.PassengerName;
-                    request.ContactPhone ??= firstTicket.PassengerPhone;
-                    request.ContactEmail ??= firstTicket.PassengerEmail;
+                    if (string.IsNullOrWhiteSpace(request.ContactName))
+                        return new CreateBookingResponse { Success = false, Message = "Contact name is required for guest booking" };
+                    if (string.IsNullOrWhiteSpace(request.ContactPhone))
+                        return new CreateBookingResponse { Success = false, Message = "Contact phone is required for guest booking" };
+                    if (string.IsNullOrWhiteSpace(request.ContactEmail))
+                        return new CreateBookingResponse { Success = false, Message = "Contact email is required for guest booking" };
                 }
 
-                var trip = await _context.Trip.Include(t => t.Route)
-                                              .FirstOrDefaultAsync(t => t.TripId == request.TripId);
-                if (trip == null)
-                    return Fail("Không tìm thấy chuyến đi");
+                // Validate passenger info (for ticket)
+                // (Assume you add these fields to the request DTO for ticket creation)
+                if (string.IsNullOrWhiteSpace(request.PassengerName))
+                    return new CreateBookingResponse { Success = false, Message = "Passenger name is required" };
+                if (string.IsNullOrWhiteSpace(request.PassengerPhone))
+                    return new CreateBookingResponse { Success = false, Message = "Passenger phone is required" };
+                if (string.IsNullOrWhiteSpace(request.PassengerEmail))
+                    return new CreateBookingResponse { Success = false, Message = "Passenger email is required" };
 
-                var segmentIds = await _routeService.GetSegmentIdsByRouteAsync(
-                    trip.RouteId, request.DepartureStationId, request.ArrivalStationId);
+                // Check seat availability
+                var seatAvailable = await IsSeatAvailableAsync(request.TripId, request.SeatId);
+                if (!seatAvailable)
+                {
+                    return new CreateBookingResponse
+                    {
+                        Success = false,
+                        Message = "Seat is already booked or does not exist"
+                    };
+                }
 
-                if (!segmentIds.Any())
-                    return Fail("Không hợp lệ: các chặng không tồn tại trong tuyến");
+                // Calculate price
+                var totalPrice = await _pricingService.CalculateTotalPriceAsync(request.SeatId, new List<int> { 1 });
 
+                // Generate booking code
                 var bookingCode = GenerateBookingCode(request.IsGuestBooking);
 
+                // Create booking (minimal info)
                 var booking = new Booking
                 {
-                    TripId = trip.TripId,
-                    BookingStatus = "Temporary",
-                    ExpirationTime = DateTime.UtcNow.AddMinutes(5),
-                    UserId = request.UserId,
+                    UserId = request.UserId, // null for guest
+                    TripId = request.TripId,
                     BookingCode = bookingCode,
-                    ContactName = request.ContactName ?? string.Empty,
-                    ContactPhone = request.ContactPhone ?? string.Empty,
-                    ContactEmail = request.ContactEmail ?? string.Empty,
-                    Tickets = new List<Ticket>()
+                    BookingStatus = "Confirmed",
+                    PaymentStatus = "Completed",
+                    ExpirationTime = null,
+                    ContactName = request.ContactName?.Trim(),
+                    ContactPhone = request.ContactPhone?.Trim(),
+                    ContactEmail = request.ContactEmail?.Trim(),
+                    CreatedAt = DateTime.UtcNow,
+                    ConfirmedAt = DateTime.UtcNow
                 };
-
-                decimal totalBookingPrice = 0;
-
-                foreach (var ticketReq in request.Tickets)
-                {
-                    var isAvailable = await _seatService.IsSeatAvailableForSegmentsAsync(
-                        request.TripId, ticketReq.SeatId, segmentIds);
-
-                    if (!isAvailable)
-                        return Fail($"Ghế {ticketReq.SeatId} đã được đặt");
-
-                    var seat = await _context.Seat.FirstOrDefaultAsync(s => s.SeatId == ticketReq.SeatId);
-                    if (seat == null)
-                        throw new Exception($"❌ SeatId {ticketReq.SeatId} không tồn tại trong DB");
-
-                    var ticket = new Ticket
-                    {
-                        TicketCode = $"{bookingCode}-{ticketReq.SeatId}",
-                        TripId = request.TripId,
-                        PassengerName = ticketReq.PassengerName,
-                        PassengerPhone = ticketReq.PassengerPhone,
-                        PassengerIdCard = ticketReq.PassengerIdCard,
-                        TotalPrice = 0
-                    };
-
-                    foreach (var segmentId in segmentIds)
-                    {
-                        _context.SeatSegment.Add(new SeatSegment
-                        {
-                            TripId = request.TripId,
-                            SeatId = ticketReq.SeatId,
-                            SegmentId = segmentId,
-                            Status = "TemporaryReserved",
-                            ReservedAt = DateTime.UtcNow,
-                            Booking = booking
-                        });
-
-                        var segmentPrice = await _pricingService.CalculateSegmentPriceAsync(
-                            request.TripId, ticketReq.SeatId, segmentId);
-
-                        ticket.TotalPrice += segmentPrice;
-                    }
-
-                    totalBookingPrice += ticket.TotalPrice;
-                    booking.Tickets.Add(ticket);
-                }
-
-                booking.TotalPrice = totalBookingPrice;
                 _context.Bookings.Add(booking);
                 await _context.SaveChangesAsync();
+
+                // Mark seat as booked
+                var seatSegment = new SeatSegment
+                {
+                    TripId = request.TripId,
+                    SeatId = request.SeatId,
+                    SegmentId = 1, // Simplified for now
+                    BookingId = booking.BookingId,
+                    Status = "Booked",
+                    ReservedAt = DateTime.UtcNow,
+                    BookedAt = DateTime.UtcNow
+                };
+                _context.SeatSegment.Add(seatSegment);
+                await _context.SaveChangesAsync();
+
+                // Create ticket
+                var ticketCode = GenerateTicketCode();
+                var ticket = new Ticket
+                {
+                    BookingId = booking.BookingId,
+                    UserId = booking.UserId, // null for guest
+                    TripId = booking.TripId,
+                    TicketCode = ticketCode,
+                    PassengerName = request.PassengerName.Trim(),
+                    PassengerIdCard = request.PassengerIdCard?.Trim(),
+                    PassengerPhone = request.PassengerPhone.Trim(),
+                    TotalPrice = totalPrice,
+                    FinalPrice = totalPrice,
+                    Status = "Valid",
+                    PurchaseTime = DateTime.UtcNow
+                };
+                _context.Ticket.Add(ticket);
+                await _context.SaveChangesAsync();
+
                 await transaction.CommitAsync();
+
+                _logger.LogInformation("Created guest booking {BookingId} and ticket {TicketCode}", booking.BookingId, ticketCode);
 
                 return new CreateBookingResponse
                 {
                     Success = true,
                     BookingId = booking.BookingId,
                     BookingCode = booking.BookingCode,
-                    TotalPrice = totalBookingPrice,
-                    ExpirationTime = booking.ExpirationTime,
+                    TotalPrice = totalPrice,
+                    ExpirationTime = null,
                     IsGuestBooking = request.IsGuestBooking,
                     LookupPhone = request.IsGuestBooking ? request.ContactPhone : null,
                     LookupEmail = request.IsGuestBooking ? request.ContactEmail : null,
-                    Message = request.IsGuestBooking
-                        ? "Đặt chỗ thành công! Vui lòng lưu mã booking để tra cứu."
-                        : "Đặt chỗ thành công! Vui lòng hoàn tất thanh toán trong 5 phút."
+                    Message = "Booking and ticket created successfully!",
+                    TicketCode = ticketCode // Add TicketCode to response
                 };
             }
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                _logger.LogError(ex, "Booking lỗi: {Message} | StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
-
-                return Fail("Lỗi hệ thống khi tạo booking");
+                _logger.LogError(ex, "Error creating guest booking and ticket for trip {TripId}, seat {SeatId}", request.TripId, request.SeatId);
+                return new CreateBookingResponse
+                {
+                    Success = false,
+                    Message = "System error while creating booking and ticket"
+                };
             }
 
             CreateBookingResponse Fail(string msg) => new CreateBookingResponse { Success = false, Message = msg };
@@ -179,7 +173,7 @@ namespace Project.Services
         /// <summary>
         /// 🔍 Tra cứu booking guest
         /// </summary>
-        public async Task<BookingDetailsResponse?> LookupGuestBookingAsync(GuestBookingLookupRequest request)
+        public async Task<TicketDetailsResponse?> LookupGuestBookingAsync(GuestBookingLookupRequest request)
         {
             try
             {
@@ -207,7 +201,26 @@ namespace Project.Services
                 {
                     return null;
                 }
-                return MapToBookingDetailsResponse(booking);
+
+                //// Validate thông tin tra cứu cho guest booking
+                //if (booking.IsGuestBooking)
+                //{
+                //    bool phoneMatch = string.IsNullOrWhiteSpace(request.Phone) ||
+                //                    booking.ContactPhone == request.Phone ||
+                //                    booking.PassengerPhone == request.Phone;
+
+                //    bool emailMatch = string.IsNullOrWhiteSpace(request.Email) ||
+                //                    booking.ContactEmail?.ToLower() == request.Email?.ToLower() ||
+                //                    booking.PassengerEmail?.ToLower() == request.Email?.ToLower();
+
+                //    if (!phoneMatch && !emailMatch)
+                //    {
+                //        return null; // Không match thông tin tra cứu
+                //    }
+                //}
+
+                return MapToTicketDetailsResponse(booking);
+
             }
             catch (Exception ex)
             {
@@ -215,9 +228,55 @@ namespace Project.Services
                 return null;
             }
         }
+
+        /// <summary>
+        /// 📋 Lấy booking của guest theo phone/email
+        /// </summary>
+        public async Task<List<TicketDetailsResponse>> GetGuestBookingsAsync(string phone, string email)
+        {
+            try
+            {
+                var query = _context.Bookings
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Train)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.DepartureStation)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.ArrivalStation)
+                    .Include(b => b.SeatSegments)
+                        .ThenInclude(ss => ss.Seat)
+                            .ThenInclude(s => s.Carriage)
+                    .Include(b => b.Tickets)
+                    .Where(b => b.UserId == null); // Chỉ guest bookings
+
+                if (!string.IsNullOrWhiteSpace(phone))
+                {
+                    query = query.Where(b => b.ContactPhone == phone);
+                }
+
+                if (!string.IsNullOrWhiteSpace(email))
+                {
+                    query = query.Where(b => b.ContactEmail.ToLower() == email.ToLower());
+                }
+
+                var bookings = await query
+                    .OrderByDescending(b => b.CreatedAt)
+                    .ToListAsync();
+
+                return bookings.Select(MapToTicketDetailsResponse).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting guest bookings for phone {Phone}, email {Email}", phone, email);
+                return new List<TicketDetailsResponse>();
+            }
+        }
+        
         #region Existing Methods (Updated)
 
-        public async Task<BookingDetailsResponse?> GetBookingByCodeAsync(string bookingCode)
+        public async Task<TicketDetailsResponse?> GetBookingByCodeAsync(string bookingCode)
         {
             try
             {
@@ -237,7 +296,7 @@ namespace Project.Services
                     .Include(b => b.User)
                     .FirstOrDefaultAsync(b => b.BookingCode.ToUpper() == bookingCode.ToUpper());
 
-                return booking != null ? MapToBookingDetailsResponse(booking) : null;
+                return booking != null ? MapToTicketDetailsResponse(booking) : null;
             }
             catch (Exception ex)
             {
@@ -273,34 +332,41 @@ namespace Project.Services
             return $"TK{DateTime.UtcNow:yyyyMMddHHmmss}{Random.Shared.Next(1000, 9999)}";
         }
 
-        private static BookingDetailsResponse MapToBookingDetailsResponse(Booking booking)
+
+        // Replace MapToBookingDetailsResponse with MapToTicketDetailsResponse
+        private static TicketDetailsResponse MapToTicketDetailsResponse(Booking booking)
+
         {
             var seat = booking.SeatSegments.FirstOrDefault()?.Seat;
             var ticket = booking.Tickets.FirstOrDefault();
-
-            return new BookingDetailsResponse
+            var trip = booking.Trip;
+            return new TicketDetailsResponse
             {
                 BookingId = booking.BookingId,
                 BookingCode = booking.BookingCode,
-                TripCode = booking.Trip.TripCode,
-                TrainNumber = booking.Trip.Train.TrainNumber,
-                PassengerName = booking.PassengerName,
-                PassengerPhone = booking.PassengerPhone,
-                PassengerEmail = booking.PassengerEmail,
-                DepartureStation = booking.Trip.Route.DepartureStation.StationName,
-                ArrivalStation = booking.Trip.Route.ArrivalStation.StationName,
-                DepartureTime = booking.Trip.DepartureTime,
-                ArrivalTime = booking.Trip.ArrivalTime,
-                SeatNumber = seat?.SeatNumber ?? "",
-                CarriageNumber = seat?.Carriage.CarriageNumber ?? "",
-                TotalPrice = booking.TotalPrice,
                 BookingStatus = booking.BookingStatus,
-                TicketCode = ticket?.TicketCode,
                 CreatedAt = booking.CreatedAt,
                 ConfirmedAt = booking.ConfirmedAt,
                 ExpirationTime = booking.ExpirationTime,
                 IsGuestBooking = booking.IsGuestBooking,
-                ContactInfo = booking.ContactInfo
+                ContactInfo = booking.ContactInfo,
+                ContactName = booking.ContactName,
+                ContactPhone = booking.ContactPhone,
+                ContactEmail = booking.ContactEmail,
+                TicketCode = ticket?.TicketCode,
+                PassengerName = ticket?.PassengerName,
+                PassengerPhone = ticket?.PassengerPhone,
+                PassengerIdCard = ticket?.PassengerIdCard,
+                TotalPrice = ticket?.TotalPrice ?? 0,
+                Status = ticket?.Status,
+                TripCode = trip?.TripCode,
+                TrainNumber = trip?.Train?.TrainNumber,
+                DepartureStation = trip?.Route?.DepartureStation?.StationName,
+                ArrivalStation = trip?.Route?.ArrivalStation?.StationName,
+                DepartureTime = trip?.DepartureTime,
+                ArrivalTime = trip?.ArrivalTime,
+                SeatNumber = seat?.SeatNumber,
+                CarriageNumber = seat?.Carriage?.CarriageNumber
             };
         }
 
@@ -323,9 +389,8 @@ namespace Project.Services
                 // Update booking status
                 booking.BookingStatus = "Confirmed";
                 booking.ConfirmedAt = DateTime.UtcNow;
-                booking.PaymentStatus = "Paid";
-
-                // Update seat segments
+                booking.PaymentStatus = "Completed";
+              // Update seat segments
                 foreach (var seatSegment in booking.SeatSegments)
                 {
                     seatSegment.Status = "Booked";
@@ -341,11 +406,12 @@ namespace Project.Services
                         UserId = booking.UserId ?? 0, // For guest bookings, use 0
                         TripId = booking.TripId,
                         TicketCode = GenerateTicketCode(),
-                        PassengerName = booking.PassengerName,
-                        PassengerIdCard = booking.PassengerIdCard,
-                        PassengerPhone = booking.PassengerPhone,
-                        TotalPrice = booking.TotalPrice,
-                        FinalPrice = booking.TotalPrice,
+                        PassengerName = booking.ContactName ?? "Guest",
+                        PassengerIdCard = null,
+                        PassengerPhone = booking.ContactPhone ?? "",
+                        TotalPrice = 0, // Set to 0 or calculate as needed
+                        FinalPrice = 0, // Set to 0 or calculate as needed
+
                         Status = "Valid",
                         PurchaseTime = DateTime.UtcNow
                     };
@@ -372,7 +438,9 @@ namespace Project.Services
             }
         }
 
-        public async Task<BookingDetailsResponse?> GetBookingDetailsAsync(int bookingId)
+
+        public async Task<TicketDetailsResponse?> GetBookingDetailsAsync(int bookingId)
+
         {
             try
             {
@@ -390,8 +458,8 @@ namespace Project.Services
                             .ThenInclude(s => s.Carriage)
                     .Include(b => b.Tickets)
                     .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+                return booking != null ? MapToTicketDetailsResponse(booking) : null;
 
-                return booking != null ? MapToBookingDetailsResponse(booking) : null;
             }
             catch (Exception ex)
             {
@@ -474,7 +542,7 @@ namespace Project.Services
             }
         }
 
-        public async Task<List<BookingDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10)
+        public async Task<List<TicketDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10)
         {
             try
             {
@@ -503,13 +571,13 @@ namespace Project.Services
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
                     .ToListAsync();
+                return bookings.Select(MapToTicketDetailsResponse).ToList();
 
-                return bookings.Select(MapToBookingDetailsResponse).ToList();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error getting user bookings for user {UserId}", userId);
-                return new List<BookingDetailsResponse>();
+                return new List<TicketDetailsResponse>();
             }
         }
 
@@ -527,7 +595,7 @@ namespace Project.Services
                     ConfirmedBookings = bookings.Count(b => b.BookingStatus == "Confirmed"),
                     CancelledBookings = bookings.Count(b => b.BookingStatus == "Cancelled"),
                     ExpiredBookings = bookings.Count(b => b.BookingStatus == "Expired"),
-                    TotalSpent = bookings.Where(b => b.BookingStatus == "Confirmed").Sum(b => b.TotalPrice),
+                    TotalSpent = bookings.Where(b => b.BookingStatus == "Confirmed").SelectMany(b => b.Tickets).Sum(t => t.TotalPrice),
                     LastBookingDate = bookings.OrderByDescending(b => b.CreatedAt).FirstOrDefault()?.CreatedAt,
                     NextTripDate = bookings.Where(b => b.BookingStatus == "Confirmed" && b.Trip.DepartureTime > DateTime.UtcNow)
                                          .OrderBy(b => b.Trip.DepartureTime)
@@ -546,11 +614,6 @@ namespace Project.Services
                 _logger.LogError(ex, "Error getting user booking stats for user {UserId}", userId);
                 return new UserBookingStatsResponse();
             }
-        }
-
-        public Task<List<BookingDetailsResponse>> GetGuestBookingsAsync(string phone, string email)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

@@ -381,12 +381,21 @@ let currentTicketCode = null;
 let staffToken = null;
 let staffUser = null;
 
+
+// Use the correct backend API base URL for development
+// Change this to your production API URL as needed
+const apiBaseUrl = 'http://localhost:5014';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Check authentication
     staffToken = localStorage.getItem('staffToken');
     const staffUserStr = localStorage.getItem('staffUser');
     
+
+    console.log('[DEBUG] staffToken:', staffToken);
+    console.log('[DEBUG] staffUserStr:', staffUserStr);
     if (!staffToken || !staffUserStr) {
+        console.warn('[DEBUG] Redirecting to login because staffToken or staffUserStr is missing');
         window.location.href = '/Auth/StaffLogin';
         return;
     }
@@ -396,6 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('staffName').textContent = `Welcome, ${staffUser.fullName}`;
     } catch (e) {
         console.error('Error parsing staff user:', e);
+        console.warn('[DEBUG] Redirecting to login because staffUserStr is invalid JSON');
         logout();
     }
 
@@ -405,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function validateToken() {
     try {
-        const response = await fetch('/api/auth/staff/validate', {
+        const response = await fetch(`${apiBaseUrl}/api/auth/staff/validate`, {
             headers: {
                 'Authorization': `Bearer ${staffToken}`
             }
@@ -452,8 +462,7 @@ async function scanUploadedImage() {
     try {
         const formData = new FormData();
         formData.append('QRImage', uploadedImageFile);
-
-        const response = await fetch('/api/qrscanner/scan-image', {
+        const response = await fetch(`${apiBaseUrl}/api/qrscanner/scan-image`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${staffToken}`
@@ -464,7 +473,7 @@ async function scanUploadedImage() {
         const result = await response.json();
 
         if (result.success) {
-            currentTicketCode = result.data.bookingCode;
+            currentTicketCode = result.data.ticketCode;
             displayTicketInfo(result.data);
             showAlert('Ticket scanned successfully from image!', 'success');
         } else {
@@ -505,8 +514,7 @@ async function scanTicket(ticketCode) {
         scannerArea.classList.add('active');
         scanBtn.disabled = true;
         scanBtn.innerHTML = '<span class="loading-spinner"></span> Scanning...';
-
-        const response = await fetch('/api/qrscanner/scan', {
+        const response = await fetch(`${apiBaseUrl}/api/qrscanner/scan`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -548,7 +556,8 @@ function displayTicketInfo(ticket) {
     const ticketStatus = document.getElementById('ticketStatus');
 
     // Set status
-    const isValid = ticket.bookingStatus === 'Confirmed';
+    const isValid = (ticket.bookingStatus || ticket.status) === 'Confirmed' || (ticket.status === 'Valid');
+
     ticketStatus.textContent = isValid ? 'Valid' : 'Invalid';
     ticketStatus.className = `ticket-status ${isValid ? 'status-valid' : 'status-invalid'}`;
 
@@ -556,7 +565,7 @@ function displayTicketInfo(ticket) {
     ticketDetails.innerHTML = `
         <div class="detail-group">
             <div class="detail-label">Passenger Name</div>
-            <div class="detail-value">${ticket.passengerName}</div>
+            <div class="detail-value">${ticket.passengerName || 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">Ticket Code</div>
@@ -564,31 +573,32 @@ function displayTicketInfo(ticket) {
         </div>
         <div class="detail-group">
             <div class="detail-label">Trip</div>
-            <div class="detail-value">${ticket.tripCode}</div>
+            <div class="detail-value">${ticket.tripCode || 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">Train</div>
-            <div class="detail-value">${ticket.trainNumber}</div>
+            <div class="detail-value">${ticket.trainNumber || 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">From</div>
-            <div class="detail-value">${ticket.departureStation}</div>
+            <div class="detail-value">${ticket.departureStation || 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">To</div>
-            <div class="detail-value">${ticket.arrivalStation}</div>
+            <div class="detail-value">${ticket.arrivalStation || 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">Departure</div>
-            <div class="detail-value">${new Date(ticket.departureTime).toLocaleString()}</div>
+            <div class="detail-value">${ticket.departureTime ? new Date(ticket.departureTime).toLocaleString() : 'N/A'}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">Seat</div>
-            <div class="detail-value">${ticket.carriageNumber} - ${ticket.seatNumber}</div>
+            <div class="detail-value">${(ticket.carriageNumber || 'N/A')} - ${(ticket.seatNumber || 'N/A')}</div>
         </div>
         <div class="detail-group">
             <div class="detail-label">Price</div>
-            <div class="detail-value">${ticket.totalPrice.toLocaleString()} VND</div>
+            <div class="detail-value">${ticket.totalPrice != null ? Number(ticket.totalPrice).toLocaleString() : 'N/A'} VND</div>
+
         </div>
     `;
 
@@ -606,7 +616,7 @@ async function validateTicket() {
     validateBtn.innerHTML = '<span class="loading-spinner"></span> Validating...';
 
     try {
-        const response = await fetch('/api/qrscanner/validate', {
+        const response = await fetch(`${apiBaseUrl}/api/qrscanner/validate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

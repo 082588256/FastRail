@@ -20,15 +20,13 @@ namespace Project.Controllers
             var trips = await _tripSearchService.SearchTripsAsync(request);
             return Ok(trips);
         }
+
         [HttpGet("{tripId}/seats")]
-        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(
-                int tripId,
-                int fromStationId,
-                int toStationId)
-            {
-                var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId, fromStationId, toStationId);
-                return Ok(seats);
-            }
+        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(int tripId)
+        {
+            var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId);
+            return Ok(seats);
+        }
 
         [HttpGet("all")]
         public async Task<ActionResult<List<TripSearchResponse>>> GetAllTrips()
@@ -42,9 +40,9 @@ namespace Project.Controllers
                     ArrivalStationName = "",   // Empty to get all
                     TravelDate = DateTime.Today
                 };
-
+                
                 var trips = await _tripSearchService.SearchTripsAsync(request);
-
+                
                 // Add debugging information
                 var debugInfo = new
                 {
@@ -54,7 +52,7 @@ namespace Project.Controllers
                     searchDate = request.TravelDate,
                     message = $"Found {trips.Count} trips"
                 };
-
+                
                 return Ok(debugInfo);
             }
             catch (Exception ex)

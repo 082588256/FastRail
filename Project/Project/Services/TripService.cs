@@ -26,38 +26,73 @@ namespace Project.Services
             var searchDate = request.TravelDate.Date;
             var fromName = request.DepartureStationName;
             var toName = request.ArrivalStationName;
+            // Tìm chuyến tàu theo ngày
+            var query = _context.Trip
 
-            var trips = await _context.Trip
                 .Include(t => t.Train)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.DepartureStation)
                 .Include(t => t.Route)
                     .ThenInclude(r => r.ArrivalStation)
-                .Include(t => t.Route)
-                    .ThenInclude(r => r.RouteSegments)
-                        .ThenInclude(rs => rs.FromStation)
-                .Include(t => t.Route)
-                    .ThenInclude(r => r.RouteSegments)
-                        .ThenInclude(rs => rs.ToStation)
-                .Where(t => t.DepartureTime.Date == searchDate && t.IsActive)
-                .Where(t => t.Route.RouteSegments.Any(rs =>
-                    rs.FromStation.StationName == fromName &&
-                    rs.ToStation.StationName == toName))
-                .ToListAsync();
 
-            var result = trips.Select(t => new TripSearchResponse
+                .Where(t => t.IsActive);
+
+            // If both station names are empty, get trips for the next 90 days (to include September/October trips)
+            if (string.IsNullOrEmpty(request.DepartureStationName) && string.IsNullOrEmpty(request.ArrivalStationName))
             {
-                TripId = t.TripId,
-                TripCode = t.TripCode,
-                TrainNumber = t.Train.TrainNumber,
-                TrainName = t.Train.TrainName,
-                RouteName = t.Route.RouteName,
-                DepartureStation = fromName,
-                ArrivalStation = toName,
-                DepartureTime = t.DepartureTime,
-                ArrivalTime = t.ArrivalTime,
-                EstimatedDurationMinutes = (int)(t.ArrivalTime - t.DepartureTime).TotalMinutes
-            }).ToList();
+                var startDate = DateTime.Today;
+                var endDate = DateTime.Today.AddDays(90);
+                query = query.Where(t => t.DepartureTime.Date >= startDate && t.DepartureTime.Date <= endDate);
+            }
+            else
+            {
+                // Use the specific search date
+                query = query.Where(t => t.DepartureTime.Date == searchDate);
+            }
+
+            // Only filter by station names if they are provided
+            if (!string.IsNullOrEmpty(request.DepartureStationName))
+            {
+                query = query.Where(t => t.Route.DepartureStation.StationName == request.DepartureStationName);
+            }
+            
+            if (!string.IsNullOrEmpty(request.ArrivalStationName))
+            {
+                query = query.Where(t => t.Route.ArrivalStation.StationName == request.ArrivalStationName);
+            }
+
+            var trips = await query.ToListAsync();
+            var result = new List<TripSearchResponse>();
+             foreach (var trip in trips)
+            {
+                //// Đếm ghế trống đơn giản
+                //var totalSeats = await _context.Seat
+                //    .Where(s => s.Carriage.TrainId == trip.TrainId && s.IsActive)
+                //    .CountAsync();
+
+                //var bookedSeats = await _context.SeatSegment
+                //    .Where(ss => ss.TripId == trip.TripId &&
+                //                (ss.Status == "Booked" || ss.Status == "TemporaryReserved"))
+                //    .CountAsync();
+                //var availableSeats = totalSeats - bookedSeats;
+
+                result.Add(new TripSearchResponse
+                {
+                    TripId = trip.TripId,
+                    TripCode = trip.TripCode,
+                    TrainNumber = trip.Train.TrainNumber,
+                    RouteName = trip.Route.RouteName,
+                    DepartureStation = trip.Route.DepartureStation.StationName,
+                    ArrivalStation = trip.Route.ArrivalStation.StationName,
+                    DepartureTime = trip.DepartureTime,
+                    ArrivalTime = trip.ArrivalTime,
+                    TrainName=trip.Train.TrainName,
+                    //AvailableSeats = availableSeats,
+                    //MinPrice = 50000, // Giá tối thiểu
+                    //MaxPrice = 200000, // Giá tối đa
+                    EstimatedDurationMinutes = (int)(trip.ArrivalTime - trip.DepartureTime).TotalMinutes
+                });
+            }
 
             return result;
         }

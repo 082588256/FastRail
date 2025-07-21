@@ -24,7 +24,7 @@ namespace Project.Models
 
         // Navigation properties
         public virtual Booking Booking { get; set; } = null!;
-        public virtual User User { get; set; } = null!;
+        public virtual User? User { get; set; }
         public virtual Trip Trip { get; set; } = null!;
         public virtual ICollection<TicketSegment> TicketSegments { get; set; } = new List<TicketSegment>();
     }

@@ -74,5 +74,27 @@ namespace ProjectView.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBooking([FromBody] object bookingData)
+        {
+            try
+            {
+                var client = _httpClientFactory.CreateClient();
+                var apiBaseUrl = _configuration["ApiSettings:BaseUrl"] ?? "http://localhost:5014";
+                var apiUrl = $"{apiBaseUrl}/api/booking/create-temporary";
+                var json = JsonSerializer.Serialize(bookingData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(apiUrl, content);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                return Json(result);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
     }
 } 

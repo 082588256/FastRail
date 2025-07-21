@@ -467,238 +467,178 @@
         </div>
     </div>
 </section>
-
+<!-- JS SCRIPT BLOCK START -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('bookingForm');
+console.log('BookRide page JS loaded');
+
+// Utility: show alert in alert-container
+function showAlert(message, type = 'info') {
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+    setTimeout(() => { alertContainer.innerHTML = ''; }, 5000);
+}
+
+// Load trips and populate trip dropdown
+async function loadTrips() {
+    const tripSelect = document.getElementById('tripId');
+    tripSelect.innerHTML = '<option value="">Loading trips...</option>';
+    try {
+        const response = await fetch('/BookingData/GetTrips');
+        const result = await response.json();
+        console.log('Trips API result:', result);
+        if (result.success && Array.isArray(result.data) && result.data.length > 0) {
+            tripSelect.innerHTML = '<option value="">Choose a trip...</option>';
+            result.data.forEach(trip => {
+                const option = document.createElement('option');
+                option.value = trip.tripId || trip.TripId;
+                const departureTime = new Date(trip.departureTime || trip.DepartureTime).toLocaleString();
+                const arrivalTime = new Date(trip.arrivalTime || trip.ArrivalTime).toLocaleString();
+                option.textContent = `${trip.routeName || trip.RouteName} - ${departureTime} → ${arrivalTime}`;
+                tripSelect.appendChild(option);
+            });
+        } else {
+            tripSelect.innerHTML = '<option value="">No trips available</option>';
+            showAlert('No trips found.', 'danger');
+        }
+    } catch (err) {
+        console.error('Error loading trips:', err);
+        tripSelect.innerHTML = '<option value="">Error loading trips</option>';
+        showAlert('Error loading trips', 'danger');
+    }
+}
+
+// Load seats for selected trip
+async function loadSeats(tripId) {
+    const seatSelect = document.getElementById('seatId');
+    seatSelect.disabled = true;
+    seatSelect.innerHTML = '<option value="">Loading seats...</option>';
+    try {
+        const response = await fetch(`/BookingData/GetSeats?tripId=${tripId}`);
+        const result = await response.json();
+        console.log('Seats API result:', result);
+        if (result.success && Array.isArray(result.data) && result.data.length > 0) {
+            seatSelect.innerHTML = '<option value="">Choose a seat...</option>';
+            result.data.forEach(seat => {
+                const option = document.createElement('option');
+                option.value = seat.seatId || seat.SeatId;
+                option.textContent = `Seat ${seat.seatNumber || seat.SeatNumber} - ${seat.seatType || seat.SeatType}`;
+                seatSelect.appendChild(option);
+            });
+            seatSelect.disabled = false;
+        } else {
+            seatSelect.innerHTML = '<option value="">No seats available</option>';
+            showAlert('No seats found for this trip.', 'danger');
+        }
+    } catch (err) {
+        console.error('Error loading seats:', err);
+        seatSelect.innerHTML = '<option value="">Error loading seats</option>';
+        showAlert('Error loading seats', 'danger');
+    }
+}
+
+// Handle booking form submission
+async function submitBookingForm(event) {
+    event.preventDefault();
     const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.btn-text').textContent = 'Booking...';
+    showAlert('Processing your booking...', 'info');
+
+    // Gather form data
+    const form = event.target;
+    const data = {
+        tripId: parseInt(form.tripId.value),
+        seatId: parseInt(form.seatId.value),
+        passengerName: form.passengerName.value.trim(),
+        passengerPhone: form.passengerPhone.value.trim(),
+        passengerEmail: form.passengerEmail.value.trim(),
+        passengerIdCard: form.passengerIdCard.value.trim(),
+        passengerDateOfBirth: form.passengerDateOfBirth.value ? form.passengerDateOfBirth.value : null,
+        contactName: form.contactName.value.trim(),
+        contactPhone: form.contactPhone.value.trim(),
+        contactEmail: form.contactEmail.value.trim(),
+        userId: null // Always guest booking from this form
+    };
+
+    // Remove empty contact fields for guest booking
+    if (!data.contactName) delete data.contactName;
+    if (!data.contactPhone) delete data.contactPhone;
+    if (!data.contactEmail) delete data.contactEmail;
+    if (!data.passengerIdCard) delete data.passengerIdCard;
+    if (!data.passengerDateOfBirth) delete data.passengerDateOfBirth;
+
+    try {
+        const response = await fetch('/BookingData/CreateBooking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        console.log('Booking API result:', result);
+        if (result.success) {
+            showAlert('Booking successful!', 'success');
+            showBookingResult(result.data);
+        } else {
+            showAlert(result.message || 'Booking failed', 'danger');
+        }
+    } catch (err) {
+        console.error('Error booking:', err);
+        showAlert('Error booking ticket', 'danger');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').textContent = 'Book Ticket Now';
+    }
+}
+
+// Show booking result and QR code
+function showBookingResult(data) {
+    const bookingResult = document.getElementById('bookingResult');
+    const bookingCode = document.getElementById('bookingCode');
+    const qrCodeImage = document.getElementById('qrCodeImage');
+    const qrCodeDiv = document.getElementById('qrCode');
+    const bookingDetails = document.getElementById('bookingDetails');
+
+    bookingResult.classList.add('show');
+    bookingCode.textContent = data.ticketCode;
+
+    // Generate QR code
+    qrCodeDiv.innerHTML = '';
+    const qr = new QRCode(qrCodeDiv, {
+        text: data.ticketCode,
+        width: 180,
+        height: 180
+    });
+
+    // Fill booking details
+    bookingDetails.innerHTML = `
+        <div class="detail-item"><div class="detail-label">Passenger</div><div class="detail-value">${data.passengerName}</div></div>
+        <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-value">${data.passengerPhone}</div></div>
+        <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value">${data.passengerEmail}</div></div>
+        <div class="detail-item"><div class="detail-label">Trip</div><div class="detail-value">${data.tripCode || ''}</div></div>
+        <div class="detail-item"><div class="detail-label">Seat</div><div class="detail-value">${data.seatNumber || ''}</div></div>
+        <div class="detail-item"><div class="detail-label">Carriage</div><div class="detail-value">${data.carriageNumber || ''}</div></div>
+        <div class="detail-item"><div class="detail-label">Departure</div><div class="detail-value">${data.departureStation || ''} (${data.departureTime ? new Date(data.departureTime).toLocaleString() : ''})</div></div>
+        <div class="detail-item"><div class="detail-label">Arrival</div><div class="detail-value">${data.arrivalStation || ''} (${data.arrivalTime ? new Date(data.arrivalTime).toLocaleString() : ''})</div></div>
+        <div class="detail-item"><div class="detail-label">Total Price</div><div class="detail-value">${data.totalPrice || ''} VND</div></div>
+    `;
+}
+
+// DOMContentLoaded: setup event listeners and load trips
+window.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded');
     const tripSelect = document.getElementById('tripId');
     const seatSelect = document.getElementById('seatId');
-
-    // Load trips on page load
-    console.log('Page loaded, calling loadTrips()');
-    alert('Page loaded!'); // Test alert
     loadTrips();
-
-    // Load seats when trip is selected
     tripSelect.addEventListener('change', function() {
-        const selectedTripId = this.value;
-        if (selectedTripId) {
-            loadSeats(selectedTripId);
+        const tripId = this.value;
+        if (tripId) {
+            loadSeats(tripId);
         } else {
             seatSelect.innerHTML = '<option value="">Choose a seat...</option>';
             seatSelect.disabled = true;
         }
     });
-
-    async function loadTrips() {
-        try {
-            console.log('Loading trips...');
-            const response = await fetch('/BookingData/GetTrips');
-            console.log('Response status:', response.status);
-            
-            const result = await response.json();
-            console.log('Response result:', result);
-            
-            if (result.success && result.data) {
-                console.log('Trips data:', result.data);
-                tripSelect.innerHTML = '<option value="">Choose a trip...</option>';
-                result.data.forEach(trip => {
-                    const option = document.createElement('option');
-                    option.value = trip.tripId;
-                    const departureTime = new Date(trip.departureTime).toLocaleString();
-                    const arrivalTime = new Date(trip.arrivalTime).toLocaleString();
-                    option.textContent = `${trip.routeName} - ${departureTime} → ${arrivalTime}`;
-                    tripSelect.appendChild(option);
-                });
-                console.log('Trips loaded successfully');
-            } else {
-                console.error('Failed to load trips:', result.message);
-                showAlert('Failed to load trips: ' + (result.message || 'Unknown error'), 'danger');
-            }
-        } catch (error) {
-            console.error('Error loading trips:', error);
-            showAlert('Error loading trips: ' + error.message, 'danger');
-        }
-    }
-
-    async function loadSeats(tripId) {
-        try {
-            seatSelect.disabled = true;
-            seatSelect.innerHTML = '<option value="">Loading seats...</option>';
-            
-            const response = await fetch(`/BookingData/GetSeats?tripId=${tripId}`);
-            const result = await response.json();
-            
-            if (result.success && result.data) {
-                seatSelect.innerHTML = '<option value="">Choose a seat...</option>';
-                result.data.forEach(seat => {
-                    const option = document.createElement('option');
-                    option.value = seat.seatId;
-                    option.textContent = `Seat ${seat.seatNumber} - ${seat.seatType}`;
-                    seatSelect.appendChild(option);
-                });
-                seatSelect.disabled = false;
-            } else {
-                seatSelect.innerHTML = '<option value="">No seats available</option>';
-                showAlert('Failed to load seats', 'danger');
-            }
-        } catch (error) {
-            console.error('Error loading seats:', error);
-            seatSelect.innerHTML = '<option value="">Error loading seats</option>';
-            showAlert('Error loading seats', 'danger');
-        }
-    }
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
-
-        try {
-            const formData = new FormData(form);
-            const bookingData = {
-                tripId: parseInt(formData.get('tripId')),
-                seatId: parseInt(formData.get('seatId')),
-                passengerName: formData.get('passengerName'),
-                passengerPhone: formData.get('passengerPhone'),
-                passengerEmail: formData.get('passengerEmail'),
-                passengerIdCard: formData.get('passengerIdCard') || null,
-                passengerDateOfBirth: formData.get('passengerDateOfBirth') || null,
-                contactName: formData.get('contactName') || formData.get('passengerName'),
-                contactPhone: formData.get('contactPhone') || formData.get('passengerPhone'),
-                contactEmail: formData.get('contactEmail') || formData.get('passengerEmail'),
-                isGuestBooking: true
-            };
-
-            const response = await fetch('/api/booking/create-temporary', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(bookingData)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                displayBookingResult(result.data);
-                showAlert('Booking created successfully!', 'success');
-            } else {
-                showAlert(result.message || 'Failed to create booking', 'danger');
-            }
-        } catch (error) {
-            console.error('Booking error:', error);
-            showAlert('An error occurred while creating booking', 'danger');
-        } finally {
-            // Reset button state
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span class="btn-text">Book Ticket Now</span>';
-        }
-    });
+    document.getElementById('bookingForm').addEventListener('submit', submitBookingForm);
 });
-
-function displayBookingResult(booking) {
-    // Update booking code
-    document.getElementById('bookingCode').textContent = booking.bookingCode;
-    
-    // Generate QR code
-    const qrCodeImage = document.getElementById('qrCodeImage');
-    qrCodeImage.src = `/api/qrscanner/generate/${booking.bookingCode}`;
-    
-    // Populate booking details
-    const bookingDetails = document.getElementById('bookingDetails');
-    bookingDetails.innerHTML = `
-        <div class="detail-item">
-            <div class="detail-label">Total Price</div>
-            <div class="detail-value">${booking.totalPrice.toLocaleString()} VND</div>
-        </div>
-        <div class="detail-item">
-            <div class="detail-label">Expires At</div>
-            <div class="detail-value">${new Date(booking.expirationTime).toLocaleString()}</div>
-        </div>
-        <div class="detail-item">
-            <div class="detail-label">Booking Type</div>
-            <div class="detail-value">${booking.isGuestBooking ? 'Guest Booking' : 'User Booking'}</div>
-        </div>
-        <div class="detail-item">
-            <div class="detail-label">Status</div>
-            <div class="detail-value">Temporary (Complete payment within 5 minutes)</div>
-        </div>
-    `;
-    
-    // Show result
-    document.getElementById('bookingResult').classList.add('show');
-    
-    // Scroll to result
-    document.getElementById('bookingResult').scrollIntoView({ behavior: 'smooth' });
-}
-
-function resetForm() {
-    document.getElementById('bookingForm').reset();
-    document.getElementById('bookingResult').classList.remove('show');
-    document.getElementById('alert-container').innerHTML = '';
-}
-
-function printTicket() {
-    const printWindow = window.open('', '_blank');
-    const bookingCode = document.getElementById('bookingCode').textContent;
-    const qrCodeSrc = document.getElementById('qrCodeImage').src;
-    
-    printWindow.document.write(`
-        <html>
-            <head>
-                <title>Train Ticket - ${bookingCode}</title>
-                <style>
-                    body { font-family: Arial, sans-serif; padding: 20px; }
-                    .ticket { border: 2px solid #333; padding: 20px; max-width: 400px; }
-                    .header { text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
-                    .qr-code { text-align: center; margin: 20px 0; }
-                    .details { margin: 20px 0; }
-                    .detail-row { display: flex; justify-content: space-between; margin: 5px 0; }
-                </style>
-            </head>
-            <body>
-                <div class="ticket">
-                    <div class="header">
-                        <h2>Train Ticket</h2>
-                        <h3>${bookingCode}</h3>
-                    </div>
-                    <div class="qr-code">
-                        <img src="${qrCodeSrc}" alt="QR Code" style="max-width: 150px;">
-                    </div>
-                    <div class="details">
-                        <div class="detail-row">
-                            <strong>Booking Code:</strong> ${bookingCode}
-                        </div>
-                        <div class="detail-row">
-                            <strong>Status:</strong> Temporary
-                        </div>
-                        <div class="detail-row">
-                            <strong>Valid Until:</strong> ${new Date().toLocaleString()}
-                        </div>
-                    </div>
-                </div>
-            </body>
-        </html>
-    `);
-    
-    printWindow.document.close();
-    printWindow.print();
-}
-
-function showAlert(message, type) {
-    const alertContainer = document.getElementById('alert-container');
-    alertContainer.innerHTML = `
-        <div class="alert alert-${type}">
-            ${message}
-        </div>
-    `;
-    
-    setTimeout(() => {
-        alertContainer.innerHTML = '';
-    }, 5000);
-}
 </script> 
