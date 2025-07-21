@@ -268,6 +268,11 @@ namespace Project.Services
             return $"{prefix}{DateTime.UtcNow:yyyyMMddHHmmss}";
         }
 
+        private static string GenerateTicketCode()
+        {
+            return $"TK{DateTime.UtcNow:yyyyMMddHHmmss}{Random.Shared.Next(1000, 9999)}";
+        }
+
         private static BookingDetailsResponse MapToBookingDetailsResponse(Booking booking)
         {
             var seat = booking.SeatSegments.FirstOrDefault()?.Seat;
@@ -299,39 +304,248 @@ namespace Project.Services
             };
         }
 
-        public Task<bool> ConfirmBookingAsync(int bookingId, string? transactionId = null)
+        public async Task<bool> ConfirmBookingAsync(int bookingId, string? transactionId = null)
         {
-            throw new NotImplementedException();
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var booking = await _context.Bookings
+                    .Include(b => b.SeatSegments)
+                    .Include(b => b.Tickets)
+                    .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+
+                if (booking == null)
+                {
+                    return false;
+                }
+
+                // Update booking status
+                booking.BookingStatus = "Confirmed";
+                booking.ConfirmedAt = DateTime.UtcNow;
+                booking.PaymentStatus = "Paid";
+
+                // Update seat segments
+                foreach (var seatSegment in booking.SeatSegments)
+                {
+                    seatSegment.Status = "Booked";
+                }
+
+                // Create or update ticket
+                var ticket = booking.Tickets.FirstOrDefault();
+                if (ticket == null)
+                {
+                    ticket = new Ticket
+                    {
+                        BookingId = booking.BookingId,
+                        UserId = booking.UserId ?? 0, // For guest bookings, use 0
+                        TripId = booking.TripId,
+                        TicketCode = GenerateTicketCode(),
+                        PassengerName = booking.PassengerName,
+                        PassengerIdCard = booking.PassengerIdCard,
+                        PassengerPhone = booking.PassengerPhone,
+                        TotalPrice = booking.TotalPrice,
+                        FinalPrice = booking.TotalPrice,
+                        Status = "Valid",
+                        PurchaseTime = DateTime.UtcNow
+                    };
+
+                    _context.Ticket.Add(ticket);
+                }
+                else
+                {
+                    ticket.Status = "Valid";
+                    ticket.CheckInTime = DateTime.UtcNow;
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Booking {BookingId} confirmed successfully", bookingId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Error confirming booking {BookingId}", bookingId);
+                return false;
+            }
         }
 
-        public Task<BookingDetailsResponse?> GetBookingDetailsAsync(int bookingId)
+        public async Task<BookingDetailsResponse?> GetBookingDetailsAsync(int bookingId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var booking = await _context.Bookings
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Train)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.DepartureStation)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.ArrivalStation)
+                    .Include(b => b.SeatSegments)
+                        .ThenInclude(ss => ss.Seat)
+                            .ThenInclude(s => s.Carriage)
+                    .Include(b => b.Tickets)
+                    .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+
+                return booking != null ? MapToBookingDetailsResponse(booking) : null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting booking details for ID {BookingId}", bookingId);
+                return null;
+            }
         }
 
-        public Task<Booking?> GetBookingByIdAsync(int bookingId)
+        public async Task<Booking?> GetBookingByIdAsync(int bookingId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.Bookings
+                    .Include(b => b.Trip)
+                    .Include(b => b.SeatSegments)
+                    .Include(b => b.Tickets)
+                    .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting booking by ID {BookingId}", bookingId);
+                return null;
+            }
         }
 
-        public Task<bool> CancelBookingAsync(int bookingId)
+        public async Task<bool> CancelBookingAsync(int bookingId)
         {
-            throw new NotImplementedException();
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var booking = await _context.Bookings
+                    .Include(b => b.SeatSegments)
+                    .FirstOrDefaultAsync(b => b.BookingId == bookingId);
+
+                if (booking == null)
+                    return false;
+
+                booking.BookingStatus = "Cancelled";
+                booking.CancelledAt = DateTime.UtcNow;
+
+                // Release seat segments
+                foreach (var seatSegment in booking.SeatSegments)
+                {
+                    seatSegment.Status = "Available";
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Booking {BookingId} cancelled successfully", bookingId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Error cancelling booking {BookingId}", bookingId);
+                return false;
+            }
         }
 
-        public Task<bool> ExtendBookingAsync(int bookingId)
+        public async Task<bool> ExtendBookingAsync(int bookingId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var booking = await _context.Bookings.FindAsync(bookingId);
+                if (booking == null)
+                    return false;
+
+                booking.ExpirationTime = DateTime.UtcNow.AddMinutes(5);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("Booking {BookingId} extended successfully", bookingId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error extending booking {BookingId}", bookingId);
+                return false;
+            }
         }
 
-        public Task<List<BookingDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10)
+        public async Task<List<BookingDetailsResponse>> GetUserBookingsAsync(int userId, string? status = null, int page = 1, int pageSize = 10)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = _context.Bookings
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Train)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.DepartureStation)
+                    .Include(b => b.Trip)
+                        .ThenInclude(t => t.Route)
+                            .ThenInclude(r => r.ArrivalStation)
+                    .Include(b => b.SeatSegments)
+                        .ThenInclude(ss => ss.Seat)
+                            .ThenInclude(s => s.Carriage)
+                    .Include(b => b.Tickets)
+                    .Where(b => b.UserId == userId);
+
+                if (!string.IsNullOrEmpty(status))
+                {
+                    query = query.Where(b => b.BookingStatus == status);
+                }
+
+                var bookings = await query
+                    .OrderByDescending(b => b.CreatedAt)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                return bookings.Select(MapToBookingDetailsResponse).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting user bookings for user {UserId}", userId);
+                return new List<BookingDetailsResponse>();
+            }
         }
 
-        public Task<UserBookingStatsResponse> GetUserBookingStatsAsync(int userId)
+        public async Task<UserBookingStatsResponse> GetUserBookingStatsAsync(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var bookings = await _context.Bookings
+                    .Where(b => b.UserId == userId)
+                    .ToListAsync();
+
+                var stats = new UserBookingStatsResponse
+                {
+                    TotalBookings = bookings.Count,
+                    ConfirmedBookings = bookings.Count(b => b.BookingStatus == "Confirmed"),
+                    CancelledBookings = bookings.Count(b => b.BookingStatus == "Cancelled"),
+                    ExpiredBookings = bookings.Count(b => b.BookingStatus == "Expired"),
+                    TotalSpent = bookings.Where(b => b.BookingStatus == "Confirmed").Sum(b => b.TotalPrice),
+                    LastBookingDate = bookings.OrderByDescending(b => b.CreatedAt).FirstOrDefault()?.CreatedAt,
+                    NextTripDate = bookings.Where(b => b.BookingStatus == "Confirmed" && b.Trip.DepartureTime > DateTime.UtcNow)
+                                         .OrderBy(b => b.Trip.DepartureTime)
+                                         .FirstOrDefault()?.Trip.DepartureTime
+                };
+
+                if (stats.TotalBookings > 0)
+                {
+                    stats.AverageBookingValue = stats.TotalSpent / stats.ConfirmedBookings;
+                }
+
+                return stats;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting user booking stats for user {UserId}", userId);
+                return new UserBookingStatsResponse();
+            }
         }
 
         public Task<List<BookingDetailsResponse>> GetGuestBookingsAsync(string phone, string email)
