@@ -23,6 +23,27 @@
 //            return Ok(result);
 //        }
 
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get([FromRoute] int id)
+        //{
+        //    var result = await _seatService.GetByIdAsync(id);
+        //    return result == null ? NotFound() : Ok(result);
+        //}
+        //[HttpGet("available")]
+        //public async Task<ActionResult<IEnumerable<Seat>>> GetAvailableSeats()
+        //{
+        //    var soldSeatIds = await _context.Ticket
+        //        .Where(t => t.Status != null && t.SeatId.HasValue)
+        //        .Select(t => t.SeatId.Value)
+        //    .Distinct()
+        //        .ToListAsync();
+
+        //    var availableSeats = await _context.Seats
+        //        .Where(s => !soldSeatIds.Contains(s.SeatId))
+        //        .ToListAsync();
+
+        //    return availableSeats;
+        //}
 //        [HttpGet("{id}")]
 //        public async Task<IActionResult> Get([FromRoute] int id)
 //        {

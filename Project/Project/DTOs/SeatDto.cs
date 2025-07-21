@@ -9,7 +9,7 @@ namespace Project.DTOs
 
         public int CarriageId { get; set; }
         public SeatType SeatType { get; set; }
-
+        //public string SeatNumber { get; set; }
         public string? SeatName { get; set; }
         public bool? Status { get; set; }
     }
