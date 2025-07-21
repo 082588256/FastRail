@@ -23,6 +23,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/jquery.bxslider.min.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/responsive.css">
 </head>
@@ -34,11 +42,12 @@
             <div class="top-bar">
                 <div class="container">
                     <div class="left-block">
-                        <a href="#"><i class="fa fa-user-circle"></i> Customer Sign In</a>
+                        <a href="/Home/BookRide"><i class="fa fa-train"></i> Book Train Ticket</a>
+                        <a href="/Auth/StaffLogin"><i class="fa fa-user-circle"></i> Staff Login</a>
                         <a href="#"><i class="fa fa-envelope"></i> needhelp@conexi.com</a>
                     </div><!-- /.left-block -->
                     <div class="logo-block">
-                        <a href="index.html"><img src="~/images/resources/logo-1-1.png" alt="Awesome Image" /></a>
+                        <a href="/"><img src="~/images/resources/logo-1-1.png" alt="Awesome Image" /></a>
                     </div><!-- /.logo-block -->
                     <div class="social-block">
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -59,37 +68,11 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="main-navigation" id="main-nav-bar">
                         <ul class="navigation-box">
-                            <li class=" current ">
-                                <a href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Home One</a></li>
-                                    <li><a href="index2.html">Home Two</a></li>
-                                    <li><a href="index.html">Header Versions</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Header One</a></li>
-                                            <li><a href="index2.html">Header Two</a></li>
-                                        </ul><!-- /.sub-menu -->
-                                    </li>
-                                </ul><!-- /.sub-menu -->
+                            <li class="current">
+                                <a href="/">Home</a>
                             </li>
-                            <li><a href="about.html">About</a></li>
-                            <li>
-                                <a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="driver.html">Our Drivers</a></li>
-                                    <li><a href="taxi.html">Our Taxi</a></li>
-                                    <li><a href="single-taxi.html">Taxi Details</a></li>
-                                </ul><!-- /.sub-menu -->
-                            </li>
-                            <li><a href="book-ride.html">Book A Ride</a></li>
-                            <li>
-                                <a href="blog.html">Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">Blog Grid</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul><!-- /.sub-menu -->
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/Home/BookRide">Book Train Ticket</a></li>
+                            <li><a href="/Auth/StaffLogin">Staff Login</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                     <div class="right-side-box">
@@ -112,7 +95,7 @@
         @RenderBody()
         
         <footer class="site-footer">
-            <img src="images/background/footer-bg-1-1.png" class="footer-bg" alt="Awesome Image" />
+            <img src="~/images/background/footer-bg-1-1.png" class="footer-bg" alt="Awesome Image" />
             <div class="upper-footer">
                 <div class="container">
                     <div class="row">
@@ -175,7 +158,7 @@
                 <div class="container">
                     <div class="inner-container">
                         <div class="left-block">
-                            <a href="index.html" class="footer-logo"><img src="images/resources/logo-1-1.png" alt="Awesome Image" /></a>
+                            <a href="/" class="footer-logo"><img src="~/images/resources/logo-1-1.png" alt="Awesome Image" /></a>
                             <span>&copy; 2020 <a href="#">Tonatheme.com</a></span>
                         </div><!-- /.left-block -->
                         <div class="right-block">
@@ -191,15 +174,15 @@
     </div><!-- /.page-wrapper -->
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
     <!-- /.scroll-to-top -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/bootstrap-select.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/jquery.bxslider.min.js"></script>
-    <script src="js/theme.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/bootstrap-select.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/jquery.bxslider.min.js"></script>
+    <script src="~/js/theme.js"></script>
 </body>
 
 </html>
