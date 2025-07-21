@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Models
@@ -8,7 +8,7 @@ namespace Project.Models
         [Key]
         public int TicketId { get; set; }
         public int BookingId { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int TripId { get; set; }
         public string TicketCode { get; set; } = string.Empty;
         public string PassengerName { get; set; } = string.Empty;
@@ -30,4 +30,3 @@ namespace Project.Models
     }
 
 }
-

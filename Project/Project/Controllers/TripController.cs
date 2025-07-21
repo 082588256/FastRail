@@ -20,13 +20,15 @@ namespace Project.Controllers
             var trips = await _tripSearchService.SearchTripsAsync(request);
             return Ok(trips);
         }
-
         [HttpGet("{tripId}/seats")]
-        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(int tripId)
-        {
-            var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId);
-            return Ok(seats);
+        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(
+                int tripId,
+                int fromStationId,
+                int toStationId)
+            {
+                var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId, fromStationId, toStationId);
+                return Ok(seats);
+            }
         }
-    }
 }
 

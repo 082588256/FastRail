@@ -154,6 +154,7 @@ namespace Project
                 entity.HasIndex(e => e.TicketCode).IsUnique();
             });
 
+
             // Fare configurations
             modelBuilder.Entity<Fare>(entity =>
             {

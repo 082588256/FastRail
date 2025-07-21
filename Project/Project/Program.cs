@@ -11,7 +11,7 @@ using Project.Repository.Trip;
 using Project.Services;
 using Project.Services.Carriage;
 using Project.Services.Route;
-using Project.Services.Seat;
+//using Project.Services.Seat;
 using Project.Services.Train;
 using Project.Utils.Validation;
 
@@ -27,6 +27,8 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IPricingService, PricingService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IRouteService, RouteService>();
+builder.Services.AddScoped<ISeatService, SeatService>();
 
 builder.Services.AddAutoMapper(typeof(TrainProfile));
 builder.Services.AddAutoMapper(typeof(RouteProfile));
@@ -35,7 +37,6 @@ builder.Services.AddAutoMapper(typeof(TripProfile));
 
 //Config DI
 builder.Services.AddScoped<IRouteRepository, RouteRepository>();
-builder.Services.AddScoped<IRouteService, RouteService>();
 
 builder.Services.AddScoped<ITrainRepository, TrainRepository>();
 builder.Services.AddScoped<ITrainService, TrainServices>();
@@ -43,7 +44,6 @@ builder.Services.AddScoped<ITrainService, TrainServices>();
 builder.Services.AddScoped<ICarriageRepository, CarriageRepository>();
 builder.Services.AddScoped<ICarriageService, CarriageService>();
 builder.Services.AddScoped<ISeatRepository, SeatRepository>();
-builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<ItripRepository, TripRepository>();
 builder.Services.AddScoped<ITripService, TripService>();
 
@@ -56,8 +56,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddLogging();
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<FastRailDbContext>();
 
-// Configure pipeline
+    await DataSeeder.SeedSeatsAsync(context);
+}
+//Configure pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
