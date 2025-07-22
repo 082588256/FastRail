@@ -615,7 +615,13 @@ namespace Project.Services
                 return new UserBookingStatsResponse();
             }
         }
-
+        private async Task<bool> IsSeatAvailableAsync(int tripId, int seatId)
+        {
+            return !await _context.SeatSegment.AnyAsync(ss =>
+                ss.TripId == tripId &&
+                ss.SeatId == seatId &&
+                (ss.Status == "TemporaryReserved" || ss.Status == "Booked"));
+        }
         #endregion
     }
 }

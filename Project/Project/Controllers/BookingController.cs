@@ -114,15 +114,15 @@ namespace Project.Controllers
                 }
 
 
-                if (request.Tickets == null || !request.Tickets.Any())
-                {
-                    return BadRequest(new ApiResponse<CreateBookingResponse>
-                    {
-                        Success = false,
-                        Message = "Danh sách vé không được để trống",
-                        RequestId = HttpContext.TraceIdentifier
-                    });
-                }
+                //if (request.Tickets == null || !request.Tickets.Any())
+                //{
+                //    return BadRequest(new ApiResponse<CreateBookingResponse>
+                //    {
+                //        Success = false,
+                //        Message = "Danh sách vé không được để trống",
+                //        RequestId = HttpContext.TraceIdentifier
+                //    });
+                //}
                 var result = await _bookingService.CreateTemporaryBookingAsync(request);
 
                 if (result.Success)

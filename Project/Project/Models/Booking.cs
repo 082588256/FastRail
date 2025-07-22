@@ -15,6 +15,7 @@ namespace Project.Models
         public string BookingStatus { get; set; } = string.Empty; // Temporary, Confirmed, Cancelled, Expired
         public string? PaymentStatus { get; set; }
 
+        public decimal TotalPrice { get; set; }
         public DateTime? ExpirationTime { get; set; }
 
         // Thông tin liên hệ (cho guest booking)

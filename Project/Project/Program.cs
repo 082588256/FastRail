@@ -11,7 +11,7 @@ using Project.Repository.Trip;
 using Project.Services;
 using Project.Services.Carriage;
 using Project.Services.Route;
-using Project.Services.Seat;
+//using Project.Services.Seat;
 using Project.Services.Train;
 using Project.Utils.Validation;
 using Project.Swagger;
