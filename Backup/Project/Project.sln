@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project", "Project\Project.csproj", "{EC2D8C76-FDD1-4F49-9899-1E351A198893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "C:\Users\Asus\OneDrive\Desktop\Summer25\PRN232\tài liệu prn\WebApplication1\WebApplication1\WebApplication1.csproj", "{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectView", "..\..\..\..\..\..\OneDrive\Desktop\Summer25\PRN232\tài liệu prn\WebApplication1\WebApplication1\ProjectView.csproj", "{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
