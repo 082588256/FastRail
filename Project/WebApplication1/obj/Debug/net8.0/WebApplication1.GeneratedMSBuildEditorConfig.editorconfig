@@ -17,71 +17,73 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApplication1
 build_property.RootNamespace = WebApplication1
-build_property.ProjectDir = D:\HOC\PRN232\project\Project\WebApplication1\
+build_property.ProjectDir = C:\Users\Asus\source\repos\082588256\FastRail\Project\WebApplication1\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\HOC\PRN232\project\Project\WebApplication1
+build_property.MSBuildProjectDirectory = C:\Users\Asus\source\repos\082588256\FastRail\Project\WebApplication1
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Booking/bookRide.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Booking/bookRide.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xib29rUmlkZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Booking/SelectSeat.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Booking/SelectSeat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xTZWxlY3RTZWF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Booking/TrainView.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Booking/TrainView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xUcmFpblZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/about.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/about.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/blog-details.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/blog-details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxibG9nLWRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/blog.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/blog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxibG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/contact.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/driver.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/driver.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxkcml2ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/Index.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/index2.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/index2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleDIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/Privacy.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/singleTaxi.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/singleTaxi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzaW5nbGVUYXhpLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Home/taxi.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Home/taxi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx0YXhpLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Search/Search.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Search/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HOC/PRN232/project/Project/WebApplication1/Views/Shared/_Layout.cshtml]
+[C:/Users/Asus/source/repos/082588256/FastRail/Project/WebApplication1/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
