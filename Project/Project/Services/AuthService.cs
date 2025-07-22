@@ -204,7 +204,7 @@ namespace Project.Services
             }
         }
 
-        public async Task<bool> LogoutStaffAsync(string token)
+        public  async Task<bool> LogoutStaffAsync(string token)
         {
             try
             {

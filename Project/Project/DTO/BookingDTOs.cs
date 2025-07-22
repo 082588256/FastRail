@@ -6,6 +6,8 @@
     {
         public int? UserId { get; set; }
         public int TripId { get; set; }
+
+        public int SeatId { get; set; }
         public int DepartureStationId { get; set; }
         public int ArrivalStationId { get; set; }
 
