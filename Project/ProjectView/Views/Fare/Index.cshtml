@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Quản lý giá vé";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="fare-management-section" style="padding: 60px 0;">
+    <div class="container">
+        <div class="block-title text-center">
+            <div class="dot-line"></div>
+            <p>Fare Management</p>
+            <h2>Quản lý giá vé tuyến và chặng</h2>
+        </div>
+        <div class="row">
+            <!-- Fixed Fare by Route -->
+            <div class="col-md-6">
+                <h4>Giá vé cố định theo tuyến</h4>
+                <input type="number" id="routeId" class="form-control mb-2" placeholder="Nhập ID Tuyến">
+                <input type="number" id="fixedFare" class="form-control mb-2" placeholder="Nhập giá vé tuyến">
+                <button onclick="setFixedFare()" class="btn btn-primary mb-2">Cập nhật giá tuyến</button>
+                <button onclick="getFixedFare()" class="btn btn-outline-secondary mb-3">Xem giá tuyến</button>
+                <p><strong>Giá hiện tại:</strong> <span id="currentFixedFare">--</span></p>
+            </div>
+
+            <!-- Segment Fare by RouteSegment -->
+            <div class="col-md-6">
+                <h4>Giá vé theo chặng</h4>
+                <input type="number" id="segmentId" class="form-control mb-2" placeholder="Nhập ID Chặng">
+                <input type="number" id="segmentFare" class="form-control mb-2" placeholder="Nhập giá vé chặng">
+                <button onclick="setSegmentFare()" class="btn btn-success mb-2">Cập nhật giá chặng</button>
+                <button onclick="getSegmentFare()" class="btn btn-outline-secondary mb-3">Xem giá chặng</button>
+                <p><strong>Giá hiện tại:</strong> <span id="currentSegmentFare">--</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        const fareApiBase = 'https://localhost:5029/api/fare'; 
+
+        async function setFixedFare() {
+            const id = document.getElementById("routeId").value;
+            const fare = document.getElementById("fixedFare").value;
+            if (!id || !fare) return alert("Nhập ID tuyến và giá.");
+
+            const response = await fetch(`${fareApiBase}/route/${id}/fixed-fare`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(fare)
+            });
+
+            if (response.ok) {
+                alert("Cập nhật giá tuyến thành công!");
+                getFixedFare();
+            } else {
+                alert("Không tìm thấy tuyến!");
+            }
+        }
+
+        async function getFixedFare() {
+            const id = document.getElementById("routeId").value;
+            if (!id) return alert("Nhập ID tuyến.");
+
+            const res = await fetch(`${fareApiBase}/route/${id}/fixed-fare`);
+            if (res.ok) {
+                const fare = await res.json();
+                document.getElementById("currentFixedFare").innerText = fare.toLocaleString("vi-VN");
+            } else {
+                document.getElementById("currentFixedFare").innerText = "--";
+            }
+        }
+
+        async function setSegmentFare() {
+            const id = document.getElementById("segmentId").value;
+            const fare = document.getElementById("segmentFare").value;
+            if (!id || !fare) return alert("Nhập ID chặng và giá.");
+
+            const response = await fetch(`${fareApiBase}/segment/${id}/fare`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(fare)
+            });
+
+            if (response.ok) {
+                alert("Cập nhật giá chặng thành công!");
+                getSegmentFare();
+            } else {
+                alert("Không tìm thấy chặng!");
+            }
+        }
+
+        async function getSegmentFare() {
+            const id = document.getElementById("segmentId").value;
+            if (!id) return alert("Nhập ID chặng.");
+
+            const res = await fetch(`${fareApiBase}/segment/${id}/fare`);
+            if (res.ok) {
+                const fare = await res.json();
+                document.getElementById("currentSegmentFare").innerText = fare.toLocaleString("vi-VN");
+            } else {
+                document.getElementById("currentSegmentFare").innerText = "--";
+            }
+        }
+    </script>
+}
