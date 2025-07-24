@@ -1,4 +1,4 @@
-﻿namespace Project.DTOs
+﻿namespace Project.DTOs.StatisticsDTOs
 {
     public class DashboardStatsDto
     {

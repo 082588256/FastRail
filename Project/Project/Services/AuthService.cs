@@ -265,7 +265,7 @@ namespace Project.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
             var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
-            var audience = _configuration["Jwt:Audience"] ?? "FastRailAdmin";
+            var audience = _configuration["Jwt:Audience"];
 
 
             var claims = new List<Claim>
@@ -273,7 +273,7 @@ namespace Project.Services
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.FullName),
-                new Claim(ClaimTypes.Role, "admin")
+                new Claim("role", "admin")
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -298,7 +298,7 @@ namespace Project.Services
             
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
-                
+                Console.WriteLine(BCrypt.Net.BCrypt.HashPassword(request.Password));
                 return new LoginResponse { Success = false, Message = "Invalid username or password" };
             }
 
@@ -309,7 +309,7 @@ namespace Project.Services
             }
 
             var token = GenerateAdminJwtToken(user);
-
+            
             return new LoginResponse
             {
                 Success = true,

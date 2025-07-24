@@ -24,8 +24,9 @@ namespace ProjectView.Filter
             try
             {
                 var jwtToken = handler.ReadJwtToken(token);
+                Console.WriteLine(jwtToken.ToString());
 
-                var roleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                var roleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "role");
                 if (roleClaim?.Value != "admin")
                 {
                     context.Result = new RedirectToActionResult("Forbidden", "Authen", null);

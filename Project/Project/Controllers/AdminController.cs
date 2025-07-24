@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project.Services;
+using Project.Services.Metrics;
 using Project.Services.Route;
 
 namespace Project.Controllers
@@ -11,42 +12,37 @@ namespace Project.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : ControllerBase
     {
-        private readonly Services.ITripService _tripService;
-        private readonly IBookingService _bookingService;
-        private readonly IRouteService _routeService;
-
-        public AdminController(ITripService tripService, IBookingService bookingService, IRouteService routeService)
+        private readonly IStatisticService _statisticService;
+        public AdminController(IStatisticService statisticService)
         {
-            _tripService = tripService;
-            _bookingService = bookingService;
-            _routeService = routeService;
+            _statisticService = statisticService;
         }
+
+        
 
         [HttpGet("dashboard")]
         public async Task<IActionResult> GetDashboardStats()
         {
-            var stats = new DashboardStatsResponse
-            {
-                TicketsToday = await _bookingService.CountTicketsTodayAsync(),
-                PassengersOnBoard = await _tripService.CountPassengersOnBoardAsync(),
-                ActiveRoutes = await _routeService.CountActiveRoutesAsync(),
-                TodayRevenue = await _bookingService.CalculateTodayRevenueAsync(),
-                UpcomingTrips = await _tripService.CountUpcomingTripsWithinHourAsync(1),
-                EmptySeats = await _tripService.CountEmptySeatsTodayAsync(),
-                SeatOccupancyRate = await _tripService.CalculateOccupancyRateTodayAsync()
-            };
-
+            var stats = await _statisticService.GetDashboardStatsAsync();
             return Ok(stats);
         }
+
+        [HttpGet("chart-trip")]
+
+        public async Task<IActionResult> GetChartTrip()
+        {
+            var result = await _statisticService.getTripChart();
+            return Ok(result);
+        }
+
+        [HttpGet("chart-seat")]
+        public async Task<IActionResult> getChartSeat()
+        {
+            var result = await _statisticService.getSeatPercentage();
+            return Ok(result);
+        }
+
     }
 
-    internal class DashboardStatsResponse
-    {
-        public int TicketsToday { get; set; }
-        public int PassengersOnBoard { get; set; }
-        public object ActiveRoutes { get; set; }
-        public object TodayRevenue { get; set; }
-        public object UpcomingTrips { get; set; }
-        public object EmptySeats { get; set; }
-        public object SeatOccupancyRate { get; set; }
-    }
+    
+}
