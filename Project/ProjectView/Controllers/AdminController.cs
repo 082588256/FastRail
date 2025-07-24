@@ -77,7 +77,7 @@ namespace ProjectView.Controllers
         [HttpGet]
         public async Task<IActionResult> getSeatData()
         {
-            var token = HttpContext.Session.GetString("Jwt");
+            var token = HttpContext.Session.GetString("JWT");
             var baseUrl = _configuration["ApiSettings:baseUrl"];
             var client = _httpClient.CreateClient();
             client.DefaultRequestHeaders.Authorization= new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -89,5 +89,7 @@ namespace ProjectView.Controllers
             var content= await response.Content.ReadAsStringAsync();
             return Content(content, "application/json");
         }
+
+
     }
 }

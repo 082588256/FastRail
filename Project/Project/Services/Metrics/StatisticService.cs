@@ -49,18 +49,28 @@ namespace Project.Services.Metrics
 
         public async Task<List<SeatPercentageResponse>> getSeatPercentage()
         {
-            var totalTrip = await _context.Trip
-                .Include(t => t.Tickets)
-                .Include(t => t.Train)
-                    .ThenInclude(train => train.Carriages)
-                        .ThenInclude(carr => carr.Seats)
-                        .Select(g => new SeatPercentageResponse
-                        {
-                            TripName = g.TripName,
-                            AvailableSeat = g.Train.Carriages.SelectMany(c => c.Seats).Count() - g.Tickets.Count(),
-                            BookedSeat = g.Tickets.Count()
-                        }).ToListAsync();
-            return totalTrip;
+            var data = await _context.Trip
+        .Select(trip => new
+        {
+            TripId = trip.TripId,
+            TripName = trip.Train.TrainName + " - " + trip.DepartureTime.ToString("dd/MM"),
+            TotalSeats = _context.SeatSegment.Count(s => s.TripId == trip.TripId),
+            SoldSeats = _context.TicketSegment
+                .Where(t => t.Ticket.TripId == trip.TripId && t.Ticket.Status != "Canceled")
+                .Select(t => t.SeatId)
+                .Distinct()
+                .Count()
+        })
+        .ToListAsync();
+
+            var result = data.Select(d => new SeatPercentageResponse
+            {
+                TripName= d.TripName,
+               SoldSeats= d.SoldSeats,
+                AvailableSeat = d.TotalSeats - d.SoldSeats
+            }).ToList();
+
+            return result;
         }
 
         public async Task<TripChartResponse> getTripChart()

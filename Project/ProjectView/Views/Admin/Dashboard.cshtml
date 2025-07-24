@@ -3,7 +3,12 @@
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<style>
+    .chart-container {
+        position: relative;
+        height: 200px;
+    }
+</style>
 <!-- Overview Cards -->
 <div class="row">
     <div class="col-md-12">
@@ -81,16 +86,16 @@
     <div class="col-lg-6">
         <div class="au-card chart-percent-card">
             <div class="au-card-inner">
-                <h3 class="title-2 tm-b-5">chart by %</h3>
+                <h3 class="title-2 tm-b-5">Seats Percentage Report</h3>
                 <div class="row no-gutters">
-                    <div class="col-xl-6">
-                        <div class="chart-note-wrap">
-                            <div class="chart-note mr-0 d-block"><span class="dot dot--blue"></span><span>products</span></div>
-                            <div class="chart-note mr-0 d-block"><span class="dot dot--red"></span><span>services</span></div>
+                    <select id="trip-select" class="form-control mb-3"></select>
+                    <div class="col-xl-12">
+                        <div class="chart-container">
+                            <div class="percent-chart text-center">
+                                <canvas id="percent-chart-seat"></canvas>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="percent-chart"><canvas id="percent-chart"></canvas></div>
+                        
                     </div>
                     
                 </div>
@@ -115,13 +120,8 @@
         fetch("/Admin/getTripData")
             .then(response => response.json())
             .then(data => {
-                console.log("Dữ liệu biểu đồ:", data);
                 const labelsS = data.dates;
                 const counts = data.counts;
-
-                console.log("labels:", labelsS);
-                console.log("counts:", counts);
-
                 new Chart(document.getElementById("recent-trip-chart"), {
                     type: 'bar',
                     data: {
@@ -148,8 +148,71 @@
                 });
             })
             .catch((error) => {
-                console.error(error);
                 document.getElementById("tripChartError").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
             });
     });
+
+
+</script>
+
+<script>
+    let chart; // To store the chart instance
+    let data = []; // Global data
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Admin/getSeatData")
+            .then(res => res.json())
+            .then(json => {
+                data = json;
+
+                const select = document.getElementById("trip-select");
+                data.forEach((trip, index) => {
+                    const option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = trip.tripName;
+                    select.appendChild(option);
+                });
+
+                // Load initial chart
+                loadChart(0);
+
+                // Khi chọn chuyến khác
+                select.addEventListener("change", function () {
+                    const index = parseInt(this.value);
+                    loadChart(index);
+                });
+            });
+    });
+
+    function loadChart(index) {
+        const trip = data[index];
+        const ctx = document.getElementById("percent-chart-seat").getContext("2d");
+
+        const chartData = {
+            labels: ['Đã bán', 'Còn trống'],
+            datasets: [{
+                data: [trip.soldSeats, trip.emptySeats],
+                backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)']
+            }]
+        };
+
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: trip.tripName
+                }
+            }
+        };
+
+        // Xóa biểu đồ cũ nếu có
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: chartData,
+            options: chartOptions
+        });
+    }
 </script>
