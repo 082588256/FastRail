@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Project.Utils;
 
 namespace Project.Services
 {
@@ -66,7 +67,7 @@ namespace Project.Services
 
 
                 // Verify password (trim both input and db value)
-                if (!VerifyPassword(inputPassword, user.PasswordHash))
+                if (!UserUtils.VerifyPassword(inputPassword, user.PasswordHash))
                 {
                     _logger.LogWarning("Login failed: password mismatch. Email: {Email}, InputPassword: '{InputPassword}', DbPassword: '{DbPassword}'", inputEmail, inputPassword, user.PasswordHash);
 
@@ -253,6 +254,7 @@ namespace Project.Services
             return tokenHandler.WriteToken(token);
         }
 
+
         private bool VerifyPassword(string password, string passwordHash)
         {
             // Compare trimmed values to avoid issues with extra spaces
@@ -317,5 +319,6 @@ namespace Project.Services
                 
             };
         }
+
     }
 } 

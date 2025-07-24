@@ -9,6 +9,10 @@
       {
         "Path": "ProjectView\\ProjectView.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "ProjectView\\ProjectView.csproj",
+        "Action": "Start"
       }
     ]
   }
