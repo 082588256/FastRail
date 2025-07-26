@@ -6,7 +6,8 @@
 <style>
     .chart-container {
         position: relative;
-        height: 200px;
+        height: 180px;
+        padding-bottom:inherit;
     }
 </style>
 <!-- Overview Cards -->
@@ -77,7 +78,7 @@
     <div class="col-lg-6">
         <div class="au-card recent-report">
             <div class="au-card-inner">
-                <h3 class="title-2">Trips Report</h3>
+                <h3 class="title-3">Trips Report</h3>
                 <div class="recent-report__chart"><canvas id="recent-trip-chart"></canvas></div>
                 <p id="tripChartError" class="text-danger mt-2"></p>
             </div>
@@ -86,12 +87,12 @@
     <div class="col-lg-6">
         <div class="au-card chart-percent-card">
             <div class="au-card-inner">
-                <h3 class="title-2 tm-b-5">Seats Percentage Report</h3>
+                <h3 class="title-3">Seats Percentage Report</h3>
                 <div class="row no-gutters">
                     <select id="trip-select" class="form-control mb-3"></select>
                     <div class="col-xl-12">
                         <div class="chart-container">
-                            <div class="percent-chart text-center">
+                            <div class="percent-chart text-center mt-n2">
                                 <canvas id="percent-chart-seat"></canvas>
                             </div>
                         </div>
@@ -100,6 +101,17 @@
                     
                 </div>
             </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-xl-12 col-md-12">
+        <div class="au-card">
+            <div class="au-card-inner">
+                <canvas id="trips-standings"></canvas>
+            </div>
+            <span id="chart-trip-error" class="mb-2 text-danger"></span>
         </div>
     </div>
 </div>
@@ -156,8 +168,8 @@
 </script>
 
 <script>
-    let chart; // To store the chart instance
-    let data = []; // Global data
+    let chart; 
+    let data = [];
 
     document.addEventListener("DOMContentLoaded", function () {
         fetch("/Admin/getSeatData")
@@ -172,11 +184,7 @@
                     option.textContent = trip.tripName;
                     select.appendChild(option);
                 });
-
-                // Load initial chart
                 loadChart(0);
-
-                // Khi chọn chuyến khác
                 select.addEventListener("change", function () {
                     const index = parseInt(this.value);
                     loadChart(index);
@@ -205,8 +213,6 @@
                 }
             }
         };
-
-        // Xóa biểu đồ cũ nếu có
         if (chart) chart.destroy();
 
         chart = new Chart(ctx, {
@@ -215,4 +221,61 @@
             options: chartOptions
         });
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("@Url.Action("getTopTrips", "Admin")")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (!Array.isArray(data) || data.length === 0) {
+                    document.getElementById("chart-trip-error").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
+                    return;
+                }
+
+                const tripNames = data.map(t => t.tripName);
+                const revenues = data.map(t => t.revenue);
+
+                const ctx = document.getElementById("trips-standings").getContext("2d");
+
+                if (window.TripCharts) {
+                    window.TripCharts.destroy();
+                }
+
+                window.TripCharts = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: tripNames,
+                        datasets: [{
+                            label: "Top chuyến có doanh thu cao (VND)",
+                            data: revenues,
+                            backgroundColor: '#4e73df'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => ctx.raw.toLocaleString() + ' đ'
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: value => value.toLocaleString() + ' đ'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                document.getElementById("chart-trip-error").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
+            });
+    });
 </script>

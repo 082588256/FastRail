@@ -56,6 +56,11 @@ namespace ProjectView.Controllers
             
         }
 
+        public IActionResult Revenue()
+        {
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> getTripData()
         {
@@ -90,6 +95,74 @@ namespace ProjectView.Controllers
             return Content(content, "application/json");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> getTopTrips()
+        {
+            var token = HttpContext.Session.GetString("JWT");
+            var baseUrl = _configuration["ApiSettings:baseUrl"];
+            var client = _httpClient.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"{baseUrl}/api/Admin/chart-top-trip");
+            if(!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+            var content= await response.Content.ReadAsStringAsync();
+            return Content(content, "application/json");
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> getChartRevenue()
+        {
+            var token = HttpContext.Session.GetString("JWT");
+            var baseUrl = _configuration["ApiSettings:baseUrl"];
+            var client = _httpClient.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"{baseUrl}/api/Admin/chart-revenue");
+            if(!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+            var content= await response.Content.ReadAsStringAsync();
+            return Content(content, "application/json");
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> getRevenueByBookType()
+        {
+            var token = HttpContext.Session.GetString("JWT");
+            var baseUrl = _configuration["ApiSettings:baseUrl"];
+            var client = _httpClient.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"{baseUrl}/api/Admin/chart-revenue-user");
+            if(!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+            var content= await response.Content.ReadAsStringAsync();
+            return Content(content, "application/json");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> getRevenueBySeatType()
+        {
+            var token = HttpContext.Session.GetString("JWT");
+            var baseUrl = _configuration["ApiSettings:baseUrl"];
+            var client = _httpClient.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"{baseUrl}/api/Admin/chart-revenue-seattype");
+            if(!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)(response.StatusCode));
+            }
+            var content = await response.Content.ReadAsStringAsync();
+            return Content(content, "application/json");
+        }
+        public class BookingTypeRevenueDto
+        {
+            public string BookingType { get; set; } = default!;
+            public decimal TotalRevenue { get; set; }
+        }
     }
 }

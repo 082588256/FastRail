@@ -1,4 +1,6 @@
-﻿using Project.DTOs.StatisticsDTOs;
+﻿using Project.DTOs;
+using Project.DTOs.Standings;
+using Project.DTOs.StatisticsDTOs;
 
 namespace Project.Services.Metrics
 {
@@ -8,5 +10,15 @@ namespace Project.Services.Metrics
          Task<TripChartResponse> getTripChart();
 
         Task<List<SeatPercentageResponse>> getSeatPercentage();
+
+        Task<List<TopTripResponse>> GetTopTrips();
+
+        Task<List<RevenueReportItem>> getRevenueReportItem();
+
+        Task<List<RevenueByUserResponse>> GetRevenueByUsers();
+
+        Task<List<RevenueBySeatTypeDto>> GetRevenueBySeatTypeAsync();
+
+        
 }
 }

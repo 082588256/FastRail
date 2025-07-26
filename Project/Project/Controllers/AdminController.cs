@@ -18,8 +18,6 @@ namespace Project.Controllers
             _statisticService = statisticService;
         }
 
-        
-
         [HttpGet("dashboard")]
         public async Task<IActionResult> GetDashboardStats()
         {
@@ -39,6 +37,36 @@ namespace Project.Controllers
         public async Task<IActionResult> getChartSeat()
         {
             var result = await _statisticService.getSeatPercentage();
+            return Ok(result);
+        }
+
+        [HttpGet("chart-top-trip")]
+
+        public async Task<IActionResult> getTopTrip()
+        {
+            var result= await _statisticService.GetTopTrips();
+            return Ok(result);
+        }
+
+        [HttpGet("chart-revenue")]
+        public async Task<IActionResult> getRevenueChart()
+        {
+            var result = await _statisticService.getRevenueReportItem();
+            return Ok(result);
+        }
+
+        [HttpGet("chart-revenue-user")]
+
+        public async Task<IActionResult> getRevenueByBookingType()
+        {
+            var result= await _statisticService.GetRevenueByUsers();
+            return Ok(result);
+        }
+
+        [HttpGet("chart-revenue-seattype")]
+        public async Task<IActionResult> getRevenueBySeatType()
+        {
+            var result= await _statisticService.GetRevenueBySeatTypeAsync();
             return Ok(result);
         }
 
