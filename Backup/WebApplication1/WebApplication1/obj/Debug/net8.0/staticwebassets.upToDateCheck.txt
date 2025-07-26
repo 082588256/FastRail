@@ -1,4 +1,5 @@
 wwwroot\css\animate.css
+wwwroot\css\booking-success.css
 wwwroot\css\bootstrap-select.min.css
 wwwroot\css\bootstrap.min.css
 wwwroot\css\bootstrap.min.css.map

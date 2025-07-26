@@ -1,149 +1,153 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Backup\\WebApplication1\\",
+  "WorkspaceRootPath": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\booking\\trainview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\booking\\trainview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\search\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\search\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\booking\\bookride.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\booking\\bookride.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\booking\\bookride.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\booking\\selectseat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\booking\\selectseat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\booking\\selectseat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\booking\\trainview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\booking\\trainview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\services\\seatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\services\\seatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\seatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\trainbookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\trainbookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\trainbookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\tripsearchrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\tripsearchrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\tripsearchrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\seatavailabilityresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\seatavailabilityresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\seatavailabilityresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\carriagewithseatsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\carriagewithseatsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\carriagewithseatsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\services\\basicdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\services\\basicdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\basicdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\vwbookingdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\vwbookingdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\vwbookingdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\bookingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\bookingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\bookingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\search\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\search\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\validate.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\validate.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\validate.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\waypoints.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\waypoints.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\waypoints.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\theme.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\theme.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\theme.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\owl.carousel.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\owl.carousel.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\owl.carousel.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\map-helper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\map-helper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\map-helper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\wwwroot\\js\\bootstrap-select.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\wwwroot\\js\\bootstrap-select.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\wwwroot\\js\\bootstrap-select.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\driver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\driver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\driver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\singletaxi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\singletaxi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\singletaxi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|e:\\backup\\webapplication1\\webapplication1\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A301850C-4A2E-4A0E-8803-4EF4337798A9}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -271,6 +275,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",
@@ -830,6 +838,10 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:16:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
@@ -971,20 +983,12 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:11:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             }
           ]
         },
         {
           "DockedWidth": 1304,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -1036,23 +1040,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BookingController.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\BookingController.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
-              "RelativeToolTip": "WebApplication1\\Controllers\\BookingController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAgwD0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T04:18:27.404Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
               "RelativeToolTip": "WebApplication1\\Program.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1060,11 +1052,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "TripService.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Services\\TripService.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
               "RelativeToolTip": "WebApplication1\\Services\\TripService.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAwAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1072,35 +1064,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "SelectSeat.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
-              "ViewState": "AgIAALgAAAAAAAAAAAAuwNgAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T19:17:34.59Z"
+              "WhenOpened": "2025-07-03T19:17:34.59Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAEAAAAAAAAAAAjwAoEAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAHMBAAAAAAAAAAAAAI8BAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-03T04:23:54.633Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "SeatService.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\SeatService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\SeatService.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Services\\SeatService.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\SeatService.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\SeatService.cs",
               "RelativeToolTip": "WebApplication1\\Services\\SeatService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1108,11 +1101,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "TripSearchRequest.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\TripSearchRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\TripSearchRequest.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\TripSearchRequest.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\TripSearchRequest.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\TripSearchRequest.cs",
               "RelativeToolTip": "WebApplication1\\Models\\TripSearchRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1120,11 +1113,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 0,
+              "Title": "bookRide.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\bookRide.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Booking\\bookRide.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\bookRide.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Booking\\bookRide.cshtml",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAIwPcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-03T21:08:40.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TrainView.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\TrainView.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Booking\\TrainView.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\TrainView.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Booking\\TrainView.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-12T04:48:43.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA9wD0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T04:18:27.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "SeatAvailabilityResponse.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\SeatAvailabilityResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\SeatAvailabilityResponse.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\SeatAvailabilityResponse.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\SeatAvailabilityResponse.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\SeatAvailabilityResponse.cs",
               "RelativeToolTip": "WebApplication1\\Models\\SeatAvailabilityResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1132,11 +1163,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\HomeController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwCgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1144,36 +1175,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "bookRide.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\bookRide.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Views\\Booking\\bookRide.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\bookRide.cshtml",
-              "RelativeToolTip": "WebApplication1\\Views\\Booking\\bookRide.cshtml",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAAwAYBAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T21:08:40.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TrainView.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\TrainView.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Views\\Booking\\TrainView.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Booking\\TrainView.cshtml",
-              "RelativeToolTip": "WebApplication1\\Views\\Booking\\TrainView.cshtml",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-12T04:48:43.955Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "TrainBookingSystemContext.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\TrainBookingSystemContext.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\TrainBookingSystemContext.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\TrainBookingSystemContext.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\TrainBookingSystemContext.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\TrainBookingSystemContext.cs",
               "RelativeToolTip": "WebApplication1\\Models\\TrainBookingSystemContext.cs",
               "ViewState": "AgIAABUAAAAAAAAAAIA5wCcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1181,11 +1187,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "CarriageWithSeatsViewModel.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
               "RelativeToolTip": "WebApplication1\\Models\\CarriageWithSeatsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1193,11 +1199,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
               "Title": "VwBookingDetail.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\VwBookingDetail.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\VwBookingDetail.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\VwBookingDetail.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\VwBookingDetail.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\VwBookingDetail.cs",
               "RelativeToolTip": "WebApplication1\\Models\\VwBookingDetail.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1205,11 +1211,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "ApiResponse.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\ApiResponse.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\ApiResponse.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\ApiResponse.cs",
               "RelativeToolTip": "WebApplication1\\Models\\ApiResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1217,11 +1223,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 14,
               "Title": "BasicDataService.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\BasicDataService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\BasicDataService.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Services\\BasicDataService.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\BasicDataService.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\BasicDataService.cs",
               "RelativeToolTip": "WebApplication1\\Services\\BasicDataService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1229,11 +1235,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
               "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -1241,23 +1247,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "SearchController.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\SearchController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\SearchController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\SearchController.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Controllers\\SearchController.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\SearchController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\SearchController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBQAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-03T19:55:57.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "SearchService.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\SearchService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\SearchService.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Services\\SearchService.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Services\\SearchService.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\SearchService.cs",
               "RelativeToolTip": "WebApplication1\\Services\\SearchService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1265,11 +1271,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
               "RelativeDocumentMoniker": "WebApplication1\\appsettings.json",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\appsettings.json",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
               "RelativeToolTip": "WebApplication1\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -1277,23 +1283,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 21,
               "Title": "Search.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Search\\Search.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Search\\Search.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Search\\Search.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Search\\Search.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Search\\Search.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Search\\Search.cshtml",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-03T21:24:13.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "BookingViewModel.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\BookingViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingViewModel.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\BookingViewModel.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\BookingViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingViewModel.cs",
               "RelativeToolTip": "WebApplication1\\Models\\BookingViewModel.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAcwDsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1301,11 +1307,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1315,9 +1321,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "waypoints.min.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\waypoints.min.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\waypoints.min.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\waypoints.min.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAADIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1327,9 +1333,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "validate.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\validate.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\validate.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\validate.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\validate.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\validate.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\validate.js",
               "ViewState": "AgIAAA0AAAAAAAAAAAAowC0AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1337,11 +1343,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "owl.carousel.min.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\owl.carousel.min.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1351,9 +1357,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "Privacy.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1361,11 +1367,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "map-helper.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\map-helper.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\map-helper.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\map-helper.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\map-helper.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\map-helper.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\map-helper.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1373,11 +1379,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "bootstrap-select.min.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\bootstrap-select.min.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1385,11 +1391,23 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "WebApplication1\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-03T22:35:08.584Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 25,
               "Title": "theme.js",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\theme.js",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\theme.js",
               "RelativeDocumentMoniker": "WebApplication1\\wwwroot\\js\\theme.js",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\wwwroot\\js\\theme.js",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\wwwroot\\js\\theme.js",
               "RelativeToolTip": "WebApplication1\\wwwroot\\js\\theme.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -1397,11 +1415,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "about.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\about.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\about.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\about.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\about.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\about.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\about.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1409,11 +1427,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "blog.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\blog.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\blog.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\blog.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\blog.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\blog.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\blog.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1421,11 +1439,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "driver.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\driver.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\driver.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\driver.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\driver.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\driver.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\driver.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1433,11 +1451,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "singleTaxi.cshtml",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\singleTaxi.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\singleTaxi.cshtml",
               "RelativeDocumentMoniker": "WebApplication1\\Views\\Home\\singleTaxi.cshtml",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Views\\Home\\singleTaxi.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\singleTaxi.cshtml",
               "RelativeToolTip": "WebApplication1\\Views\\Home\\singleTaxi.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1445,11 +1463,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "Booking.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\Booking.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\Booking.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Booking.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\Booking.cs",
               "RelativeToolTip": "WebApplication1\\Models\\Booking.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAA6wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1457,11 +1475,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\ErrorViewModel.cs",
-              "ToolTip": "E:\\Backup\\WebApplication1\\WebApplication1\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\ErrorViewModel.cs",
               "RelativeToolTip": "WebApplication1\\Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1587,11 +1605,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "Name": "ST:13:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:13:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }

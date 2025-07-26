@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CmIQ5H3plyw=",
+  "dgSpecHash": "n8G2wBfIgnk=",
   "success": true,
-  "projectFilePath": "E:\\Backup\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\tài liệu prn\\WebApplication1\\WebApplication1\\ProjectView.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -18,7 +18,7 @@ public class SearchController : Controller
         if (ticket == null)
         {
             ViewBag.Error = "Không tìm thấy vé có ID: " + bookingCode;
-            return View("Search", null);
+            return View("SearchBooking", null);
         }
         return View("Search", ticket);
     }

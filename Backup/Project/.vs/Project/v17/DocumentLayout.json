@@ -1,7 +1,74 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\booking\\success.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\models\\routesegment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\models\\routesegment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\models\\fastraildbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\models\\fastraildbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\models\\bookingsuccessviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\services\\seatservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\services\\seatservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\services\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\views\\booking\\selectseat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|c:\\users\\asus\\source\\repos\\082588256\\fastrail\\backup\\project\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC2D8C76-FDD1-4F49-9899-1E351A198893}|Project\\Project.csproj|solutionrelative:project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C434AEBD-A291-F5DC-0CC6-6C1FA9A2BFCD}|..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\ProjectView.csproj|c:\\users\\asus\\onedrive\\desktop\\summer25\\prn232\\t\u00E0i li\u1EC7u prn\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +76,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 216,
           "Children": [
             {
               "$type": "Bookmark",
@@ -781,10 +848,6 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
             },
             {
@@ -838,6 +901,240 @@
             {
               "$type": "Bookmark",
               "Name": "ST:11:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Success.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\Success.cshtml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\Success.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\Success.cshtml",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\Success.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-26T11:51:26.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RouteSegment.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Models\\RouteSegment.cs",
+              "RelativeDocumentMoniker": "Project\\Models\\RouteSegment.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Models\\RouteSegment.cs",
+              "RelativeToolTip": "Project\\Models\\RouteSegment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T05:21:44.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FastRailDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Models\\FastRailDbContext.cs",
+              "RelativeDocumentMoniker": "Project\\Models\\FastRailDbContext.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Models\\FastRailDbContext.cs",
+              "RelativeToolTip": "Project\\Models\\FastRailDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T05:06:09.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookingSuccessViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingSuccessViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingSuccessViewModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingSuccessViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Models\\BookingSuccessViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:45:07.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:45:04.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:33:47.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SeatServices.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\SeatServices.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\SeatServices.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\SeatServices.cs",
+              "RelativeToolTip": "Project\\Services\\SeatServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:31:59.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TripController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Controllers\\TripController.cs",
+              "RelativeDocumentMoniker": "Project\\Controllers\\TripController.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Controllers\\TripController.cs",
+              "RelativeToolTip": "Project\\Controllers\\TripController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:31:07.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TripService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\TripService.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\TripService.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\TripService.cs",
+              "RelativeToolTip": "Project\\Services\\TripService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJ8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:24:59.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\BookingService.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\BookingService.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Services\\BookingService.cs",
+              "RelativeToolTip": "Project\\Services\\BookingService.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAqwIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:22:58.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Project\\Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Project\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwFUAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T04:19:41.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TripService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Services\\TripService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T17:28:50.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T04:49:24.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-23T04:49:10.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SelectSeat.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Booking\\SelectSeat.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAEUBAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T03:20:18.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\appsettings.json",
+              "RelativeDocumentMoniker": "Project\\appsettings.json",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\appsettings.json",
+              "RelativeToolTip": "Project\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-23T02:47:35.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Program.cs",
+              "RelativeDocumentMoniker": "Project\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\082588256\\FastRail\\Backup\\Project\\Project\\Program.cs",
+              "RelativeToolTip": "Project\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T02:47:32.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-23T02:47:28.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Asus\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\OneDrive\\Desktop\\Summer25\\PRN232\\t\u00E0i li\u1EC7u prn\\WebApplication1\\WebApplication1\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAIQCAAAAAAAAAAAmwJMCAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T02:46:37.077Z"
             }
           ]
         },
