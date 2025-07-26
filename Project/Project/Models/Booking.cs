@@ -29,6 +29,9 @@ namespace Project.Models
         public DateTime? ConfirmedAt { get; set; }
         public DateTime? CancelledAt { get; set; }
 
+        // Total price for the booking
+        public decimal TotalPrice { get; set; }
+
         // Navigation properties
         public ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();
         public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
