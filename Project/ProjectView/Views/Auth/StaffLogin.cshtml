@@ -303,9 +303,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 showAlert('Login successful! Redirecting...', 'success');
                 
-                // Redirect to QR scanner page
+                // Redirect to management dashboard
                 setTimeout(() => {
-                    window.location.href = '/Staff/QRScanner';
+                    window.location.href = '/Staff/Management';
                 }, 1500);
             } else {
                 showAlert(result.message || 'Login failed', 'danger');
