@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Project.DTO;
 using Project.DTOs;
 using Project.Services;
+using System.Security.Claims;
 
 namespace Project.Controllers
 {
@@ -174,6 +175,21 @@ namespace Project.Controllers
                     RequestId = HttpContext.TraceIdentifier
                 });
             }
+        }
+
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest model)
+        {
+            var userResponse = await _authService.LoginAdminAsync(model);
+            if (!userResponse.Success)
+                return Unauthorized(userResponse.Message);
+
+            return Ok(new
+            {
+                token = userResponse.Token,
+                success = true
+            });
         }
     }
 } 

@@ -600,12 +600,12 @@ function showBookingResult(data) {
     const bookingDetails = document.getElementById('bookingDetails');
 
     bookingResult.classList.add('show');
-    bookingCode.textContent = data.ticketCode;
+    bookingCode.textContent = data.bookingCode || data.ticketCode;
 
-    // Generate QR code
+    // Generate QR code with booking code
     qrCodeDiv.innerHTML = '';
     const qr = new QRCode(qrCodeDiv, {
-        text: data.ticketCode,
+        text: data.bookingCode || data.ticketCode,
         width: 180,
         height: 180
     });

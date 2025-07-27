@@ -8,5 +8,6 @@ namespace Project.Services
         Task<bool> ValidateStaffTokenAsync(string token);
         Task<UserResponse?> GetStaffUserAsync(string token);
         Task<bool> LogoutStaffAsync(string token);
+        Task<LoginResponse> LoginAdminAsync(LoginRequest request);
     }
 } 

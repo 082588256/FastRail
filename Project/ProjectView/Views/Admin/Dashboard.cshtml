@@ -1,8 +1,15 @@
-﻿@{
+﻿@model ProjectView.Models.Admin.Dashboard.AdminDashBoardViewModel;
+@{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<style>
+    .chart-container {
+        position: relative;
+        height: 180px;
+        padding-bottom:inherit;
+    }
+</style>
 <!-- Overview Cards -->
 <div class="row">
     <div class="col-md-12">
@@ -22,7 +29,7 @@
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="icon"><i class="zmdi zmdi-account-o"></i></div>
-                    <div class="text"><h2>10368</h2><span>members online</span></div>
+                    <div class="text"><h2>@Model.ActiveRoutes</h2><span>Tuyến Đang Hoạt Động</span></div>
                 </div>
                 <div class="overview-chart"><canvas id="widgetChart1"></canvas></div>
             </div>
@@ -34,7 +41,7 @@
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="icon"><i class="zmdi zmdi-shopping-cart"></i></div>
-                    <div class="text"><h2>388,688</h2><span>items sold</span></div>
+                    <div class="text"><h2>@Model.TicketsToday</h2><span>Vé Bán Hôm Nay</span></div>
                 </div>
                 <div class="overview-chart"><canvas id="widgetChart2"></canvas></div>
             </div>
@@ -46,7 +53,7 @@
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="icon"><i class="zmdi zmdi-calendar-note"></i></div>
-                    <div class="text"><h2>1,086</h2><span>this week</span></div>
+                    <div class="text"><h2>@Model.SeatOccupancyRate %</h2><span>Tỉ lệ ghế trống</span></div>
                 </div>
                 <div class="overview-chart"><canvas id="widgetChart3"></canvas></div>
             </div>
@@ -58,7 +65,7 @@
             <div class="overview__inner">
                 <div class="overview-box clearfix">
                     <div class="icon"><i class="zmdi zmdi-money"></i></div>
-                    <div class="text"><h2>$1,060,386</h2><span>total earnings</span></div>
+                    <div class="text"><h2>@Model.TodayRevenue</h2><span>Doanh Thu Hôm Nay</span></div>
                 </div>
                 <div class="overview-chart"><canvas id="widgetChart4"></canvas></div>
             </div>
@@ -71,92 +78,44 @@
     <div class="col-lg-6">
         <div class="au-card recent-report">
             <div class="au-card-inner">
-                <h3 class="title-2">recent reports</h3>
-                <div class="chart-info">
-                    <div class="chart-info__left">
-                        <div class="chart-note"><span class="dot dot--blue"></span><span>products</span></div>
-                        <div class="chart-note mr-0"><span class="dot dot--green"></span><span>services</span></div>
-                    </div>
-                    <div class="chart-info__right">
-                        <div class="chart-statis">
-                            <span class="index incre"><i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                            <span class="label">products</span>
-                        </div>
-                        <div class="chart-statis mr-0">
-                            <span class="index decre"><i class="zmdi zmdi-long-arrow-down"></i>10%</span>
-                            <span class="label">services</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="recent-report__chart"><canvas id="recent-rep-chart"></canvas></div>
+                <h3 class="title-3">Trips Report</h3>
+                <div class="recent-report__chart"><canvas id="recent-trip-chart"></canvas></div>
+                <p id="tripChartError" class="text-danger mt-2"></p>
             </div>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="au-card chart-percent-card">
             <div class="au-card-inner">
-                <h3 class="title-2 tm-b-5">chart by %</h3>
+                <h3 class="title-3">Seats Percentage Report</h3>
                 <div class="row no-gutters">
-                    <div class="col-xl-6">
-                        <div class="chart-note-wrap">
-                            <div class="chart-note mr-0 d-block"><span class="dot dot--blue"></span><span>products</span></div>
-                            <div class="chart-note mr-0 d-block"><span class="dot dot--red"></span><span>services</span></div>
+                    <select id="trip-select" class="form-control mb-3"></select>
+                    <div class="col-xl-12">
+                        <div class="chart-container">
+                            <div class="percent-chart text-center mt-n2">
+                                <canvas id="percent-chart-seat"></canvas>
+                            </div>
                         </div>
+                        
                     </div>
-                    <div class="col-xl-6">
-                        <div class="percent-chart"><canvas id="percent-chart"></canvas></div>
-                    </div>
+                    
                 </div>
             </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-xl-12 col-md-12">
+        <div class="au-card">
+            <div class="au-card-inner">
+                <canvas id="trips-standings"></canvas>
+            </div>
+            <span id="chart-trip-error" class="mb-2 text-danger"></span>
         </div>
     </div>
 </div>
 
-<!-- Earnings Table + Top Countries -->
-<div class="row">
-    <div class="col-lg-9">
-        <h2 class="title-1 m-b-25">Earnings By Items</h2>
-        <div class="table-responsive table--no-card m-b-40">
-            <table class="table table-borderless table-striped table-earning">
-                <thead>
-                    <tr>
-                        <th>date</th>
-                        <th>order ID</th>
-                        <th>name</th>
-                        <th class="text-right">price</th>
-                        <th class="text-right">quantity</th>
-                        <th class="text-right">total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2018-09-29 05:57</td><td>100398</td><td>iPhone X 64Gb Grey</td><td class="text-right">$999.00</td><td class="text-right">1</td><td class="text-right">$999.00</td></tr>
-                    <tr><td>2018-09-28 01:22</td><td>100397</td><td>Samsung S8 Black</td><td class="text-right">$756.00</td><td class="text-right">1</td><td class="text-right">$756.00</td></tr>
-                    <tr><td>2018-09-27 02:12</td><td>100396</td><td>Game Console Controller</td><td class="text-right">$22.00</td><td class="text-right">2</td><td class="text-right">$44.00</td></tr>
-                    <tr><td>2018-09-26 23:06</td><td>100395</td><td>iPhone X 256Gb Black</td><td class="text-right">$1199.00</td><td class="text-right">1</td><td class="text-right">$1199.00</td></tr>
-                    <tr><td>2018-09-25 19:03</td><td>100393</td><td>USB 3.0 Cable</td><td class="text-right">$10.00</td><td class="text-right">3</td><td class="text-right">$30.00</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <h2 class="title-1 m-b-25">Top countries</h2>
-        <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-            <div class="au-card-inner">
-                <div class="table-responsive">
-                    <table class="table table-top-countries">
-                        <tbody>
-                            <tr><td>United States</td><td class="text-right">$119,366.96</td></tr>
-                            <tr><td>Australia</td><td class="text-right">$70,261.65</td></tr>
-                            <tr><td>United Kingdom</td><td class="text-right">$46,399.22</td></tr>
-                            <tr><td>Turkey</td><td class="text-right">$35,364.90</td></tr>
-                            <tr><td>Germany</td><td class="text-right">$20,366.96</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Footer -->
 <div class="row">
@@ -166,3 +125,157 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Admin/getTripData")
+            .then(response => response.json())
+            .then(data => {
+                const labelsS = data.dates;
+                const counts = data.counts;
+                new Chart(document.getElementById("recent-trip-chart"), {
+                    type: 'bar',
+                    data: {
+                        labels: labelsS,
+                        datasets: [{
+                            label: "Số lượng chuyến theo ngày",
+                            data: counts.map(x => Number(x)),
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    precision: 0
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch((error) => {
+                document.getElementById("tripChartError").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
+            });
+    });
+
+
+</script>
+
+<script>
+    let chart; 
+    let data = [];
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Admin/getSeatData")
+            .then(res => res.json())
+            .then(json => {
+                data = json;
+
+                const select = document.getElementById("trip-select");
+                data.forEach((trip, index) => {
+                    const option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = trip.tripName;
+                    select.appendChild(option);
+                });
+                loadChart(0);
+                select.addEventListener("change", function () {
+                    const index = parseInt(this.value);
+                    loadChart(index);
+                });
+            });
+    });
+
+    function loadChart(index) {
+        const trip = data[index];
+        const ctx = document.getElementById("percent-chart-seat").getContext("2d");
+
+        const chartData = {
+            labels: ['Đã bán', 'Còn trống'],
+            datasets: [{
+                data: [trip.soldSeats, trip.emptySeats],
+                backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)']
+            }]
+        };
+
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: trip.tripName
+                }
+            }
+        };
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: chartData,
+            options: chartOptions
+        });
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("@Url.Action("getTopTrips", "Admin")")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (!Array.isArray(data) || data.length === 0) {
+                    document.getElementById("chart-trip-error").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
+                    return;
+                }
+
+                const tripNames = data.map(t => t.tripName);
+                const revenues = data.map(t => t.revenue);
+
+                const ctx = document.getElementById("trips-standings").getContext("2d");
+
+                if (window.TripCharts) {
+                    window.TripCharts.destroy();
+                }
+
+                window.TripCharts = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: tripNames,
+                        datasets: [{
+                            label: "Top chuyến có doanh thu cao (VND)",
+                            data: revenues,
+                            backgroundColor: '#4e73df'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => ctx.raw.toLocaleString() + ' đ'
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: value => value.toLocaleString() + ' đ'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                document.getElementById("chart-trip-error").innerHTML = "<p class='text-muted'>Không có dữ liệu để hiển thị.</p>";
+            });
+    });
+</script>

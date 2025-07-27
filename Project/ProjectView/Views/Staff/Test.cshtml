@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "JavaScript Test";
+    Layout = "_StaffLayout";
+}
+
+<div style="padding: 20px; font-family: Arial, sans-serif;">
+    <h1>JavaScript Loading Test</h1>
+    
+    <div id="test-results">
+        <h2>Test Results:</h2>
+        <ul id="results-list">
+            <li>Testing jQuery... <span id="jquery-test">Loading...</span></li>
+            <li>Testing Bootstrap... <span id="bootstrap-test">Loading...</span></li>
+            <li>Testing Font Awesome... <span id="fontawesome-test">Loading...</span></li>
+        </ul>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <button class="btn btn-primary" onclick="testAPI()">Test API Connection</button>
+        <button class="btn btn-secondary" onclick="testLocalStorage()">Test Local Storage</button>
+    </div>
+    
+    <div id="api-result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; display: none;">
+        <h3>API Test Result:</h3>
+        <pre id="api-output"></pre>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    // Test jQuery
+    if (typeof jQuery !== 'undefined') {
+        document.getElementById('jquery-test').textContent = '✅ Loaded';
+        document.getElementById('jquery-test').style.color = 'green';
+    } else {
+        document.getElementById('jquery-test').textContent = '❌ Failed';
+        document.getElementById('jquery-test').style.color = 'red';
+    }
+    
+    // Test Bootstrap
+    if (typeof bootstrap !== 'undefined') {
+        document.getElementById('bootstrap-test').textContent = '✅ Loaded';
+        document.getElementById('bootstrap-test').style.color = 'green';
+    } else {
+        document.getElementById('bootstrap-test').textContent = '❌ Failed';
+        document.getElementById('bootstrap-test').style.color = 'red';
+    }
+    
+    // Test Font Awesome
+    if (document.querySelector('.fa')) {
+        document.getElementById('fontawesome-test').textContent = '✅ Loaded';
+        document.getElementById('fontawesome-test').style.color = 'green';
+    } else {
+        document.getElementById('fontawesome-test').textContent = '❌ Failed';
+        document.getElementById('fontawesome-test').style.color = 'red';
+    }
+});
+
+async function testAPI() {
+    const apiBaseUrl = 'http://localhost:5014';
+    const output = document.getElementById('api-output');
+    const resultDiv = document.getElementById('api-result');
+    
+    try {
+        output.textContent = 'Testing API connection...';
+        resultDiv.style.display = 'block';
+        
+        const response = await fetch(`${apiBaseUrl}/api/trip/search`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                departureStationName: 'Hà Nội',
+                arrivalStationName: 'TP.HCM',
+                travelDate: new Date().toISOString().split('T')[0]
+            })
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            output.textContent = 'API Test Successful!\n\nResponse:\n' + JSON.stringify(result, null, 2);
+        } else {
+            output.textContent = 'API Test Failed!\n\nStatus: ' + response.status + '\nStatus Text: ' + response.statusText;
+        }
+    } catch (error) {
+        output.textContent = 'API Test Error!\n\nError: ' + error.message;
+    }
+}
+
+function testLocalStorage() {
+    const output = document.getElementById('api-output');
+    const resultDiv = document.getElementById('api-result');
+    
+    try {
+        localStorage.setItem('test', 'test-value');
+        const testValue = localStorage.getItem('test');
+        localStorage.removeItem('test');
+        
+        output.textContent = 'Local Storage Test Successful!\n\nTest Value: ' + testValue;
+        resultDiv.style.display = 'block';
+    } catch (error) {
+        output.textContent = 'Local Storage Test Failed!\n\nError: ' + error.message;
+        resultDiv.style.display = 'block';
+    }
+}
+</script> 

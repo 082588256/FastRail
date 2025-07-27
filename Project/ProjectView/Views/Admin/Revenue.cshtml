@@ -1,0 +1,210 @@
+﻿@using Newtonsoft.Json;
+@using static ProjectView.Controllers.AdminController
+@model List<BookingTypeRevenueDto>
+
+@{
+    ViewData["Title"] = "Revenue";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="au-card recent-report">
+            <h3 class="title-3">REVENUE REPORTS</h3>
+            <div class="recent-report__chart">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="au-card recent-report">
+
+            <div class="recent-report__chart">
+                <canvas id="bookingTypeChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="au-card recent-report">
+            <div class="recent-report__chart">
+                <canvas id="seatTypeChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/Admin/getChartRevenue');
+                if (!response.ok) {
+                    throw new Error('Failed to load revenue data');
+                }
+
+                const data = await response.json();
+
+                const labels = data.map(item => new Date(item.date).toLocaleDateString());
+                const revenues = data.map(item => item.totalRevenue);
+                const bookingCounts = data.map(item => item.bookingCount);
+
+                const ctx = document.getElementById('revenueChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Total Revenue',
+                                data: revenues,
+                                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Booking Count',
+                                data: bookingCounts,
+                                backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                                borderColor: 'rgba(255, 159, 64, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Doanh thu và lượt đặt vé theo ngày'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Doanh thu (VND)'
+                                }
+                            },
+                            y1: {
+                                beginAtZero: true,
+                                position: 'right',
+                                grid: {
+                                    drawOnChartArea:'false'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Số lượng đặt vé'
+                                }
+                            }
+                        }
+                    }
+                });
+
+            } catch (error) {
+                console.error(error);
+                alert('Lỗi khi tải dữ liệu biểu đồ doanh thu.');
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/Admin/getRevenueByBookType');
+                if (!response.ok) throw new Error("Fetch failed");
+
+                const data = await response.json();
+
+                const labels = data.map(x => x.bookingType);
+                const revenues = data.map(x => x.totalRevenue);
+
+                const ctx = document.getElementById('bookingTypeChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Doanh thu theo loại khách',
+                            data: revenues,
+                            backgroundColor: ['#4CAF50', '#FF9800', '#2196F3']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Doanh thu theo loại khách'
+                            }
+                        }
+                    }
+                });
+            } catch (err) {
+                console.error(err);
+                alert('Lỗi khi lấy dữ liệu doanh thu theo loại khách');
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/Admin/getRevenueBySeatType');
+                if (!response.ok) throw new Error("Fetch failed");
+
+                const data = await response.json();
+
+                const labels = data.map(x => x.seatTypeName);
+                const revenues = data.map(x => x.totalRevenue);
+
+                const ctx = document.getElementById('seatTypeChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Doanh thu theo loại ghế',
+                            data: revenues,
+                            backgroundColor: ['#4CAF50', '#FF9800', '#2196F3']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Doanh thu theo loại ghế'
+                            }
+                        }
+                    }
+                });
+            } catch (err) {
+               
+                alert('Lỗi khi lấy dữ liệu doanh thu theo loại ghế');
+            }
+        });
+    </script>
+    
+}
