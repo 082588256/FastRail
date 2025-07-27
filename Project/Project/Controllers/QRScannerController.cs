@@ -530,10 +530,7 @@ namespace Project.Controllers
         public decimal TotalPrice { get; set; }
         public List<TicketInfo> Tickets { get; set; } = new List<TicketInfo>();
 
-        public static implicit operator BookingDetailsResponse(DTOs.BookingDetailsResponse v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 
     public class TicketInfo

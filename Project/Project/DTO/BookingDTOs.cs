@@ -20,7 +20,6 @@
         // Guest identifier
         public bool IsGuestBooking => !UserId.HasValue;
     }
-
     public class PassengerTicketRequest
     {
         public int SeatId { get; set; }
@@ -32,8 +31,6 @@
         public string? PassengerIdCard { get; set; }
         public DateTime? PassengerDateOfBirth { get; set; }
     }
-
-
     public class GuestBookingLookupRequest
     {
         public string BookingCode { get; set; } = string.Empty;
@@ -70,13 +67,11 @@
         public string BookingCode { get; set; } = string.Empty;
         public decimal TotalPrice { get; set; }
         public DateTime? ExpirationTime { get; set; }
-        public string Message { get; set; } = string.Empty;
-        public List<int>? SegmentIds { get; set; }
+        public string? TicketCode { get; set; } // Add this property
         public bool IsGuestBooking { get; set; }
-
-        // Thông tin tra cứu cho guest
         public string? LookupPhone { get; set; }
         public string? LookupEmail { get; set; }
+        public string Message { get; set; } = string.Empty;
     }
 
     public class BookingDetailsResponse
@@ -172,6 +167,35 @@
         public List<string>? PreferredSeatClasses { get; set; }
     }
 
+    public class TicketDetailsResponse
+    {
+        public int BookingId { get; set; }
+        public string BookingCode { get; set; } = string.Empty;
+        public string BookingStatus { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ConfirmedAt { get; set; }
+        public DateTime? ExpirationTime { get; set; }
+        public bool IsGuestBooking { get; set; }
+        public string? ContactInfo { get; set; }
+        public string? ContactName { get; set; }
+        public string? ContactPhone { get; set; }
+        public string? ContactEmail { get; set; }
+        public string? TicketCode { get; set; }
+        public string? PassengerName { get; set; }
+        public string? PassengerPhone { get; set; }
+        public string? PassengerIdCard { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string? Status { get; set; }
+        public string? TripCode { get; set; }
+        public string? TrainNumber { get; set; }
+        public string? DepartureStation { get; set; }
+        public string? ArrivalStation { get; set; }
+        public DateTime? DepartureTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
+        public string? SeatNumber { get; set; }
+        public string? CarriageNumber { get; set; }
+    }
+
     #endregion
 
     #region Trip and Seat DTOs
@@ -181,7 +205,10 @@
         public String DepartureStationName { get; set; }
         public String ArrivalStationName { get; set; }
         public DateTime TravelDate { get; set; }
-
+        //public int PassengerCount { get; set; } = 1;
+        //public string? SeatClass { get; set; }
+        //public string? SeatType { get; set; }
+        //public bool IncludeFullTrips { get; set; } = true;
     }
 
     public class TripSearchResponse
@@ -197,8 +224,7 @@
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public int EstimatedDurationMinutes { get; set; }
-        public int TrainId { get; set; }
-        public int TotalSeats { get; set; }
+
         //public int TotalSeats { get; set; }
         //public int AvailableSeats { get; set; }
         //public int BookedSeats { get; set; }
@@ -478,4 +504,51 @@
     }
 
     #endregion
+
+    public class PagedResponse<T>
+    {
+        public List<T> Data { get; set; } = new List<T>();
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        public int TotalCount { get; set; }
+        public int TotalPages { get; set; }
+        public bool HasPreviousPage => Page > 1;
+        public bool HasNextPage => Page < TotalPages;
+    }
+
+    public class CustomerBookingResponse
+    {
+        public int BookingId { get; set; }
+        public string BookingCode { get; set; } = string.Empty;
+        public string BookingStatus { get; set; } = string.Empty;
+        public string? PaymentStatus { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ConfirmedAt { get; set; }
+        public DateTime? ExpirationTime { get; set; }
+        public bool IsGuestBooking { get; set; }
+        public string ContactName { get; set; } = string.Empty;
+        public string ContactPhone { get; set; } = string.Empty;
+        public string ContactEmail { get; set; } = string.Empty;
+        public string? TripCode { get; set; }
+        public string? TrainNumber { get; set; }
+        public string? DepartureStation { get; set; }
+        public string? ArrivalStation { get; set; }
+        public DateTime? DepartureTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
+        public decimal TotalPrice { get; set; }
+        public int TicketCount { get; set; }
+        public int PassengerCount { get; set; }
+    }
+
+    public class TripOptionResponse
+    {
+        public int TripId { get; set; }
+        public string TripCode { get; set; } = string.Empty;
+        public string? TripName { get; set; }
+        public string TrainNumber { get; set; } = string.Empty;
+        public string DepartureStation { get; set; } = string.Empty;
+        public string ArrivalStation { get; set; } = string.Empty;
+        public DateTime DepartureTime { get; set; }
+        public string DisplayText { get; set; } = string.Empty;
+    }
 }

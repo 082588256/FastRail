@@ -108,20 +108,7 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        @departureStation → @arrivalStation &bull; @travelDate
-    </div>
-
-    <div class="tabs">
-        @{
-            for (int i = 0; i <= 0; i++)
-            {
-                var date = travelDate.AddDays(i);
-                var isActive = date.Date == travelDate.Date;
-                <div class="tab @(isActive ? "active" : "")">@date</div>
-            }
-        }
-    </div>
+    
 
     @if (Model != null && Model.Any())
     {
@@ -137,14 +124,14 @@
                 <input type="hidden" name="DepartureStation" value="@trip.DepartureStation" />
                 <input type="hidden" name="ArrivalStation" value="@trip.ArrivalStation" />
                 <input type="hidden" name="DepartureTime" value="@trip.DepartureTime.ToString("o")" />
-                <input type="hidden" name="ArrivalTime" value="@trip.ArrivalTime.ToString("o")" />
-                <input type="hidden" name="EstimatedDurationMinutes" value="@trip.EstimatedDurationMinutes" />
+                @* <input type="hidden" name="ArrivalTime" value="@trip.ArrivalTime.ToString("o")" />
+                 <input type="hidden" name="EstimatedDurationMinutes" value="@trip.EstimatedDurationMinutes" />*@
 
                 <div class="card" onclick="this.closest('form').submit();">
                     <div class="time">
                         <div>@trip.DepartureTime<br><small>@trip.DepartureStation</small></div>
-                        <div class="duration">@Math.Floor(trip.EstimatedDurationMinutes / 60.0)h@((trip.EstimatedDurationMinutes % 60).ToString("00"))p</div>
-                        <div>@trip.ArrivalTime<br><small>@trip.ArrivalStation</small></div>
+                       @* <div class="duration">@Math.Floor(trip.EstimatedDurationMinutes / 60.0)h@((trip.EstimatedDurationMinutes % 60).ToString("00"))p</div>*@   
+                        <div>@*@trip.ArrivalTime*@<br><small>@trip.ArrivalStation</small></div>
                     </div>
                     <div class="train-name">🚂 Tàu @trip.TrainNumber (@trip.TrainName)</div>
                 </div>

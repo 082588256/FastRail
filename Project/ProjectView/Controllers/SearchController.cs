@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectView.Models;
 using ProjectView.Services;
 
 public class SearchController : Controller
@@ -13,7 +14,7 @@ public class SearchController : Controller
 
     [HttpPost]
     public async Task<IActionResult> Search(string bookingCode)
-    {
+    { ViewBag.HideNavbar = true;
         var ticket = await _bookingService.GetTicketByBookingCodeAsync(bookingCode);
         if (ticket == null)
         {

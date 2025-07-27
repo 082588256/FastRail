@@ -17,6 +17,7 @@ namespace ProjectView.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.HideNavbar = true;
             var stations = await _basicDataService.GetStationSelectListAsync();
             ViewBag.Stations = await _basicDataService.GetStationSelectListAsync();
             ViewBag.Trains = await _basicDataService.GetTrainSelectListAsync();
