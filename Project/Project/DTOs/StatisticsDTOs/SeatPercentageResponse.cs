@@ -6,6 +6,7 @@
 
         public int AvailableSeat { get; set; } = 0;
 
-        public int BookedSeat { get; set; } = 0;
+
+        public int SoldSeats { get; set; } = 0;
     }
 }

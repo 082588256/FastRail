@@ -14,6 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Content Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\admindashboard.css" />
   </ItemGroup>
 
@@ -31,8 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Auth\" />
-    <Folder Include="Data\" />
+    <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
@@ -219,6 +225,10 @@
     <None Include="wwwroot\vendor\vector-map\jquery.vmap.usa.js" />
     <None Include="wwwroot\vendor\vector-map\jquery.vmap.world.js" />
     <None Include="wwwroot\vendor\wow\wow.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Project\Project.csproj" />
   </ItemGroup>
 
 </Project>

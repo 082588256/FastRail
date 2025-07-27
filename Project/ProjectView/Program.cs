@@ -12,13 +12,13 @@ builder.Services.AddHttpClient<ISearchService, SearchService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5014/api/");
 });
-builder.Services.AddHttpClient<ITripService,TripService >(client =>
+builder.Services.AddHttpClient<ITripService, TripService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5014/");
 });
 builder.Services.AddHttpClient<ISeatService, SeatService>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5014/api"); 
+    client.BaseAddress = new Uri("http://localhost:5014/api");
 });
 builder.Services.AddScoped<IBasicDataService, BasicDataService>();
 // Add services to the container.
@@ -35,7 +35,6 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-
 .AddJwtBearer(options =>
 {
     var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
@@ -87,6 +86,8 @@ app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=FarePage}/{action=Index}/{id?}");
 
 app.Run();
-

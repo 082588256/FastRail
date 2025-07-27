@@ -97,7 +97,7 @@ namespace Project.Services
                     CreatedAt = DateTime.UtcNow,
                     PaymentStatus = "Pending",
                     Tickets = new List<Ticket>()
-                    
+
                 };
                 _context.Bookings.Add(booking);
 

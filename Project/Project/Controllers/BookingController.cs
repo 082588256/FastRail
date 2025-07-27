@@ -12,7 +12,7 @@ namespace Project.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
-        
+
         private readonly IEmailService _emailService;
         private readonly ITripService _tripService;
         private readonly IPricingService _pricingService;
@@ -20,14 +20,14 @@ namespace Project.Controllers
 
         public BookingController(
             IBookingService bookingService,
-            
+
             IEmailService emailService,
             ITripService tripService,
             IPricingService pricingService,
             ILogger<BookingController> logger)
         {
             _bookingService = bookingService;
-            
+
             _emailService = emailService;
             _tripService = tripService;
             _pricingService = pricingService;

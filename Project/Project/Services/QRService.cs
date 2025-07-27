@@ -18,23 +18,23 @@ namespace Project.Services
             _logger = logger;
         }
 
-        public async Task<string> GenerateQRCodeAsync(string ticketCode)
+        public async Task<string> GenerateQRCodeAsync(string bookingCode)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(ticketCode))
+                if (string.IsNullOrWhiteSpace(bookingCode))
                 {
-                    throw new ArgumentException("Ticket code cannot be null or empty");
+                    throw new ArgumentException("Booking code cannot be null or empty");
                 }
 
                 // Create QR code data with additional security features
                 var qrCodeData = new
                 {
-                    ticketCode = ticketCode,
+                    bookingCode = bookingCode,
                     timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
-                    type = "train_ticket",
+                    type = "train_booking",
                     version = "1.0",
-                    checksum = GenerateChecksum(ticketCode)
+                    checksum = GenerateChecksum(bookingCode)
                 };
 
                 var jsonData = System.Text.Json.JsonSerializer.Serialize(qrCodeData);
@@ -42,16 +42,16 @@ namespace Project.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error generating QR code for ticket {TicketCode}", ticketCode);
+                _logger.LogError(ex, "Error generating QR code for booking {BookingCode}", bookingCode);
                 throw;
             }
         }
 
-        public async Task<byte[]> GenerateQRCodeImageAsync(string ticketCode)
+        public async Task<byte[]> GenerateQRCodeImageAsync(string bookingCode)
         {
             try
             {
-                var qrData = await GenerateQRCodeAsync(ticketCode);
+                var qrData = await GenerateQRCodeAsync(bookingCode);
                 
                 // For production, you would use a proper QR code generation library
                 // For now, we'll return a placeholder image or use a different approach
@@ -60,7 +60,7 @@ namespace Project.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error generating QR code image for ticket {TicketCode}", ticketCode);
+                _logger.LogError(ex, "Error generating QR code image for booking {BookingCode}", bookingCode);
                 throw;
             }
         }
@@ -77,14 +77,35 @@ namespace Project.Services
                 // Try to parse as JSON first (our format)
                 try
                 {
-                    var ticketData = JsonSerializer.Deserialize<JsonElement>(qrCodeData);
+                    var bookingData = JsonSerializer.Deserialize<JsonElement>(qrCodeData);
                     
-                    if (ticketData.TryGetProperty("ticketCode", out var ticketCodeElement))
+                    // Check for bookingCode first (new format)
+                    if (bookingData.TryGetProperty("bookingCode", out var bookingCodeElement))
+                    {
+                        var bookingCode = bookingCodeElement.GetString();
+                        
+                        // Validate checksum if present
+                        if (bookingData.TryGetProperty("checksum", out var checksumElement))
+                        {
+                            var expectedChecksum = checksumElement.GetString();
+                            var actualChecksum = GenerateChecksum(bookingCode);
+                            
+                            if (expectedChecksum != actualChecksum)
+                            {
+                                throw new InvalidOperationException("QR code checksum validation failed");
+                            }
+                        }
+                        
+                        return bookingCode;
+                    }
+                    
+                    // Fallback for old ticketCode format
+                    if (bookingData.TryGetProperty("ticketCode", out var ticketCodeElement))
                     {
                         var ticketCode = ticketCodeElement.GetString();
                         
                         // Validate checksum if present
-                        if (ticketData.TryGetProperty("checksum", out var checksumElement))
+                        if (bookingData.TryGetProperty("checksum", out var checksumElement))
                         {
                             var expectedChecksum = checksumElement.GetString();
                             var actualChecksum = GenerateChecksum(ticketCode);
@@ -100,7 +121,7 @@ namespace Project.Services
                 }
                 catch (System.Text.Json.JsonException)
                 {
-                    // If not JSON, treat as plain ticket code
+                    // If not JSON, treat as plain booking code
                     return qrCodeData;
                 }
 

@@ -181,7 +181,7 @@
         public String DepartureStationName { get; set; }
         public String ArrivalStationName { get; set; }
         public DateTime TravelDate { get; set; }
-        
+
     }
 
     public class TripSearchResponse

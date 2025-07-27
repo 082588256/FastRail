@@ -128,7 +128,7 @@ namespace Project
     entity.HasKey(e => e.BookingId);
     entity.Property(e => e.BookingCode).HasMaxLength(20).IsRequired();
     entity.Property(e => e.BookingStatus).HasMaxLength(20).HasDefaultValue("Temporary");
-    entity.Property(e => e.TotalPrice).HasColumnType("decimal(12,2)").IsRequired();
+    entity.Property(e => e.TotalPrice).HasColumnType("decimal(12,2)");
     entity.Property(e => e.PaymentStatus).HasMaxLength(20).HasDefaultValue("Pending");
     //entity.Property(e => e.PaymentMethod).HasMaxLength(50);
     //entity.Property(e => e.PaymentTransactionId).HasMaxLength(100);
