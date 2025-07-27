@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Ticket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="ticket-list-section" style="padding: 60px 0;">
+    <div class="container">
+        <div class="block-title text-center">
+            <div class="dot-line"></div>
+            <p>Danh sách vé</p>
+            <h2>Xem trạng thái vé</h2>
+        </div>
+        <div class="text-center mb-4">
+            <label for="statusFilter">Ticket:</label>
+            <select id="statusFilter" class="form-control" style="width: 200px; display: inline-block;">
+                <option value="">Tất cả</option>
+                <option value="0">Chưa bán</option>
+                <option value="1">Đã bán</option>
+                <option value="2">Đã huỷ</option>
+            </select>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center" id="ticketTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Mã vé</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày đặt</th>
+                        <th>Giá (VNĐ)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        const apiBaseUrl = 'https://localhost:5014/api/ticket';
+
+        document.getElementById("statusFilter").addEventListener("change", loadTickets);
+
+        async function loadTickets() {
+            const status = document.getElementById("statusFilter").value;
+            const url = status ?\`\${apiBaseUrl}?status=\${status}\` : apiBaseUrl;
+
+                try {
+                    const response = await fetch(url);
+                    const tickets = await response.json();
+                    renderTickets(tickets);
+                } catch (error) {
+                    console.error("Lỗi khi tải vé:", error);
+                    alert("Không thể kết nối tới API.");
+                }
+            }
+
+            function renderTickets(tickets) {
+                const tbody = document.querySelector("#ticketTable tbody");
+                tbody.innerHTML = "";
+
+                if (tickets.length === 0) {
+                    tbody.innerHTML = "<tr><td colspan='5'>Không có vé nào.</td></tr>";
+                    return;
+                }
+
+                tickets.forEach(t => {
+                    const statusText = t.status === "0" ? "Chưa bán" :
+                                       t.status === "1" ? "Đã bán" :
+                                       t.status === "2" ? "Đã huỷ" : "Không rõ";
+
+                    const row = \`
+                        <tr>
+                            <td>\${t.id}</td>
+                            <td>\${t.code || "N/A"}</td>
+                            <td>\${statusText}</td>
+                            <td>\${new Date(t.bookingDate).toLocaleDateString()}</td>
+                            <td>\${t.price?.toLocaleString("vi-VN") || 0}</td>
+                        </tr>\`;
+                    tbody.insertAdjacentHTML("beforeend", row);
+                });
+            }
+
+            window.onload = loadTickets;
+    </script>
+}

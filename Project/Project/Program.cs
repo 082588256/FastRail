@@ -15,10 +15,16 @@ using Project.Services.Route;
 using Project.Services.Train;
 using Project.Utils.Validation;
 using Project.Swagger;
+
+using Project.Repository;
+
+using Project.Repositories;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Project.Services.Metrics;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,14 +48,16 @@ builder.Services.AddAutoMapper(typeof(TrainProfile));
 builder.Services.AddAutoMapper(typeof(RouteProfile));
 builder.Services.AddAutoMapper(typeof(CarriageProfile));
 builder.Services.AddAutoMapper(typeof(TripProfile));
+builder.Services.AddScoped<IFareService, FareService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
 
 //Config DI
 builder.Services.AddScoped<IRouteRepository, RouteRepository>();
 builder.Services.AddScoped<IRouteService, RouteService>();
-
+builder.Services.AddScoped<IFareRepository, FareRepository>();
 builder.Services.AddScoped<ITrainRepository, TrainRepository>();
 builder.Services.AddScoped<ITrainService, TrainServices>();
-
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped<ICarriageRepository, CarriageRepository>();
 builder.Services.AddScoped<ICarriageService, CarriageService>();
 builder.Services.AddScoped<ISeatRepository, SeatRepository>();

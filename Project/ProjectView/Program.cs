@@ -69,6 +69,9 @@ app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=FarePage}/{action=Index}/{id?}");
 
 app.Run();
 
