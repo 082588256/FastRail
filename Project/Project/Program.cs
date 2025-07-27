@@ -15,9 +15,14 @@ using Project.Services.Route;
 using Project.Services.Train;
 using Project.Utils.Validation;
 using Project.Swagger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Project.Services.Metrics;
 
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add DbContext
 builder.Services.AddDbContext<FastRailDbContext>(options =>
@@ -27,10 +32,11 @@ builder.Services.AddDbContext<FastRailDbContext>(options =>
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IPricingService, PricingService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
+//b/*uilder.Services.AddScoped<IPaymentService, PaymentService>();*/
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IQRService, QRService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddAutoMapper(typeof(TrainProfile));
 builder.Services.AddAutoMapper(typeof(RouteProfile));
@@ -50,7 +56,7 @@ builder.Services.AddScoped<ISeatRepository, SeatRepository>();
 builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<ItripRepository, TripRepository>();
 builder.Services.AddScoped<ITripService, TripService>();
-
+builder.Services.AddHostedService<BookingCleanupService>();
 //Add Fluent Validation 
 builder.Services.AddScoped<IValidator<TripDTO>, TripValidator>();
 
@@ -100,6 +106,28 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = configuration["Jwt:Issuer"],
+        ValidAudience = configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
+    };
+});
+builder.Services.AddAuthorization();
 builder.Services.AddLogging();
 var app = builder.Build();
 
@@ -109,6 +137,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");

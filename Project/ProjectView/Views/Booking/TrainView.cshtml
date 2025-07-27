@@ -1,0 +1,159 @@
+﻿@using ProjectView.Models
+@model List<TripDetailViewModel>
+
+@{
+    ViewData["Title"] = "Danh sách chuyến tàu";
+    var travelDate = ViewBag.TravelDate as DateTime? ?? DateTime.Today;
+    var departureStation = ViewBag.DepartureStation as string ?? "";
+    var arrivalStation = ViewBag.ArrivalStation as string ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(to right, #ff8ec7, #ffc3e0);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #555;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .tab.active {
+                background-color: #ff4fa3;
+                color: #fff;
+            }
+
+        .card {
+            background: #fff;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+            .card:hover {
+                background-color: #ffe6f0;
+            }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .duration {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .train-name {
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .price-seat {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #e6005c;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            background-color: #fce4ec;
+            color: #d81b60;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        @departureStation → @arrivalStation &bull; @travelDate
+    </div>
+
+    <div class="tabs">
+        @{
+            for (int i = 0; i <= 0; i++)
+            {
+                var date = travelDate.AddDays(i);
+                var isActive = date.Date == travelDate.Date;
+                <div class="tab @(isActive ? "active" : "")">@date</div>
+            }
+        }
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var trip in Model)
+        {
+            <form method="post" action="/Booking/SelectSeat">
+                @* Hidden inputs truyền toàn bộ trip *@
+                <input type="hidden" name="TripId" value="@trip.TripId" />
+                <input type="hidden" name="TripCode" value="@trip.TripCode" />
+                <input type="hidden" name="TrainNumber" value="@trip.TrainNumber" />
+                <input type="hidden" name="TrainName" value="@trip.TrainName" />
+                <input type="hidden" name="RouteName" value="@trip.RouteName" />
+                <input type="hidden" name="DepartureStation" value="@trip.DepartureStation" />
+                <input type="hidden" name="ArrivalStation" value="@trip.ArrivalStation" />
+                <input type="hidden" name="DepartureTime" value="@trip.DepartureTime.ToString("o")" />
+                <input type="hidden" name="ArrivalTime" value="@trip.ArrivalTime.ToString("o")" />
+                <input type="hidden" name="EstimatedDurationMinutes" value="@trip.EstimatedDurationMinutes" />
+
+                <div class="card" onclick="this.closest('form').submit();">
+                    <div class="time">
+                        <div>@trip.DepartureTime<br><small>@trip.DepartureStation</small></div>
+                        <div class="duration">@Math.Floor(trip.EstimatedDurationMinutes / 60.0)h@((trip.EstimatedDurationMinutes % 60).ToString("00"))p</div>
+                        <div>@trip.ArrivalTime<br><small>@trip.ArrivalStation</small></div>
+                    </div>
+                    <div class="train-name">🚂 Tàu @trip.TrainNumber (@trip.TrainName)</div>
+                </div>
+            </form>
+        }
+    }
+    else
+    {
+        <div style="text-align:center; padding: 2rem;">Không có chuyến tàu nào phù hợp</div>
+    }
+</body>
+</html>

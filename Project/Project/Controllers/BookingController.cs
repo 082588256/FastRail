@@ -12,38 +12,35 @@ namespace Project.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
-        private readonly IPaymentService _paymentService;
+        
         private readonly IEmailService _emailService;
         private readonly ITripService _tripService;
         private readonly IPricingService _pricingService;
         private readonly ILogger<BookingController> _logger;
-        private readonly IQRService _qrService;
 
         public BookingController(
             IBookingService bookingService,
-            IPaymentService paymentService,
+            
             IEmailService emailService,
             ITripService tripService,
             IPricingService pricingService,
-            ILogger<BookingController> logger,
-            IQRService qrService)
+            ILogger<BookingController> logger)
         {
             _bookingService = bookingService;
-            _paymentService = paymentService;
+            
             _emailService = emailService;
             _tripService = tripService;
             _pricingService = pricingService;
             _logger = logger;
-            _qrService = qrService;
         }
         [HttpPost("guest-lookup")]
-        public async Task<ActionResult> LookupGuestBooking( GuestBookingLookupRequest request)
+        public async Task<ActionResult> LookupGuestBooking(GuestBookingLookupRequest request)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(request.BookingCode))
                 {
-                    return BadRequest(new ApiResponse<TicketDetailsResponse>
+                    return BadRequest(new ApiResponse<BookingDetailsResponse>
                     {
                         Success = false,
                         Message = "Vui lòng nhập mã booking",
@@ -56,7 +53,7 @@ namespace Project.Controllers
 
                 if (booking == null)
                 {
-                    return NotFound(new ApiResponse<TicketDetailsResponse>
+                    return NotFound(new ApiResponse<BookingDetailsResponse>
                     {
                         Success = false,
                         Message = "Không tìm thấy booking hoặc thông tin tra cứu không đúng",
@@ -64,7 +61,7 @@ namespace Project.Controllers
                     });
                 }
 
-                return Ok(new ApiResponse<TicketDetailsResponse>
+                return Ok(new ApiResponse<BookingDetailsResponse>
                 {
                     Success = true,
                     Data = booking,
@@ -75,7 +72,7 @@ namespace Project.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error looking up guest booking with code {BookingCode}", request.BookingCode);
-                return StatusCode(500, new ApiResponse<TicketDetailsResponse>
+                return StatusCode(500, new ApiResponse<BookingDetailsResponse>
                 {
                     Success = false,
                     Message = "Lỗi hệ thống",
@@ -83,8 +80,34 @@ namespace Project.Controllers
                 });
             }
         }
+        [HttpPost("{id}/cancel")]
+        public async Task<ActionResult> CancelBooking(int id)
+        {
+            var result = await _bookingService.CancelBookingAsync(id);
+            if (!result)
+                return BadRequest("Không thể hủy booking này");
+            return Ok();
+        }
+        [HttpPost("{id}/confirm")]
+        public async Task<ActionResult> ConfirmBooking(int id, [FromQuery] string? transactionId = null)
+        {
+            var result = await _bookingService.ConfirmBookingAsync(id, transactionId);
+            if (!result)
+                return BadRequest("Không thể xác nhận booking này");
 
+            // Lấy thông tin booking để gửi email
+            var booking = await _bookingService.GetBookingDetailsAsync(id);
+            if (booking != null)
+            {
+                await _emailService.SendPaymentConfirmationAsync(
+                    booking.PassengerEmail,
+                    booking.BookingCode,
+                    booking.TotalPrice
+                );
+            }
 
+            return Ok();
+        }
         [HttpPost("create-temporary")]
         public async Task<ActionResult<ApiResponse<CreateBookingResponse>>> CreateTemporaryBooking([FromBody] CreateBookingRequest request)
         {
@@ -113,16 +136,16 @@ namespace Project.Controllers
                     });
                 }
 
+                if (request.Tickets == null || !request.Tickets.Any())
+                {
+                    return BadRequest(new ApiResponse<CreateBookingResponse>
+                    {
+                        Success = false,
+                        Message = "Danh sách vé không được để trống",
+                        RequestId = HttpContext.TraceIdentifier
+                    });
+                }
 
-                //if (request.Tickets == null || !request.Tickets.Any())
-                //{
-                //    return BadRequest(new ApiResponse<CreateBookingResponse>
-                //    {
-                //        Success = false,
-                //        Message = "Danh sách vé không được để trống",
-                //        RequestId = HttpContext.TraceIdentifier
-                //    });
-                //}
                 var result = await _bookingService.CreateTemporaryBookingAsync(request);
 
                 if (result.Success)
@@ -132,17 +155,16 @@ namespace Project.Controllers
                         result.BookingId,
                         result.BookingCode);
 
-
-                    // Generate QR from TicketCode (assume TicketCode is returned in result)
-                    var qrData = await _qrService.GenerateQRCodeAsync(result.TicketCode);
+                    var responseMessage = request.IsGuestBooking
+                        ? "Đặt chỗ thành công! Vui lòng lưu mã booking để tra cứu và hoàn tất thanh toán trong 5 phút."
+                        : "Đặt chỗ thành công! Vui lòng hoàn tất thanh toán trong 5 phút.";
 
                     return Ok(new ApiResponse<CreateBookingResponse>
                     {
                         Success = true,
                         Data = result,
-                        Message = "Booking and ticket created successfully!",
-                        RequestId = HttpContext.TraceIdentifier,
-                        Errors = null
+                        Message = responseMessage,
+                        RequestId = HttpContext.TraceIdentifier
                     });
                 }
                 else
@@ -166,5 +188,6 @@ namespace Project.Controllers
                 });
             }
         }
+
     }
 }

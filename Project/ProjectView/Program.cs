@@ -1,9 +1,70 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using ProjectView.Models;
+using ProjectView.Services;
+using System.Text;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<TrainBookingSystemContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient<ISearchService, SearchService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/api/");
+});
+builder.Services.AddHttpClient<ITripService,TripService >(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/");
+});
+builder.Services.AddHttpClient<ISeatService, SeatService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/api"); 
+});
+builder.Services.AddScoped<IBasicDataService, BasicDataService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // timeout tùy ý
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
 
+.AddJwtBearer(options =>
+{
+    var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ClockSkew = TimeSpan.Zero
+    };
+
+    // Đọc token từ Session
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var token = context.HttpContext.Session.GetString("JWT");
+            if (!string.IsNullOrEmpty(token))
+                context.Token = token;
+
+            return Task.CompletedTask;
+        }
+    };
+});
+
+builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,8 +79,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
+app.UseAuthentication();
+
 
 app.MapControllerRoute(
     name: "default",

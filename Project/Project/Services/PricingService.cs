@@ -26,6 +26,7 @@ namespace Project.Services
         /// <summary>
         /// 💰 Tính giá cho 1 segment cụ thể
         /// </summary>
+
         public async Task<decimal> CalculateSegmentPriceAsync(int tripId, int seatId, int segmentId)
         {
             try

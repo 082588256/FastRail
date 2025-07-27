@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectView.Models;
+using ProjectView.Services;
 using System.Diagnostics;
 
 namespace ProjectView.Controllers
@@ -7,15 +8,19 @@ namespace ProjectView.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ISearchService _bookingService;
+        private readonly IBasicDataService _basicDataService;
+        public HomeController(ISearchService bookingService, IBasicDataService basicDataService)
         {
-            _logger = logger;
+            _bookingService = bookingService;
+            _basicDataService = basicDataService;
         }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var stations = await _basicDataService.GetStationSelectListAsync();
+            ViewBag.Stations = await _basicDataService.GetStationSelectListAsync();
+            ViewBag.Trains = await _basicDataService.GetTrainSelectListAsync();
+            return View("~/Views/Home/Index.cshtml");
         }
 
         public IActionResult Privacy()

@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Project.Models
 {
     public class Booking
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookingId { get; set; }
-
         // UserId có thể null cho guest booking
         public int? UserId { get; set; }
         public User? User { get; set; }
@@ -13,10 +15,17 @@ namespace Project.Models
 
         public string BookingCode { get; set; } = string.Empty;
         public string BookingStatus { get; set; } = string.Empty; // Temporary, Confirmed, Cancelled, Expired
-        public string? PaymentStatus { get; set; }
+        public String? PaymentStatus { get; set; }
 
         public decimal TotalPrice { get; set; }
         public DateTime? ExpirationTime { get; set; }
+
+        // Thông tin hành khách (bắt buộc)
+        public string PassengerName { get; set; } = string.Empty;
+        public string PassengerPhone { get; set; } = string.Empty;
+        public string PassengerEmail { get; set; } = string.Empty;
+        public string? PassengerIdCard { get; set; }
+        public DateTime? PassengerDateOfBirth { get; set; }
 
         // Thông tin liên hệ (cho guest booking)
         public string? ContactName { get; set; }
@@ -40,4 +49,3 @@ namespace Project.Models
             $"{User?.FullName} - {User?.Phone}";
     }
 }
-

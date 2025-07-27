@@ -1,5 +1,7 @@
+using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Crypto.Generators;
 using Project.DTOs;
 using Project.Models;
 using System.IdentityModel.Tokens.Jwt;
@@ -251,5 +253,72 @@ namespace Project.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+
+        private bool VerifyPassword(string password, string passwordHash)
+        {
+            // Compare trimmed values to avoid issues with extra spaces
+            return password.Trim() == passwordHash.Trim();
+
+        }
+
+        private string GenerateAdminJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? "YourSecretKeyHere12345678901234567890");
+            var issuer = _configuration["Jwt:Issuer"] ?? "FastRailSystem";
+            var audience = _configuration["Jwt:Audience"];
+
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.FullName),
+                new Claim("role", "admin")
+            };
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddHours(8),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = issuer,
+                Audience = audience
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+        public async Task<LoginResponse> LoginAdminAsync(LoginRequest request)
+        {
+            var user = await _context.User
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Email == request.Email);
+
+            
+            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            {
+                Console.WriteLine(BCrypt.Net.BCrypt.HashPassword(request.Password));
+                return new LoginResponse { Success = false, Message = "Invalid username or password" };
+            }
+
+            var isAdmin = user.UserRoles.Any(ur => ur.Role.RoleName == "Admin");
+            if (!isAdmin)
+            {
+                return new LoginResponse { Success = false, Message = "You are not authorized as an admin." };
+            }
+
+            var token = GenerateAdminJwtToken(user);
+            
+            return new LoginResponse
+            {
+                Success = true,
+                Token = token,
+                
+            };
+        }
+
     }
 } 

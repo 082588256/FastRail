@@ -32,17 +32,17 @@
 /*
 * 1. imported styles
 */
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900");
-@import url("bootstrap.min.css");
-@import url("animate.css");
-@import url("font-awesome.min.css");
-@import url("owl.carousel.css");
-@import url("hover-min.css");
-@import url("owl.theme.default.min.css");
-@import url("bootstrap-select.min.css");
-@import url("magnific-popup.css");
-@import url("jquery.bxslider.min.css");
-@import url("../plugins/conexi-icon/style.css");
+@import url(~"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900");
+@import url(~"bootstrap.min.css");
+@import url(~"animate.css");
+@import url(~"font-awesome.min.css");
+@import url(~"owl.carousel.css");
+@import url(~"hover-min.css");
+@import url(~"owl.theme.default.min.css");
+@import url(~"bootstrap-select.min.css");
+@import url(~"magnific-popup.css");
+@import url(~"jquery.bxslider.min.css");
+@import url(~"../plugins/conexi-icon/style.css");
 /*
 * 2. miscelnious styles
 */
@@ -270,7 +270,7 @@ hr.style-one {
   height: 100%;
   z-index: 9999;
   background-color: #fff;
-  background-image: url(../images/resources/preloader.gif);
+  background-image: url(~../images/resources/preloader.gif);
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -1168,14 +1168,14 @@ hr.style-one {
 }
 .site-footer:before {
   top: 0;
-  background-image: url(../images/resources/zigzag-box.png);
+  background-image: url(~../images/resources/zigzag-box.png);
   -webkit-animation: bgSlideReverse 20s linear infinite;
           animation: bgSlideReverse 20s linear infinite;
 }
 .site-footer:after {
   -webkit-animation: bgSlide 20s linear infinite;
           animation: bgSlide 20s linear infinite;
-  background-image: url(../images/resources/zigzag-box-2.png);
+  background-image: url(~../images/resources/zigzag-box-2.png);
   bottom: 0;
 }
 .site-footer.no-top-zigzag .upper-footer {
@@ -1437,7 +1437,7 @@ hr.style-one {
 }
 .cta-style-two:before {
   bottom: 0;
-  background-image: url(../images/resources/zigzag-box.png);
+  background-image: url(~../images/resources/zigzag-box.png);
   -webkit-animation: bgSlide 20s linear infinite;
           animation: bgSlide 20s linear infinite;
 }
@@ -2122,7 +2122,7 @@ hr.style-one {
   background-repeat: repeat-x;
 }
 .book-ride-one:after {
-  background-image: url(../images/resources/zigzag-box-2.png);
+  background-image: url(~../images/resources/zigzag-box-2.png);
   bottom: 0;
   -webkit-animation: bgSlide 20s linear infinite;
           animation: bgSlide 20s linear infinite;
@@ -3284,7 +3284,7 @@ hr.style-one {
   background-repeat: repeat-x;
 }
 .feature-style-one:after {
-  background-image: url(../images/resources/zigzag-box-2.png);
+  background-image: url(~../images/resources/zigzag-box-2.png);
   bottom: 0;
   -webkit-animation: bgSlide 20s linear infinite;
           animation: bgSlide 20s linear infinite;
@@ -3440,7 +3440,7 @@ hr.style-one {
 * 15. testimonials styles
 */
 .testimonials-style-one {
-  background: #111111 url(../images/background/testi-bg-1-1.jpg) center center no-repeat;
+  background: #111111 url(~../images/background/testi-bg-1-1.jpg) center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
@@ -3557,7 +3557,7 @@ hr.style-one {
 * 16. inner banner styles
 */
 .inner-banner {
-  background: #fff url(../images/background/inner-banner-bg-1-1.jpg) center center no-repeat;
+  background: #fff url(~../images/background/inner-banner-bg-1-1.jpg) center center no-repeat;
   background-size: cover;
   position: relative;
   padding-top: 320px;
@@ -3633,7 +3633,7 @@ hr.style-one {
   background-repeat: repeat-x;
 }
 .team-style-one:after {
-  background-image: url(../images/resources/zigzag-box-2.png);
+  background-image: url(~../images/resources/zigzag-box-2.png);
   bottom: 0;
   -webkit-animation: bgSlide 20s linear infinite;
           animation: bgSlide 20s linear infinite;

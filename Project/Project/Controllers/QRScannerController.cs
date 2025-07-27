@@ -488,4 +488,4 @@ namespace Project.Controllers
         public DateTime DepartureTime { get; set; } // Add this if needed by frontend
         // Add more fields as needed
     }
-} 
+}

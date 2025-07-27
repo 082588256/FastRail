@@ -20,46 +20,14 @@ namespace Project.Controllers
             var trips = await _tripSearchService.SearchTripsAsync(request);
             return Ok(trips);
         }
-
         [HttpGet("{tripId}/seats")]
-        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(int tripId, int fromSationId, int toStationId)
+        public async Task<ActionResult<List<SeatAvailabilityResponse>>> GetSeats(
+                int tripId,
+                int fromStationId,
+                int toStationId)
         {
-            var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId, fromSationId, toStationId);
+            var seats = await _tripSearchService.GetAvailableSeatsAsync(tripId, fromStationId, toStationId);
             return Ok(seats);
-        }
-
-        [HttpGet("all")]
-        public async Task<ActionResult<List<TripSearchResponse>>> GetAllTrips()
-        {
-            try
-            {
-                // Create a request to get all trips for today
-                var request = new TripSearchRequest
-                {
-                    DepartureStationName = "", // Empty to get all
-                    ArrivalStationName = "",   // Empty to get all
-                    TravelDate = DateTime.Today
-                };
-                
-                var trips = await _tripSearchService.SearchTripsAsync(request);
-                
-                // Add debugging information
-                var debugInfo = new
-                {
-                    success = true,
-                    data = trips,
-                    count = trips.Count,
-                    searchDate = request.TravelDate,
-                    message = $"Found {trips.Count} trips"
-                };
-                
-                return Ok(debugInfo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { success = false, message = ex.Message });
-            }
         }
     }
 }
-

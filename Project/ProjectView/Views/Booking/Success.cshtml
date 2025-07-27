@@ -1,0 +1,69 @@
+﻿@model ProjectView.Models.BookingSuccessViewModel
+
+@{
+    ViewBag.Title = "Đặt vé thành công";
+}
+
+<link rel="stylesheet" href="~/css/booking-success.css" />
+
+<div class="success-container">
+    <div class="success-header">
+        <h2>Đặt vé thành công!</h2>
+    </div>
+
+    <div class="booking-summary">
+        <p>
+            Mã booking:
+            <strong>@Model.Booking.BookingCode</strong>
+        </p>
+        <p>
+            Trạng thái thanh toán:
+            <strong class="status-tag @(Model.Booking.PaymentStatus == "Paid" ? "status-paid" : "status-pending")">
+                @Model.Booking.PaymentStatus
+            </strong>
+        </p>
+        <p>
+            Hành khách:
+            <strong>@Model.Booking.PassengerName</strong>
+        </p>
+        <p>
+            SĐT liên hệ:
+            <strong>@Model.Booking.PassengerPhone</strong>
+        </p>
+        <p>
+            Tổng tiền:
+            <strong class="price-column">@Model.Booking.TotalPrice.ToString("N0") đ</strong>
+        </p>
+    </div>
+
+    <div class="tickets-section">
+        <h3>Danh sách vé:</h3>
+        <table class="tickets-table">
+            <thead>
+                <tr>
+                    <th>Mã vé</th>
+                    <th>Tên hành khách</th>
+                    <th>Số CMND</th>
+                    <th>SĐT</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticket in Model.Tickets)
+                {
+                    <tr>
+                        <td>@ticket.TicketCode</td>
+                        <td>@ticket.PassengerName</td>
+                        <td>@ticket.PassengerIdCard</td>
+                        <td>@ticket.PassengerPhone</td>
+                        <td class="price-column">@ticket.TotalPrice.ToString("N0") đ</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <form method="get" action="/Payment/Index">
+            <input type="hidden" name="bookingId" value="@Model.Booking.BookingId" />
+            <button type="submit" class="btn btn-primary">Thanh toán (Dev)</button>
+        </form>
+    </div>
+</div>

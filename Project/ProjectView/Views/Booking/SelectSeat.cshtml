@@ -1,0 +1,337 @@
+﻿@using ProjectView.Models
+@model List<SeatAvailabilityResponse>
+@{
+    ViewData["Title"] = "Chọn chỗ ngồi";
+    var groupedByCarriage = Model.GroupBy(s => s.CarriageNumber).OrderBy(g => g.Key);
+    var tripId = (int)ViewBag.TripId;
+    var departureStationId = (int)ViewBag.DepartureStationId;
+    var arrivalStationId = (int)ViewBag.ArrivalStationId;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fdf0f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+            .legend span {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            margin: 4px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 1.2;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            user-select: none;
+        }
+
+            .seat.available {
+                background-color: #f0f0f0;
+            }
+
+            .seat.sold {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+
+            .seat.selected {
+                background-color: #e83e8c;
+                color: white;
+            }
+
+        .seat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-items: center;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .tab-button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+            .tab-button.active {
+                background-color: #e83e8c;
+                color: white;
+            }
+
+        .carriage-tab {
+            display: none;
+        }
+
+        .bottom {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background: #e83e8c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+            .btn:disabled {
+                background: #ccc;
+                cursor: default;
+            }
+
+        /* ----------------- CSS cho form hành khách ------------------ */
+        .form-section {
+            margin-top: 30px;
+            padding: 16px;
+            background: #f8f8f8;
+            border-radius: 10px;
+        }
+
+            .form-section h3 {
+                margin-bottom: 10px;
+                color: #e83e8c;
+            }
+
+        .passenger-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+            .passenger-form input {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+            }
+
+        .contact-form input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="legend">
+            <span><div class="seat available"></div> Trống</span>
+            <span><div class="seat sold"></div> Đã bán</span>
+            <span><div class="seat selected"></div> Đang chọn</span>
+        </div>
+
+        <div class="tab-bar">
+            @foreach (var group in groupedByCarriage)
+            {
+                <button class="tab-button" data-carriage="@group.Key">Toa @group.Key</button>
+            }
+        </div>
+
+        @foreach (var group in groupedByCarriage)
+        {
+            <div class="carriage-tab" id="carriage-@group.Key">
+                <div class="title">Toa @group.Key</div>
+                <div class="seat-grid">
+                    @foreach (var seat in group.OrderBy(s => s.SeatNumber))
+                    {
+                        var cssClass = seat.IsAvailable ? "available" : "sold";
+                        <div class="seat @cssClass"
+                             data-seat-id="@seat.SeatId"
+                             data-available="@seat.IsAvailable.ToString().ToLower()">
+                            <div>@seat.SeatNumber</div>
+                            <div>@seat.SeatClass</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="bottom">
+            <strong>Ghế đã chọn:</strong> <span id="selectedSeats"></span>
+            <button id="continueBtn" class="btn" disabled>Tiếp tục</button>
+        </div>
+
+        <form id="bookingForm" class="form-section" style="display:none;">
+            <h3>Thông tin hành khách</h3>
+            <div id="passengerForms"></div>
+
+            <h3>Thông tin liên hệ</h3>
+            <div class="contact-form">
+                <input type="text" name="contactName" placeholder="Họ tên liên hệ" required />
+                <input type="text" name="contactPhone" placeholder="Số điện thoại" required />
+                <input type="email" name="contactEmail" placeholder="Email" required />
+            </div>
+
+            <button type="submit" class="btn">Xác nhận đặt vé</button>
+        </form>
+    </div>
+
+    <script>
+        let currentCarriage = null;
+        const tabs = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".carriage-tab");
+        const selectedSeatIds = [];
+
+        tabs.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const carriage = btn.dataset.carriage;
+                tabs.forEach(b => b.classList.remove("active"));
+                tabContents.forEach(tab => tab.style.display = "none");
+                btn.classList.add("active");
+                document.getElementById("carriage-" + carriage).style.display = "block";
+                currentCarriage = carriage;
+            });
+        });
+
+        if (tabs.length > 0) tabs[0].click();
+
+        document.querySelectorAll(".seat").forEach(seat => {
+            if (seat.dataset.available === "true") {
+                seat.addEventListener("click", () => {
+                    const seatId = seat.dataset.seatId;
+                    if (seat.classList.contains("selected")) {
+                        seat.classList.remove("selected");
+                        selectedSeatIds.splice(selectedSeatIds.indexOf(seatId), 1);
+                    } else {
+                        seat.classList.add("selected");
+                        selectedSeatIds.push(seatId);
+                    }
+
+                    document.getElementById("selectedSeats").innerText = selectedSeatIds.join(", ");
+                    document.getElementById("continueBtn").disabled = selectedSeatIds.length === 0;
+                });
+            }
+        });
+
+        document.getElementById("continueBtn").addEventListener("click", () => {
+            const passengerForms = document.getElementById("passengerForms");
+            passengerForms.innerHTML = "";
+            selectedSeatIds.forEach((seatId, index) => {
+                passengerForms.innerHTML += `
+                    <div class="passenger-form">
+                        <input type="hidden" name="tickets[${index}].seatId" value="${seatId}" />
+                        <input type="text" name="tickets[${index}].passengerName" placeholder="Tên hành khách" required />
+                        <input type="text" name="tickets[${index}].passengerPhone" placeholder="SĐT" required />
+                        <input type="email" name="tickets[${index}].passengerEmail" placeholder="Email" required />
+                        <input type="text" name="tickets[${index}].passengerIdCard" placeholder="CMND/CCCD" required />
+                        <input type="date" name="tickets[${index}].passengerDateOfBirth" required />
+                    </div>`;
+            });
+            document.getElementById("bookingForm").style.display = "block";
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        });
+
+        document.getElementById("bookingForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            const requestBody = {
+                userId: null,
+                tripId: @tripId,
+                departureStationId: @departureStationId,
+                arrivalStationId: @arrivalStationId,
+                tickets: [],
+                contactName: formData.get("contactName"),
+                contactPhone: formData.get("contactPhone"),
+                contactEmail: formData.get("contactEmail")
+            };
+
+            for (let i = 0; i < selectedSeatIds.length; i++) {
+                requestBody.tickets.push({
+                    seatId: parseInt(formData.get(`tickets[${i}].seatId`)),
+                    passengerName: formData.get(`tickets[${i}].passengerName`),
+                    passengerPhone: formData.get(`tickets[${i}].passengerPhone`),
+                    passengerEmail: formData.get(`tickets[${i}].passengerEmail`),
+                    passengerIdCard: formData.get(`tickets[${i}].passengerIdCard`),
+                    passengerDateOfBirth: new Date(formData.get(`tickets[${i}].passengerDateOfBirth`)).toISOString()
+                });
+            }
+                    console.log("TripId gửi đi:", @tripId);
+        console.log("Request gửi:", JSON.stringify(requestBody));
+                Object.entries(requestBody).forEach(([key, value]) => {
+          console.log(`${key} = ${value} (${typeof value})`);
+        });
+
+            try {
+                const res = await fetch("http://localhost:5014/api/Booking/create-temporary", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body:  JSON.stringify(requestBody) // Gói trong "request"
+                });
+
+                if (res.ok) {
+                    alert("Đặt vé thành công!");
+
+                            const resJson = await res.json();
+        console.log("Response data:", resJson);
+
+        const bookingId = resJson.data?.bookingId;
+
+        if (bookingId) {
+            window.location.href = `/Booking/Success?bookingId=${bookingId}`;
+        } else {
+            alert("Không lấy được BookingId!");
+        }
+                } else {
+                    const error = await res.text();
+                    alert("Đặt vé thất bại: " + error);
+                }
+            } catch (err) {
+                alert("Lỗi kết nối API!");
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>
