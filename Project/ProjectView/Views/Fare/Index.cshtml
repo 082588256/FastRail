@@ -10,25 +10,46 @@
             <p>Fare Management</p>
             <h2>Quản lý giá vé tuyến và chặng</h2>
         </div>
-        <div class="row">
-            <!-- Fixed Fare by Route -->
-            <div class="col-md-6">
-                <h4>Giá vé cố định theo tuyến</h4>
-                <input type="number" id="routeId" class="form-control mb-2" placeholder="Nhập ID Tuyến">
-                <input type="number" id="fixedFare" class="form-control mb-2" placeholder="Nhập giá vé tuyến">
-                <button onclick="setFixedFare()" class="btn btn-primary mb-2">Cập nhật giá tuyến</button>
-                <button onclick="getFixedFare()" class="btn btn-outline-secondary mb-3">Xem giá tuyến</button>
-                <p><strong>Giá hiện tại:</strong> <span id="currentFixedFare">--</span></p>
-            </div>
 
-            <!-- Segment Fare by RouteSegment -->
-            <div class="col-md-6">
-                <h4>Giá vé theo chặng</h4>
-                <input type="number" id="segmentId" class="form-control mb-2" placeholder="Nhập ID Chặng">
-                <input type="number" id="segmentFare" class="form-control mb-2" placeholder="Nhập giá vé chặng">
-                <button onclick="setSegmentFare()" class="btn btn-success mb-2">Cập nhật giá chặng</button>
-                <button onclick="getSegmentFare()" class="btn btn-outline-secondary mb-3">Xem giá chặng</button>
-                <p><strong>Giá hiện tại:</strong> <span id="currentSegmentFare">--</span></p>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h4 class="mb-3">Giá vé theo tuyến + chặng + hạng ghế</h4>
+                <div class="row g-2">
+                    <div class="col-md-2">
+                        <input type="number" id="routeId" class="form-control" placeholder="ID Tuyến">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" id="segmentId" class="form-control" placeholder="ID Chặng">
+                    </div>
+                    <div class="col-md-2">
+                        <select id="seatClass" class="form-control">
+                            <option value="">-- Seat Class --</option>
+                            <option value="Economy">Economy</option>
+                            <option value="Business">Business</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="seatType" class="form-control">
+                            <option value="">-- Seat Type --</option>
+                            <option value="Soft">Soft</option>
+                            <option value="Hard">Hard</option>
+                            <option value="Window">Window</option>
+                            <option value="Aisle">Aisle</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" id="basePrice" class="form-control" placeholder="Giá vé">
+                    </div>
+                    <div class="col-md-2 d-grid gap-2">
+                        <button onclick="setFare()" class="btn btn-success">Cập nhật giá</button>
+                        <button onclick="getFare()" class="btn btn-outline-primary">Xem giá</button>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <strong>Giá hiện tại:</strong>
+                    <span id="currentFare">--</span>
+                </div>
             </div>
         </div>
     </div>
@@ -36,69 +57,59 @@
 
 @section Scripts {
     <script>
-        const fareApiBase = 'https://localhost:5029/api/fare'; 
+        const fareApiBase = 'https://localhost:5014/api/fare';
 
-        async function setFixedFare() {
-            const id = document.getElementById("routeId").value;
-            const fare = document.getElementById("fixedFare").value;
-            if (!id || !fare) return alert("Nhập ID tuyến và giá.");
+        async function setFare() {
+            const routeId = document.getElementById("routeId").value;
+            const segmentId = document.getElementById("segmentId").value;
+            const seatClass = document.getElementById("seatClass").value;
+            const seatType = document.getElementById("seatType").value;
+            const basePrice = document.getElementById("basePrice").value;
 
-            const response = await fetch(`${fareApiBase}/route/${id}/fixed-fare`, {
-                method: 'PUT',
+            if (!routeId || !segmentId || !seatClass || !seatType || !basePrice) {
+                alert("Vui lòng nhập đầy đủ thông tin.");
+                return;
+            }
+
+            const payload = {
+                seatClass: seatClass,
+                seatType: seatType,
+                basePrice: parseFloat(basePrice)
+            };
+
+            const response = await fetch(`${fareApiBase}/route/${routeId}/segment/${segmentId}/fare`, {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(fare)
+                body: JSON.stringify(payload)
             });
 
             if (response.ok) {
-                alert("Cập nhật giá tuyến thành công!");
-                getFixedFare();
+                alert("✅ Cập nhật giá vé thành công!");
+                getFare();
             } else {
-                alert("Không tìm thấy tuyến!");
+                const err = await response.text();
+                alert("❌ Lỗi: " + err);
             }
         }
 
-        async function getFixedFare() {
-            const id = document.getElementById("routeId").value;
-            if (!id) return alert("Nhập ID tuyến.");
+        async function getFare() {
+            const routeId = document.getElementById("routeId").value;
+            const segmentId = document.getElementById("segmentId").value;
+            const seatClass = document.getElementById("seatClass").value;
+            const seatType = document.getElementById("seatType").value;
 
-            const res = await fetch(`${fareApiBase}/route/${id}/fixed-fare`);
-            if (res.ok) {
-                const fare = await res.json();
-                document.getElementById("currentFixedFare").innerText = fare.toLocaleString("vi-VN");
-            } else {
-                document.getElementById("currentFixedFare").innerText = "--";
+            if (!routeId || !segmentId || !seatClass || !seatType) {
+                alert("Vui lòng nhập đầy đủ thông tin.");
+                return;
             }
-        }
 
-        async function setSegmentFare() {
-            const id = document.getElementById("segmentId").value;
-            const fare = document.getElementById("segmentFare").value;
-            if (!id || !fare) return alert("Nhập ID chặng và giá.");
-
-            const response = await fetch(`${fareApiBase}/segment/${id}/fare`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(fare)
-            });
+            const response = await fetch(`${fareApiBase}/route/${routeId}/segment/${segmentId}/fare?seatClass=${seatClass}&seatType=${seatType}`);
 
             if (response.ok) {
-                alert("Cập nhật giá chặng thành công!");
-                getSegmentFare();
+                const fare = await response.json();
+                document.getElementById("currentFare").innerText = fare.basePrice.toLocaleString("vi-VN") + " VND";
             } else {
-                alert("Không tìm thấy chặng!");
-            }
-        }
-
-        async function getSegmentFare() {
-            const id = document.getElementById("segmentId").value;
-            if (!id) return alert("Nhập ID chặng.");
-
-            const res = await fetch(`${fareApiBase}/segment/${id}/fare`);
-            if (res.ok) {
-                const fare = await res.json();
-                document.getElementById("currentSegmentFare").innerText = fare.toLocaleString("vi-VN");
-            } else {
-                document.getElementById("currentSegmentFare").innerText = "--";
+                document.getElementById("currentFare").innerText = "--";
             }
         }
     </script>

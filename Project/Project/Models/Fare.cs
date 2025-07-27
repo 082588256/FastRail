@@ -17,6 +17,7 @@ namespace Project.Models
         // Navigation properties
         public virtual Route Route { get; set; } = null!;
         public virtual RouteSegment Segment { get; set; } = null!;
+        //public DateTime UpdatedAt { get; internal set; }
     }
 }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Project.Services;
 using Project.Models;
 
 namespace Project.Controllers
@@ -8,24 +8,18 @@ namespace Project.Controllers
     [ApiController]
     public class TicketController : ControllerBase
     {
-        private readonly FastRailDbContext _context;
+        private readonly ITicketService _ticketService;
 
-        public TicketController(FastRailDbContext context)
+        public TicketController(ITicketService ticketService)
         {
-            _context = context;
+            _ticketService = ticketService;
         }
 
-        // Lấy danh sách vé theo trạng thái
-        // status: 0 = chưa bán, 1 = đã bán, 2 = đã huỷ
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets([FromQuery] String? status)
+        public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets([FromQuery] string? status)
         {
-            var tickets = _context.Ticket.AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(status))
-                tickets = tickets.Where(t => t.Status == status);
-
-            return await tickets.ToListAsync();
+            var tickets = await _ticketService.GetTicketsByStatusAsync(status);
+            return Ok(tickets);
         }
     }
 }

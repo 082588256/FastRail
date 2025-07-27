@@ -11,7 +11,7 @@
             <h2>Xem trạng thái vé</h2>
         </div>
         <div class="text-center mb-4">
-            <label for="statusFilter">Lọc theo trạng thái:</label>
+            <label for="statusFilter">Ticket:</label>
             <select id="statusFilter" class="form-control" style="width: 200px; display: inline-block;">
                 <option value="">Tất cả</option>
                 <option value="0">Chưa bán</option>
@@ -38,7 +38,7 @@
 
 @section Scripts {
     <script>
-        const apiBaseUrl = 'https://localhost:5029/api/ticket';
+        const apiBaseUrl = 'https://localhost:5014/api/ticket';
 
         document.getElementById("statusFilter").addEventListener("change", loadTickets);
 
