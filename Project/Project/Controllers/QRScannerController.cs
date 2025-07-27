@@ -529,6 +529,11 @@ namespace Project.Controllers
         public DateTime? ArrivalTime { get; set; }
         public decimal TotalPrice { get; set; }
         public List<TicketInfo> Tickets { get; set; } = new List<TicketInfo>();
+
+        public static implicit operator BookingDetailsResponse(DTOs.BookingDetailsResponse v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class TicketInfo
@@ -540,4 +545,4 @@ namespace Project.Controllers
         public decimal TotalPrice { get; set; }
         public string SeatInfo { get; set; } = string.Empty;
     }
-} 
+}

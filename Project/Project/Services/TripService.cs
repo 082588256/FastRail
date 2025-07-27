@@ -26,79 +26,79 @@ namespace Project.Services
             var searchDate = request.TravelDate.Date;
             var fromName = request.DepartureStationName;
             var toName = request.ArrivalStationName;
-            // Tìm chuyến tàu theo ngày
-            var query = _context.Trip
 
+            // 1. Trước tiên, lấy danh sách trips với các includes cần thiết
+            var trips = await _context.Trip
                 .Include(t => t.Train)
                 .Include(t => t.Route)
-                    .ThenInclude(r => r.DepartureStation)
+                    .ThenInclude(r => r.RouteSegments)
+                        .ThenInclude(rs => rs.FromStation)
                 .Include(t => t.Route)
-                    .ThenInclude(r => r.ArrivalStation)
+                    .ThenInclude(r => r.RouteSegments)
+                        .ThenInclude(rs => rs.ToStation)
+                .Where(t => t.DepartureTime.Date == searchDate && t.IsActive)
+                .ToListAsync();
 
-                .Where(t => t.IsActive);
-
-            // If both station names are empty, get trips for the next 90 days (to include September/October trips)
-            if (string.IsNullOrEmpty(request.DepartureStationName) && string.IsNullOrEmpty(request.ArrivalStationName))
+            // 2. Lọc các trips có route chứa cả ga đi và ga đến theo thứ tự order
+            var validTrips = trips.Where(t =>
             {
-                var startDate = DateTime.Today;
-                var endDate = DateTime.Today.AddDays(90);
-                query = query.Where(t => t.DepartureTime.Date >= startDate && t.DepartureTime.Date <= endDate);
-            }
-            else
-            {
-                // Use the specific search date
-                query = query.Where(t => t.DepartureTime.Date == searchDate);
-            }
+                var routeSegments = t.Route.RouteSegments
+                    .OrderBy(rs => rs.Order)
+                    .ToList();
 
-            // Only filter by station names if they are provided
-            if (!string.IsNullOrEmpty(request.DepartureStationName))
-            {
-                query = query.Where(t => t.Route.DepartureStation.StationName == request.DepartureStationName);
-            }
-            
-            if (!string.IsNullOrEmpty(request.ArrivalStationName))
-            {
-                query = query.Where(t => t.Route.ArrivalStation.StationName == request.ArrivalStationName);
-            }
+                // Tìm order của ga đi và ga đến
+                var fromSegment = routeSegments
+                    .FirstOrDefault(rs => rs.FromStation.StationName == fromName);
+                var toSegment = routeSegments
+                    .FirstOrDefault(rs => rs.FromStation.StationName == toName);
 
-            var trips = await query.ToListAsync();
-            var result = new List<TripSearchResponse>();
-             foreach (var trip in trips)
-            {
-                //// Đếm ghế trống đơn giản
-                //var totalSeats = await _context.Seat
-                //    .Where(s => s.Carriage.TrainId == trip.TrainId && s.IsActive)
-                //    .CountAsync();
-
-                //var bookedSeats = await _context.SeatSegment
-                //    .Where(ss => ss.TripId == trip.TripId &&
-                //                (ss.Status == "Booked" || ss.Status == "TemporaryReserved"))
-                //    .CountAsync();
-                //var availableSeats = totalSeats - bookedSeats;
-
-                result.Add(new TripSearchResponse
+                // Kiểm tra nếu tìm thấy cả 2 ga và ga đến có order lớn hơn ga đi
+                if (fromSegment != null && toSegment != null)
                 {
-                    TripId = trip.TripId,
-                    TripCode = trip.TripCode,
-                    TrainNumber = trip.Train.TrainNumber,
-                    RouteName = trip.Route.RouteName,
-                    DepartureStation = trip.Route.DepartureStation.StationName,
-                    ArrivalStation = trip.Route.ArrivalStation.StationName,
-                    DepartureTime = trip.DepartureTime,
-                    ArrivalTime = trip.ArrivalTime,
-                    TrainName=trip.Train.TrainName,
-                    //AvailableSeats = availableSeats,
-                    //MinPrice = 50000, // Giá tối thiểu
-                    //MaxPrice = 200000, // Giá tối đa
-                    EstimatedDurationMinutes = (int)(trip.ArrivalTime - trip.DepartureTime).TotalMinutes
-                });
-            }
+                    return fromSegment.Order < toSegment.Order;
+                }
+
+                // Kiểm tra thêm trường hợp ga đến là ga cuối của segment
+                var lastSegment = routeSegments.LastOrDefault();
+                if (fromSegment != null && lastSegment?.ToStation.StationName == toName)
+                {
+                    return fromSegment.Order < lastSegment.Order;
+                }
+
+                return false;
+            });
+
+            // 3. Map sang response model
+            var result = validTrips.Select(t => new TripSearchResponse
+            {
+                TripId = t.TripId,
+                TripCode = t.TripCode,
+                TrainNumber = t.Train.TrainNumber,
+                TrainName = t.Train.TrainName,
+                RouteName = t.Route.RouteName,
+                DepartureStation = fromName,
+                ArrivalStation = toName,
+                DepartureTime = t.DepartureTime,
+                ArrivalTime = t.ArrivalTime,
+                EstimatedDurationMinutes = (int)(t.ArrivalTime - t.DepartureTime).TotalMinutes
+            }).ToList();
 
             return result;
         }
 
         public async Task<List<SeatAvailabilityResponse>> GetAvailableSeatsAsync(int tripId, int fromStationId, int toStationId)
         {
+            var expiredBookings = await _context.Bookings
+    .Where(b => b.ExpirationTime < DateTime.Now)
+    .ToListAsync();
+
+            //foreach (var booking in expiredBookings)
+            //{
+            //    var relatedSeatSegments = _context.SeatSegment.Where(ss => ss.BookingId == booking.BookingId);
+            //    _context.SeatSegment.RemoveRange(relatedSeatSegments);
+
+            //    _context.Bookings.Remove(booking);
+            //}
             // 1. Lấy trip và thông tin route
             var trip = await _context.Trip
                 .Include(t => t.Route)
@@ -114,7 +114,7 @@ namespace Project.Services
 
             // 3. Tìm Order của từ và đến
             var fromOrder = segments.FirstOrDefault(s => s.FromStationId == fromStationId)?.Order ?? -1;
-            var toOrder = segments.FirstOrDefault(s => s.ToStationId == toStationId)?.Order ?? -1;
+            var toOrder = segments.FirstOrDefault(s => s.FromStationId == toStationId)?.Order ?? segments.Max(s => s.Order) + 1;
 
             if (fromOrder == -1 || toOrder == -1 || fromOrder > toOrder)
                 return new List<SeatAvailabilityResponse>(); // invalid segment range
@@ -160,7 +160,9 @@ namespace Project.Services
                     SeatType = seat.SeatType,
                     SeatClass = seat.SeatClass,
                     Price = price,
-                    IsAvailable = isAvailable
+                    IsAvailable = isAvailable,
+                    status = isAvailable ? "Available" : "Booked"
+
                 };
             })
             .OrderBy(s => s.CarriageNumber)
