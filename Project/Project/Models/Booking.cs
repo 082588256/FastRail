@@ -15,6 +15,10 @@ namespace Project.Models
         public string BookingStatus { get; set; } = string.Empty; // Temporary, Confirmed, Cancelled, Expired
         public string? PaymentStatus { get; set; }
 
+        public string? PaymentTransactionId { get; set; }
+        public string? PaymentMethod { get; set; }
+        public string? Notes { get; set; }
+
         public DateTime? ExpirationTime { get; set; }
 
         // Thông tin liên hệ (cho guest booking)
@@ -26,6 +30,9 @@ namespace Project.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? ConfirmedAt { get; set; }
         public DateTime? CancelledAt { get; set; }
+
+        // Total price for the booking
+        public decimal TotalPrice { get; set; }
 
         // Navigation properties
         public ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();

@@ -1,0 +1,76 @@
+@{
+    ViewData["Title"] = "QR Scanner Test";
+    Layout = "_StaffLayout";
+}
+
+<div style="padding: 20px; font-family: Arial, sans-serif;">
+    <h1>QR Scanner Test</h1>
+    
+    <div style="margin: 20px 0;">
+        <h3>Test Booking Code: BK20250630001</h3>
+        <button class="btn btn-primary" onclick="testScan()">Test Scan</button>
+    </div>
+    
+    <div id="test-result" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; display: none;">
+        <h3>Scan Result:</h3>
+        <pre id="result-output"></pre>
+    </div>
+</div>
+
+<script>
+let staffToken = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    staffToken = localStorage.getItem('staffToken');
+    if (!staffToken) {
+        window.location.href = '/Auth/StaffLogin';
+        return;
+    }
+});
+
+async function testScan() {
+    const apiBaseUrl = 'http://localhost:5014';
+    const testBookingCode = 'BK20250630001';
+    
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/qrscanner/scan`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${staffToken}`
+            },
+            body: JSON.stringify({
+                qrCodeData: JSON.stringify({
+                    bookingCode: testBookingCode,
+                    timestamp: new Date().toISOString(),
+                    type: "train_booking"
+                })
+            })
+        });
+
+        const result = await response.json();
+        
+        const resultDiv = document.getElementById('test-result');
+        const output = document.getElementById('result-output');
+        
+        resultDiv.style.display = 'block';
+        output.textContent = JSON.stringify(result, null, 2);
+        
+        if (result.success) {
+            console.log('Trip information:', {
+                tripCode: result.data.tripCode,
+                trainNumber: result.data.trainNumber,
+                departureStation: result.data.departureStation,
+                arrivalStation: result.data.arrivalStation,
+                departureTime: result.data.departureTime
+            });
+        }
+    } catch (error) {
+        console.error('Test scan error:', error);
+        const resultDiv = document.getElementById('test-result');
+        const output = document.getElementById('result-output');
+        resultDiv.style.display = 'block';
+        output.textContent = 'Error: ' + error.message;
+    }
+}
+</script> 

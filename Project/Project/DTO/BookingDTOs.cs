@@ -477,4 +477,51 @@
     }
 
     #endregion
+
+    public class PagedResponse<T>
+    {
+        public List<T> Data { get; set; } = new List<T>();
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        public int TotalCount { get; set; }
+        public int TotalPages { get; set; }
+        public bool HasPreviousPage => Page > 1;
+        public bool HasNextPage => Page < TotalPages;
+    }
+
+    public class CustomerBookingResponse
+    {
+        public int BookingId { get; set; }
+        public string BookingCode { get; set; } = string.Empty;
+        public string BookingStatus { get; set; } = string.Empty;
+        public string? PaymentStatus { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ConfirmedAt { get; set; }
+        public DateTime? ExpirationTime { get; set; }
+        public bool IsGuestBooking { get; set; }
+        public string ContactName { get; set; } = string.Empty;
+        public string ContactPhone { get; set; } = string.Empty;
+        public string ContactEmail { get; set; } = string.Empty;
+        public string? TripCode { get; set; }
+        public string? TrainNumber { get; set; }
+        public string? DepartureStation { get; set; }
+        public string? ArrivalStation { get; set; }
+        public DateTime? DepartureTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
+        public decimal TotalPrice { get; set; }
+        public int TicketCount { get; set; }
+        public int PassengerCount { get; set; }
+    }
+
+    public class TripOptionResponse
+    {
+        public int TripId { get; set; }
+        public string TripCode { get; set; } = string.Empty;
+        public string? TripName { get; set; }
+        public string TrainNumber { get; set; } = string.Empty;
+        public string DepartureStation { get; set; } = string.Empty;
+        public string ArrivalStation { get; set; } = string.Empty;
+        public DateTime DepartureTime { get; set; }
+        public string DisplayText { get; set; } = string.Empty;
+    }
 }
