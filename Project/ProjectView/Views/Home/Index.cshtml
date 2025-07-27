@@ -105,7 +105,7 @@
     </div><!-- /.carousel-btn-block banner-carousel-btn -->
 </div><!-- /.main-banner-wrapper -->
 <section class="book-ride-one">
-    <img src="~/images/background/booking-bg-1-1.png" class="footer-bg" alt="Awesome Image" />
+    @* <img src="~/images/background/booking-bg-1-1.png" class="footer-bg" alt="Awesome Image" /> *@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -148,14 +148,14 @@
                                 <select class="form-control" name="TravelDate">
                                     @{
                                         var today = DateTime.Today;
-                                        for (int i = 0; i < 7; i++) // 7 ngày gần nhất kể từ hôm nay
+                                        for (int i = 0; i < 3; i++) // 7 ngày gần nhất kể từ hôm nay
                                         {
-                                            var date = today.AddDays(i - 4);
+                                            var date = today.AddDays(i);
                                         }
                                     }
                                     @for (int i = 0; i < 7; i++)
                                     {
-                                        var date = today.AddDays(i - 4);
+                                        var date = today.AddDays(i);
                                         <option value="@date.ToString("yyyy-MM-dd")">
                                             @date.ToString("dddd, dd/MM/yyyy") <!-- Thứ, ngày/tháng/năm -->
                                         </option>
@@ -177,6 +177,7 @@
 <section class="cta-style-one text-center">
     <div align="center">
         <p>Tra cứu Booking của bạn </p>
+        <p></p>
     </div>
     <div align="center">
         <form action="Search/Search" method="post">
@@ -185,7 +186,7 @@
         </form>
     </div>    
 </section>
-<section class="funfact-style-one">
+@* <section class="funfact-style-one">
     <div class="container">
         <div class="block-title text-center">
             <div class="dot-line"></div><!-- /.dot-line -->
@@ -858,4 +859,4 @@
         <h3>Call now and book <br> our taxi for your next ride</h3>
         <a href="taxi.html" class="cta-btn">Choose Your Taxi</a>
     </div><!-- /.container -->
-</section><
+</section>< *@
