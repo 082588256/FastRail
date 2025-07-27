@@ -88,3 +88,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    async function loadRoutes() {
+        try {
+            const response = await fetch('/RouteManagement/GetAllRoutes');
+            if (!response.ok) throw new Error('Failed to fetch');
+
+            const routes = await response.json();
+
+            const tbody = document.querySelector('table tbody');
+            tbody.innerHTML = '';
+
+            routes.forEach(route => {
+                const row = `
+                        <tr>
+                            <td>${route.routeName}</td>
+                            <td>${route.departureStationId}</td>
+                            <td>${route.arrivalStationId}</td>
+                            <td>${route.segmentCount}</td>
+                            <td><span class="badge bg-success">${route.isActive==true? "ACTIVE" :"INACTIVE"} </span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>`;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+
+        } catch (err) {
+            console.error('Error loading routes:', err);
+        }
+    }
+
+    // Gọi khi load xong trang
+    document.addEventListener('DOMContentLoaded', loadRoutes);
+</script>

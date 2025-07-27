@@ -20,6 +20,9 @@ namespace Project.Services
         Task<TicketDetailsResponse?> LookupGuestBookingAsync(GuestBookingLookupRequest request);
         Task<List<TicketDetailsResponse>> GetGuestBookingsAsync(string phone, string email);
         Task<UserBookingStatsResponse> GetUserBookingStatsAsync(int userId);
+
+        Task<int> CountTicketsTodayAsync();
+        Task<long> CalculateTodayRevenueAsync();
     }
 
     public class BookingService : IBookingService
@@ -621,6 +624,16 @@ namespace Project.Services
                 ss.TripId == tripId &&
                 ss.SeatId == seatId &&
                 (ss.Status == "TemporaryReserved" || ss.Status == "Booked"));
+        }
+
+        public Task<int> CountTicketsTodayAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<long> CalculateTodayRevenueAsync()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

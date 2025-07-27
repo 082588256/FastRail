@@ -4146,9 +4146,10 @@ section {
 }
 
 .percent-chart {
+    margin-top: -10px;
     padding-right: 65px;
     padding-bottom: 40px;
-    padding-top: 27px;
+    padding-top: 10px
 }
 
 @media (min-width: 992px) and (max-width: 1519px) {
