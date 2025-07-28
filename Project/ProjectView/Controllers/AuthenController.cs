@@ -25,6 +25,7 @@ namespace ProjectView.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Models.Auth.LoginRequest model)
         {
+            ViewBag.HideNavbar = true;
             var apiUrl = _configuration["ApiSettings:BaseUrl"] + "/api/Auth/login";
             var client = _httpClientFactory.CreateClient();
 

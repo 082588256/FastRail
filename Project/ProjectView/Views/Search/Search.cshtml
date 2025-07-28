@@ -106,3 +106,19 @@
 
 </body>
 </html>
+<span>Mã Booking: @Model.BookingCode</span>
+<div class="qr-code" id="qrCode"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    var qrData = JSON.stringify({
+        bookingCode: "@Model.BookingCode",
+        timestamp: new Date().toISOString(),
+        type: "train_booking"
+    });
+    new QRCode(document.getElementById("qrCode"), {
+        text: qrData,
+        width: 150,
+        height: 150
+    });
+</script>
