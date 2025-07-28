@@ -68,22 +68,23 @@ namespace Project.Services.Metrics
         {
 
             var payments = await _context.Payment
-        .Include(p => p.Booking)
-        .Where(p => p.Booking.ConfirmedAt != null && p.Status == "Completed")
-        .ToListAsync();
+         .Include(p => p.Booking)
+         .Where(p => p.Booking != null && p.Booking.ConfirmedAt != null && p.Status == "Completed")
+         .ToListAsync();
 
             if (!payments.Any())
                 return new List<RevenueReportItem>();
 
             var grouped = payments
+                .Where(p => p.Booking != null && p.Booking.ConfirmedAt.HasValue)
                 .GroupBy(p => p.Booking.ConfirmedAt!.Value.Date)
                 .Select(g => new RevenueReportItem
                 {
                     Date = g.Key,
-                    TotalRevenue = g.Sum(p => p.Amount),
+                    TotalRevenue = g.Sum(p => p.Amount), // Handle null Amount
                     BookingCount = g.Select(p => p.BookingId).Distinct().Count(),
-                    GuestBookingCount = g.Count(p => p.Booking.IsGuestBooking),
-                    UserBookingCount = g.Count(p => !p.Booking.IsGuestBooking),
+                    GuestBookingCount = g.Count(p => p.Booking?.IsGuestBooking == true),
+                    UserBookingCount = g.Count(p => p.Booking?.IsGuestBooking == false),
                     AverageBookingValue = g.Select(p => p.BookingId).Distinct().Count() == 0
                         ? 0
                         : g.Sum(p => p.Amount) / g.Select(p => p.BookingId).Distinct().Count()

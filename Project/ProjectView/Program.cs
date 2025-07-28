@@ -18,7 +18,7 @@ builder.Services.AddHttpClient<ISearchService, SearchService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5014/api/");
 });
-builder.Services.AddHttpClient<ITripService, TripService>(client =>
+builder.Services.AddHttpClient<ProjectView.Services.ITripService, ProjectView.Services.TripService>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5014/");
 });
