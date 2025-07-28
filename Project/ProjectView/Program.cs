@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Project.Services;
 using System.Text;
+using Project.Repository;
+using Project.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

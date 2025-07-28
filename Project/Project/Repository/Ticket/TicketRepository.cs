@@ -16,12 +16,21 @@ namespace Project.Repositories
         {
             var query = _context.Ticket.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(status))
+            if (!string.IsNullOrEmpty(status))
             {
-                query = query.Where(t => t.Status == status);
+                string statusText = status switch
+                {
+                    "Valid" => "Valid",
+                    "Sold" => "Sold",
+                    "Cancelled" => "Cancelled",
+                    _ => status
+                };
+
+                query = query.Where(t => t.Status == statusText);
             }
 
             return await query.ToListAsync();
         }
+
     }
 }

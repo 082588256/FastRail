@@ -1,7 +1,8 @@
-﻿// Repositories/FareRepository.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Project;
 using Project.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class FareRepository : IFareRepository
 {
@@ -30,5 +31,10 @@ public class FareRepository : IFareRepository
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
+    }
+
+    public IQueryable<Fare> GetFaresQueryable()
+    {
+        return _context.Fare.AsQueryable();
     }
 }
