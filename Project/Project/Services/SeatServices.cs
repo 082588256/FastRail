@@ -19,6 +19,9 @@ namespace Project.Services
 
         public async Task<bool> IsSeatAvailableForSegmentsAsync(int tripId, int seatId, List<int> segmentIds)
         {
+
+
+            await _context.SaveChangesAsync();
             return !await _context.SeatSegment
                 .AnyAsync(ss =>
                     ss.TripId == tripId &&

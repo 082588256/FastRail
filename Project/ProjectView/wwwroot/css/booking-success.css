@@ -1,0 +1,163 @@
+﻿/* Main Container Styles */
+.success-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Success Header */
+.success-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+    .success-header h2 {
+        color: #2ecc71;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+/* Booking Summary Card */
+.booking-summary {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+    .booking-summary p {
+        margin: 12px 0;
+        font-size: 1.1rem;
+        color: #555;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .booking-summary strong {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+/* Tickets Section */
+.tickets-section {
+    margin-top: 30px;
+}
+
+    .tickets-section h3 {
+        color: #34495e;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+    }
+
+/* Table Styles */
+.tickets-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+    .tickets-table th {
+        background: #f8f9fa;
+        color: #2c3e50;
+        font-weight: 600;
+        padding: 15px;
+        text-align: left;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    .tickets-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+    }
+
+    .tickets-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .tickets-table tr:hover {
+        background-color: #f8f9fa;
+    }
+
+/* Price Column */
+.price-column {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+/* Status Tags */
+.status-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-paid {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .booking-summary {
+        padding: 20px;
+    }
+
+        .booking-summary p {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+    .tickets-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+        .tickets-table th,
+        .tickets-table td {
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+
+    .success-header h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+
+    .success-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .booking-summary,
+    .tickets-table {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

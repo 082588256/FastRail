@@ -2,16 +2,82 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <style>
+        .train-search-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
 
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+            .tabs .tab {
+                background: #fce4ec;
+                color: #d81b60;
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-row input,
+        .form-row select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .search-btn {
+            margin-top: 10px;
+            background-color: #000; /* đã sửa từ #ff4081 thành đen */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+            .search-btn:hover {
+                background-color: #333; /* màu đen nhạt khi hover */
+            }
+
+    </style>
+</head>
 
 <div class="main-banner-wrapper">
     <section class="banner-style-one owl-theme owl-carousel no-dots">
-        <div class="slide slide-one" style="background-image: url(/images/slider/slider-1-1.jpg);">
+        <div class="slide slide-one" style="background-image: url(images/slider/slider-1-1.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h3 class="banner-title">Cheap & Trusted <br> Taxi Company</h3>
-                        <p>Enjoy your comfortable trip with <br> conexi company taxi</p>
+                        <h3 class="banner-title">Cheap & Trusted <br> FastRail Company</h3>
+                        <p>Enjoy your comfortable trip with <br> company FastRail</p>
                         <div class="btn-block">
                             <a href="#" class="banner-btn">Learn More</a>
                         </div><!-- /.btn-block -->
@@ -19,11 +85,11 @@
                 </div><!-- /.row -->
             </div><!-- /.container -->
         </div><!-- /.slide -->
-        <div class="slide slide-two" style="background-image: url(/images/slider/slider-1-2.jpg);">
+        <div class="slide slide-two" style="background-image: url(images/slider/slider-1-2.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h3 class="banner-title">Cheap & Trusted <br> Taxi Company</h3>
+                        <h3 class="banner-title">Cheap & Trusted <br> FastRail Company</h3>
                         <p>Enjoy your comfortable trip with <br> conexi company taxi</p>
                         <div class="btn-block">
                             <a href="#" class="banner-btn">Learn More</a>
@@ -39,124 +105,88 @@
     </div><!-- /.carousel-btn-block banner-carousel-btn -->
 </div><!-- /.main-banner-wrapper -->
 <section class="book-ride-one">
-    <img src="~/images/background/booking-bg-1-1.png" class="footer-bg" alt="Awesome Image" />
+    @* <img src="~/images/background/booking-bg-1-1.png" class="footer-bg" alt="Awesome Image" /> *@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
                 <div class="content-block">
                     <div class="block-title mb-0">
                         <div class="dot-line"></div><!-- /.dot-line -->
-                        <p class="light">Looking for taxi?</p>
-                        <h2 class="light">Make your <br> booking</h2>
+                        <p class="light">Looking for trip?</p>
+                        <h2 class="light">Search your <br> Trip</h2>
                     </div><!-- /.block-title -->
-                    <p>Our taxis commit to make your trips unique <br> by best answering your needs.</p>
+                    <p>Our trains commit to make your trips unique <br> by best answering your needs.</p>
                 </div><!-- /.content-block -->
             </div><!-- /.col-lg-4 -->
-            <div class="col-lg-8">
-                <form action="#" class="booking-form-one">
+                <form action="/Booking/TrainView" method="post" class="booking-form-one">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="input-holder">
-                                <input type="text" name="name" placeholder="Your name">
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <input type="text" name="name" placeholder="Email address">
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <input type="text" name="name" placeholder="Passengers #">
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <input type="text" name="name" placeholder="Pick up address">
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <input type="text" name="name" placeholder="Drop off address">
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <input type="text" name="name" placeholder="Select date">
-                                <i class="conexi-icon-small-calendar"></i>
-                            </div><!-- /.input-holder -->
-                        </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="input-holder">
-                                <select class="selectpicker">
-                                    <option>Select Time</option>
-                                    <option>10AM-10.59AM</option>
-                                    <option>12PM-12.59PM</option>
-                                    <option>1PM-1.59PM</option>
-                                    <option>2PM-2.59PM</option>
+                                <label>Ga đi:</label>
+                                <select class="form-control" name="DepartureStationName">
+                                    @foreach (var item in ViewBag.Stations as List<SelectListItem>)
+                                    {
+                                        <option value="@item.Text">@item.Text</option>
+                                    }
                                 </select>
-                                <i class="conexi-icon-clock"></i>
                             </div><!-- /.input-holder -->
                         </div><!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="input-holder">
-                                <button type="submit">Book Now</button>
+                                <label>Ga đến:</label>
+                                <select class="form-control" name="ArrivalStationName">
+                                    @foreach (var item in ViewBag.Stations as List<SelectListItem>)
+                                    {
+                                        <option value="@item.Text">@item.Text</option>
+                                    }
+                                </select>
+                            </div><!-- /.input-holder -->
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <div class="input-holder">
+                                <label>Ngày khởi hành </label>
+                                <select class="form-control" name="TravelDate">
+                                    @{
+                                        var today = DateTime.Today;
+                                        for (int i = 0; i < 3; i++) // 7 ngày gần nhất kể từ hôm nay
+                                        {
+                                            var date = today.AddDays(i);
+                                        }
+                                    }
+                                    @for (int i = 0; i < 7; i++)
+                                    {
+                                        var date = today.AddDays(i);
+                                        <option value="@date.ToString("yyyy-MM-dd")">
+                                            @date.ToString("dddd, dd/MM/yyyy") <!-- Thứ, ngày/tháng/năm -->
+                                        </option>
+                                    }
+                                </select>
+                            </div><!-- /.input-holder -->
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-3">
+                            <div class="input-holder">
+                                <button type="submit">Search</button>
                             </div><!-- /.input-holder -->
                         </div><!-- /.col-lg-6 -->
                     </div><!-- /.row -->
-                </form><!-- /.booking-form-one -->
+                </form>
             </div><!-- /.col-lg-8 -->
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.book-ride-one -->
-<section class="about-style-one ">
-    <div class="container">
-        <div class="block-title text-center">
-            <div class="dot-line"></div><!-- /.dot-line -->
-            <p>Welcome to conexi company</p>
-            <h2>Your first choice <br> for traveling anywhere</h2>
-        </div><!-- /.block-title -->
-        <div class="row high-gutter">
-            <div class="col-lg-6">
-                <div class="about-image-block">
-                    <img src="images/resources/choise-1-1.png" alt="Awesome Image" />
-                    <p>There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or random words which don't look even slightly believable. If you are going to use a passage of lorem ipsum you need to be sure there isn't anything embarrassing.</p>
-                </div><!-- /.image-block -->
-            </div><!-- /.col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="text-block">
-                    <div class="video-block-one">
-                        <div class="image-block">
-                            <div class="inner-block">
-                                <img src="images/resources/video-1-1.png" alt="Awesome Image" />
-                                <a href="https://www.youtube.com/watch?v=hsb-fA6ApiE" class="video-popup"><i class="fa fa-play"></i></a>
-                            </div><!-- /.inner-block -->
-                        </div><!-- /.image-block -->
-                        <div class="content-block">
-                            <h3>We’re specialized in providing a high quality service</h3>
-                        </div><!-- /.content-block -->
-                    </div><!-- /.video-block-one -->
-                    <p>There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humour or random words which don't look even slightly believable. If you are going to use a passage of lorem ipsum you need to be sure there isn't anything embarrassing.</p>
-                    <hr class="style-one">
-                    <div class="call-block">
-                        <div class="left-block">
-                            <div class="icon-block">
-                                <i class="conexi-icon-phone-call"></i>
-                            </div><!-- /.icon-block -->
-                            <div class="content-block">
-                                <p>Call us now and make <br>your booking</p>
-                            </div><!-- /.content-block -->
-                        </div><!-- /.left-block -->
-                        <div class="right-block">
-                            <a class="phone-number" href="callto:888-888-0000">888 888 0000</a>
-                        </div><!-- /.right-block -->
-                    </div><!-- /.call-block -->
-                </div><!-- /.text-block -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.about-style-one -->
-<section class="funfact-style-one">
+<section class="cta-style-one text-center">
+    <div align="center">
+        <p>Tra cứu Booking của bạn </p>
+        <p></p>
+    </div>
+    <div align="center">
+        <form action="Search/Search" method="post">
+            <input type="text" name="bookingCode" placeholder="Enter your BookingCode">
+            <button type="submit">Tìm Kiếm</button>
+        </form>
+    </div>    
+</section>
+@* <section class="funfact-style-one">
     <div class="container">
         <div class="block-title text-center">
             <div class="dot-line"></div><!-- /.dot-line -->
@@ -233,7 +263,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-1.png" alt="Awesome Image" />
+                                <img src="~/images/pricing/pricing-1-1.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-bmw"></i>
                                 </div><!-- /.icon-block -->
@@ -259,7 +289,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-2.png" alt="Awesome Image" />
+                                <img src="~/images/pricing/pricing-1-2.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-mercedes-benz"></i>
                                 </div><!-- /.icon-block -->
@@ -285,7 +315,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-3.png" alt="Awesome Image" />
+                                <img src="~/images/pricing/pricing-1-3.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-toyota"></i>
                                 </div><!-- /.icon-block -->
@@ -315,7 +345,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-1.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-1.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-bmw"></i>
                                 </div><!-- /.icon-block -->
@@ -341,7 +371,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-2.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-2.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-mercedes-benz"></i>
                                 </div><!-- /.icon-block -->
@@ -367,7 +397,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-3.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-3.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-toyota"></i>
                                 </div><!-- /.icon-block -->
@@ -397,7 +427,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-1.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-1.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-bmw"></i>
                                 </div><!-- /.icon-block -->
@@ -423,7 +453,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-2.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-2.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-mercedes-benz"></i>
                                 </div><!-- /.icon-block -->
@@ -449,7 +479,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-3.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-3.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-toyota"></i>
                                 </div><!-- /.icon-block -->
@@ -479,7 +509,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-1.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-1.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-bmw"></i>
                                 </div><!-- /.icon-block -->
@@ -505,7 +535,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-2.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-2.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-mercedes-benz"></i>
                                 </div><!-- /.icon-block -->
@@ -531,7 +561,7 @@
                     <div class="col-lg-4">
                         <div class="single-taxi-one">
                             <div class="inner-content">
-                                <img src="images/pricing/pricing-1-3.png" alt="Awesome Image" />
+                                <img src="~images/pricing/pricing-1-3.png" alt="Awesome Image" />
                                 <div class="icon-block">
                                     <i class="conexi-icon-toyota"></i>
                                 </div><!-- /.icon-block -->
@@ -564,40 +594,40 @@
     <div class="container">
         <div class="brand-carousel-one owl-theme owl-carousel">
             <div class="item">
-                <img src="images/brand/brand-1-1.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-1.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-2.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-2.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-3.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-3.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-4.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-4.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-5.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-5.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-1.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-1.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-2.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-2.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-3.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-3.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-4.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-4.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
             <div class="item">
-                <img src="images/brand/brand-1-5.jpg" alt="Awesome Image" />
+                <img src="~images/brand/brand-1-5.jpg" alt="Awesome Image" />
             </div><!-- /.item -->
         </div><!-- /.brand-carousel-one -->
     </div><!-- /.container -->
 </div><!-- /.brand-carousel-wrapper -->
 <section class="feature-style-one thm-black-bg">
-    <img src="images/background/feature-bg-1-1.png" alt="Awesome Image" class="feature-bg" />
+    <img src="~/images/background/feature-bg-1-1.png" alt="Awesome Image" class="feature-bg" />
     <div class="container">
         <div class="block-title text-center">
             <div class="dot-line"></div><!-- /.dot-line -->
@@ -720,9 +750,9 @@
             <h2 class="light">News & updates</h2>
         </div><!-- /.block-title -->
         <div class="testimonials-one-pager">
-            <a href="#" class="pager-item active" data-slide-index="1"><img src="images/resources/testi-1-1.jpg" alt="Awesome Image" /></a>
-            <a href="#" class="pager-item" data-slide-index="2"><img src="images/resources/testi-1-2.jpg" alt="Awesome Image" /></a>
-            <a href="#" class="pager-item" data-slide-index="3"><img src="images/resources/testi-1-3.jpg" alt="Awesome Image" /></a>
+            <a href="#" class="pager-item active" data-slide-index="1"><img src="~images/resources/testi-1-1.jpg" alt="Awesome Image" /></a>
+            <a href="#" class="pager-item" data-slide-index="2"><img src="~images/resources/testi-1-2.jpg" alt="Awesome Image" /></a>
+            <a href="#" class="pager-item" data-slide-index="3"><img src="~images/resources/testi-1-3.jpg" alt="Awesome Image" /></a>
         </div><!-- /.testimonials-one-pager -->
         <ul class="slider testimonials-slider-one">
             <li class="slide-item">
@@ -763,7 +793,7 @@
                     <div class="image-block">
                         <div class="inner-block">
                             <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                            <img src="images/blog/blog-1-1.jpg" alt="Awesome Image" />
+                            <img src="~images/blog/blog-1-1.jpg" alt="Awesome Image" />
                         </div><!-- /.inner-block -->
                     </div><!-- /.image-block -->
                     <div class="text-block">
@@ -785,7 +815,7 @@
                             <div class="image-block">
                                 <div class="inner-block">
                                     <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                                    <img src="images/blog/blog-2-1.jpg" alt="Awesome Image" />
+                                    <img src="~images/blog/blog-2-1.jpg" alt="Awesome Image" />
                                 </div><!-- /.inner-block -->
                             </div><!-- /.image-block -->
                             <div class="text-block">
@@ -804,7 +834,7 @@
                             <div class="image-block">
                                 <div class="inner-block">
                                     <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                                    <img src="images/blog/blog-2-2.jpg" alt="Awesome Image" />
+                                    <img src="~images/blog/blog-2-2.jpg" alt="Awesome Image" />
                                 </div><!-- /.inner-block -->
                             </div><!-- /.image-block -->
                             <div class="text-block">
@@ -829,4 +859,4 @@
         <h3>Call now and book <br> our taxi for your next ride</h3>
         <a href="taxi.html" class="cta-btn">Choose Your Taxi</a>
     </div><!-- /.container -->
-</section><
+</section>< *@

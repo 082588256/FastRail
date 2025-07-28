@@ -17,7 +17,6 @@ namespace Project.Controllers
         {
             _statisticService = statisticService;
         }
-
         [HttpGet("dashboard")]
         public async Task<IActionResult> GetDashboardStats()
         {
@@ -39,7 +38,6 @@ namespace Project.Controllers
             var result = await _statisticService.getSeatPercentage();
             return Ok(result);
         }
-
         [HttpGet("chart-top-trip")]
 
         public async Task<IActionResult> getTopTrip()
@@ -69,7 +67,6 @@ namespace Project.Controllers
             var result= await _statisticService.GetRevenueBySeatTypeAsync();
             return Ok(result);
         }
-
     }
 
     

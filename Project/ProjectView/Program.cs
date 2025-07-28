@@ -1,9 +1,26 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ProjectView.Models;
+using ProjectView.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddDbContext<TrainBookingSystemContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient<ISearchService, SearchService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/api/");
+});
+builder.Services.AddHttpClient<ITripService, TripService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/");
+});
+builder.Services.AddHttpClient<ISeatService, SeatService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5014/api");
+});
+builder.Services.AddScoped<IBasicDataService, BasicDataService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
@@ -74,4 +91,3 @@ app.MapControllerRoute(
     pattern: "{controller=FarePage}/{action=Index}/{id?}");
 
 app.Run();
-
