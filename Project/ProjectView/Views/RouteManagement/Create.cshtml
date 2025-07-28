@@ -1,0 +1,122 @@
+﻿@using Newtonsoft.Json
+@model ProjectView.Models.Admin.Route.CreateRouteRequest
+@{
+    Layout = null;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+@{
+    if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+}
+<div class="container mt-4 mb-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create New Route</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="Create" id="routeForm">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="RouteName" class="form-label">Route Name</label>
+                        <input asp-for="RouteName" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="RouteCode" class="form-label">Route Code</label>
+                        <input asp-for="RouteCode" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="DepartureStationId" class="form-label">Departure Station</label>
+                        <select asp-for="DepartureStationId" asp-items="ViewBag.Stations" class="form-select"></select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ArrivalStationId" class="form-label">Arrival Station</label>
+                        <select asp-for="ArrivalStationId" asp-items="ViewBag.Stations" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label asp-for="TotalDistance" class="form-label">Total Distance (km)</label>
+                        <input asp-for="TotalDistance" class="form-control" type="number" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="EstimatedDuration" class="form-label">Estimated Duration (minutes)</label>
+                        <input asp-for="EstimatedDuration" class="form-control" type="number" />
+                    </div>
+                </div>
+
+                <h5 class="mb-3">Route Segments</h5>
+                <div id="segmentsContainer" class="mb-3"></div>
+                <button type="button" class="btn btn-outline-primary mb-4" onclick="addSegment()">+ Add Segment</button>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Create Route</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const stationList = @Html.Raw(JsonConvert.SerializeObject(ViewBag.StationList));
+    console.log(stationList);
+    let segmentIndex = 0;
+
+    function addSegment() {
+        const container = document.getElementById("segmentsContainer");
+
+        const generateSelect = (name) => {
+            let html = `<select name="${name}" class="form-select">`;
+            stationList.forEach(s => {
+                html += `<option value="${s.Value}">${s.Text}</option>`;
+            });
+            html += `</select>`;
+            return html;
+        };
+
+        const segmentHtml = `
+                <div class="border rounded p-3 mb-3 bg-light">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="form-label">From Station</label>
+                            ${generateSelect(`Segments[${segmentIndex}].FromStationId`)}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">To Station</label>
+                            ${generateSelect(`Segments[${segmentIndex}].ToStationId`)}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label">Order</label>
+                            <input name="Segments[${segmentIndex}].Order" class="form-control" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Distance (km)</label>
+                            <input name="Segments[${segmentIndex}].Distance" class="form-control" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Estimated Duration (minutes)</label>
+                            <input name="Segments[${segmentIndex}].EstimatedDuration" class="form-control" type="number" />
+                        </div>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" checked name="Segments[${segmentIndex}].IsActive">
+                        <label class="form-check-label">Is Active</label>
+                    </div>
+                </div>
+            `;
+
+        container.insertAdjacentHTML('beforeend', segmentHtml);
+        segmentIndex++;
+    }
+</script>
