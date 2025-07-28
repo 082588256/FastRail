@@ -115,7 +115,7 @@ namespace Project.Services
                     var seat = await _context.Seat.FirstOrDefaultAsync(s => s.SeatId == ticketReq.SeatId);
                     if (seat == null)
                         throw new Exception($"❌ SeatId {ticketReq.SeatId} không tồn tại trong DB");
-
+                    
                     var ticket = new Ticket
                     {
                         TicketCode = $"{bookingCode}-{ticketReq.SeatId}",
