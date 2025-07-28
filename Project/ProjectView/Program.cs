@@ -1,9 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+
+using Project.Services;
+
 using ProjectView.Models;
 using ProjectView.Services;
+
 using System.Text;
+using Project.Repository;
+using Project.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TrainBookingSystemContext>(options =>

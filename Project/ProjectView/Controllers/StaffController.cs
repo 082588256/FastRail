@@ -18,6 +18,10 @@ namespace ProjectView.Controllers
         {
             return View();
         }
+        public IActionResult Fare()
+        {
+            return View();
+        }
 
         public IActionResult Test()
         {

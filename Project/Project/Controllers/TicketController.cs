@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project.Services;
-using Project.Models;
-
+using Project.DTO; 
 namespace Project.Controllers
 {
     [Route("api/[controller]")]
@@ -16,7 +15,7 @@ namespace Project.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets([FromQuery] string? status)
+        public async Task<ActionResult<IEnumerable<TicketDto>>> GetTickets([FromQuery] string? status)
         {
             var tickets = await _ticketService.GetTicketsByStatusAsync(status);
             return Ok(tickets);
