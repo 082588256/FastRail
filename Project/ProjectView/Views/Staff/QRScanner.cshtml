@@ -568,7 +568,7 @@ function handleImageUpload(event) {
             document.getElementById('previewImg').src = e.target.result;
             document.getElementById('imagePreview').style.display = 'block';
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataurl(~file);
     }
 }
 

@@ -30,7 +30,8 @@ namespace Project.Services
         {
             try
             {
-
+                string hashed = UserUtils.HashPassword("staff");
+                Console.WriteLine("Hashed password: " + hashed);
                 // Trim email and password to avoid issues with extra spaces
                 var inputEmail = request.Email.Trim();
                 var inputPassword = request.Password.Trim();

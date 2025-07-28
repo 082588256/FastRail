@@ -172,17 +172,26 @@ namespace Project.Repository.Route
 
         public async Task<IEnumerable<RouteDTO>> GetAllAsync()
         {
-            return await _context.Route
-                .Include(r => r.RouteSegments.OrderBy(s => s.Order))
-                .ProjectTo<RouteDTO>(_mapper.ConfigurationProvider)
-                .ToListAsync();
+            var routes = await _context.Route
+    .Include(r => r.RouteSegments)
+        .Include(rs => rs.DepartureStation)
+        .Include(rs => rs.ArrivalStation)
+    .ToListAsync();
+
+            var result = _mapper.Map<List<RouteDTO>>(routes);
+            return result;
         }
 
         public async Task<RouteDTO?> GetByIdAsync(int id)
         {
             var route = await _context.Route
-                .Include(r => r.RouteSegments.OrderBy(s => s.Order))
-                .FirstOrDefaultAsync(r => r.RouteId == id);
+        .Include(r => r.RouteSegments.OrderBy(s => s.Order))
+            .ThenInclude(s => s.FromStation)
+        .Include(r => r.RouteSegments)
+            .ThenInclude(s => s.ToStation)
+        .Include(r => r.DepartureStation)
+        .Include(r => r.ArrivalStation)
+        .FirstOrDefaultAsync(r => r.RouteId == id);
 
             return route == null ? null : _mapper.Map<RouteDTO>(route);
         }

@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Fake Payment Gateway";
+    var bookingId = ViewBag.BookingId;
+}
+<h2>Fake Payment Gateway</h2>
+<p>Booking ID: @bookingId</p>
+<form method="post" asp-action="Result">
+    <input type="hidden" name="bookingId" value="@bookingId" />
+    <button type="submit" name="status" value="Success" style="background:green;color:white;">Xác nhận đặt vé thành công</button>
+    <button type="submit" name="status" value="Failed" style="background:red;color:white;">Hủy Đặt Vé</button>
+</form>

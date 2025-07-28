@@ -22,7 +22,7 @@ namespace Project.Models
         public virtual ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();
         public virtual ICollection<TicketSegment> TicketSegments { get; set; } = new List<TicketSegment>();
         public virtual ICollection<Fare> Fares { get; set; } = new List<Fare>();
-        public decimal SegmentFare { get; internal set; }
+
+
     }
 }
-

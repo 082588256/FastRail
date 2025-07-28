@@ -15,11 +15,7 @@ namespace Project.Services.Route
         }
         public async Task<(bool Success, string Message, int RouteId)> CreateRouteAsync(RouteDTO dto)
         {
-            var duplicateCode = await _routeRepository.checkduplicateRouteCode(dto.RouteCode);
-            if (duplicateCode)
-            {
-                return (false, "Duplicate Route Code", 0);
-            }
+            
 
             decimal totalSegmentDistance = dto.Segments.Sum(s => s.Distance);
             if (totalSegmentDistance < dto.TotalDistance)

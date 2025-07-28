@@ -1,0 +1,108 @@
+﻿@model ProjectView.Models.BookingViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin đặt vé</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+
+        .booking-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .booking-field {
+            margin-bottom: 12px;
+        }
+
+        .booking-label {
+            font-weight: bold;
+            color: #444;
+            display: inline-block;
+            width: 150px;
+        }
+
+        .booking-value {
+            color: #222;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 18px;
+            padding: 20px;
+            background-color: #ffe5e5;
+            border: 1px solid red;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    @if (Model == null)
+    {
+        <div class="error-message">
+            Không tìm thấy thông tin đặt vé. Vui lòng kiểm tra lại mã đặt chỗ.
+        </div>
+    }
+    else
+    {
+        <h2 class="booking-title">Thông tin đặt vé</h2>
+
+        <div class="booking-field">
+            <span class="booking-label">Mã đặt vé:</span>
+            <span class="booking-value">@Model.BookingCode</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Mã chuyến:</span>
+            <span class="booking-value">@Model.TripCode</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Tên hành khách:</span>
+            <span class="booking-value">@Model.PassengerName</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Số điện thoại:</span>
+            <span class="booking-value">@Model.PassengerPhone</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Ga đi:</span>
+            <span class="booking-value">@Model.DepartureStation</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Ga đến:</span>
+            <span class="booking-value">@Model.ArrivalStation</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Giờ khởi hành:</span>
+            <span class="booking-value">@Model.DepartureTime.ToString("HH:mm dd/MM/yyyy")</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Toa - Ghế:</span>
+            <span class="booking-value">@Model.CarriageNumber - @Model.SeatNumber</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Trạng thái:</span>
+            <span class="booking-value">@Model.PaymentStatus</span>
+        </div>
+        <div class="booking-field">
+            <span class="booking-label">Tổng tiền:</span>
+            <span class="booking-value">@Model.TotalPrice.ToString("N0") @Model.Currency</span>
+        </div>
+    }
+
+</body>
+</html>

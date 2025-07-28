@@ -15,6 +15,10 @@ using Project.Services.Route;
 using Project.Services.Train;
 using Project.Utils.Validation;
 using Project.Swagger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Project.Services.Metrics;
 
 using Project.Repository;
 
@@ -24,6 +28,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Project.Services.Metrics;
+using Project.Services.Station;
 
 
 
@@ -38,7 +43,7 @@ builder.Services.AddDbContext<FastRailDbContext>(options =>
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IPricingService, PricingService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
+//b/*uilder.Services.AddScoped<IPaymentService, PaymentService>();*/
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IQRService, QRService>();
@@ -64,6 +69,11 @@ builder.Services.AddScoped<ISeatRepository, SeatRepository>();
 builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<ItripRepository, TripRepository>();
 builder.Services.AddScoped<ITripService, TripService>();
+
+builder.Services.AddScoped<IStationService, StationService>();
+
+
+builder.Services.AddHostedService<BookingCleanupService>();
 
 //Add Fluent Validation 
 builder.Services.AddScoped<IValidator<TripDTO>, TripValidator>();

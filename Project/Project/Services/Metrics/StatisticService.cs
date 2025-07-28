@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.DTOs;
 using Project.DTOs.Standings;
 using Project.DTOs.StatisticsDTOs;
@@ -56,7 +56,7 @@ namespace Project.Services.Metrics
                                         .Where(p => p.Status == "Completed" && p.Booking.ConfirmedAt != null)
                                             .GroupBy(p => p.Booking.UserId != null ? "Registered" : "Guest")
                                         .Select(g => new RevenueByUserResponse
-                                         {
+                                        {
                                             BookingType = g.Key,
                                             TotalRevenue = (long)(g.Sum(p => (decimal?)p.Amount) ?? 0)
                                         })
@@ -64,7 +64,7 @@ namespace Project.Services.Metrics
             return data;
         }
 
-            public async Task<List<RevenueReportItem>> getRevenueReportItem()
+        public async Task<List<RevenueReportItem>> getRevenueReportItem()
         {
 
             var payments = await _context.Payment
@@ -94,9 +94,9 @@ namespace Project.Services.Metrics
             return grouped;
         }
 
-    
 
-    public async Task<List<SeatPercentageResponse>> getSeatPercentage()
+
+        public async Task<List<SeatPercentageResponse>> getSeatPercentage()
         {
             var data = await _context.Trip
         .Select(trip => new
@@ -114,8 +114,8 @@ namespace Project.Services.Metrics
 
             var result = data.Select(d => new SeatPercentageResponse
             {
-                TripName= d.TripName,
-               SoldSeats= d.SoldSeats,
+                TripName = d.TripName,
+                SoldSeats = d.SoldSeats,
                 AvailableSeat = d.TotalSeats - d.SoldSeats
             }).ToList();
 
@@ -129,7 +129,7 @@ namespace Project.Services.Metrics
                 TripName = t.Train.TrainName + "-" + t.DepartureTime.ToString("dd/MM"),
                 BookedSeats = t.Tickets.Count(),
                 Revenue = t.Tickets.Sum(t => t.FinalPrice)
-            }).OrderByDescending(t=> t.Revenue).Take(10).ToListAsync(); ;
+            }).OrderByDescending(t => t.Revenue).Take(10).ToListAsync(); ;
 
             return result;
         }

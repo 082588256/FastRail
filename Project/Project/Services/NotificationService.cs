@@ -95,17 +95,19 @@ namespace Project.Services
                     .FirstOrDefaultAsync(b => b.BookingId == bookingId && b.BookingStatus == "Temporary");
 
                 if (booking == null) return;
-
+                var tickets = await _context.Ticket
+                    .Where(t => t.BookingId == bookingId)
+                    .ToListAsync();
                 var emailContent = $@"
                 <h2>Cảnh báo: Booking sắp hết hạn</h2>
                 <p>Xin chào {booking.User.FullName},</p>
                 <p>Booking {booking.BookingCode} của bạn sẽ hết hạn trong vài phút nữa.</p>
                 <p>Vui lòng hoàn tất thanh toán để giữ chỗ.</p>
-                <p>Trân trọng,<br/>Đường sắt Việt Nam</p>
+                <p>Trân trọng,<br/>FastRail company</p>
             ";
 
-                await _emailService.SendEmailAsync(
-                    booking.User.Email,
+                await _emailService.SendRealEmailAsync(
+                    booking.ContactEmail,
                     "Cảnh báo: Booking sắp hết hạn",
                     emailContent);
 
@@ -117,7 +119,7 @@ namespace Project.Services
             }
         }
 
-        private string GenerateConfirmationEmailContent(Booking booking, Ticket ticket, Models.Seat seat)
+        private  string GenerateConfirmationEmailContent(Booking booking, Ticket ticket, Models.Seat seat)
         {
             return $@"
             <!DOCTYPE html>
@@ -162,7 +164,7 @@ namespace Project.Services
                             <li>Giữ gìn vé và mã vé để sử dụng khi cần</li>
                         </ul>
                     </div>
-                    
+                   
                     <p style='text-align: center; color: #666; margin-top: 30px;'>
                         Cảm ơn bạn đã sử dụng dịch vụ đặt vé tàu<br>
                         <strong>Đường sắt Việt Nam</strong>
