@@ -2,10 +2,46 @@
     ViewData["Title"] = "Route Management";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<style>
+    .modal-body {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    .segment-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .segment-station {
+        font-weight: 500;
+    }
+    .segment-line {
+        border-left: 2px solid #ccc;
+        height: 15px;
+        margin-left: 8px;
+    }
 
+    .modal {
+        z-index: 1050 !important;
+    }
+
+    .modal-backdrop {
+        z-index: 1040 !important;
+    }
+</style>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error22"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="mb-0">Route Management</h4>
-    <button class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add New Route</button>
+    <button class="btn btn-primary"><i class="bi bi-plus-lg"></i> <a class="btn btn-primary" href="/RouteManagement/Create">Create New Route</a></button>
 </div>
 
 <div class="card">
@@ -16,7 +52,7 @@
                     <option>Filter by Status</option>
                     <option>Active</option>
                     <option>Inactive</option>
-                    <option>Under Maintenance</option>
+                    
                 </select>
             </div>
         </div>
@@ -33,30 +69,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Express North</td>
-                        <td>Central Station</td>
-                        <td>North Terminal</td>
-                        <td>4</td>
-                        <td><span class="badge bg-success">Active</span></td>
-                        <td>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#routeModal"><i class="bi bi-eye"></i></button>
-                            <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Coastal Line</td>
-                        <td>West Bay</td>
-                        <td>Harbor City</td>
-                        <td>3</td>
-                        <td><span class="badge bg-warning">Maintenance</span></td>
-                        <td>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#routeModal"><i class="bi bi-eye"></i></button>
-                            <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -64,27 +77,24 @@
 </div>
 
 <!-- Route Modal -->
-<div class="modal fade" id="routeModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="routeModal" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h5 class="modal-title">Route Details: Express North</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="routeModalLabel">Route Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+
             <div class="modal-body">
                 <h6>Route Segments</h6>
                 <div class="route-segments">
-                    <div class="segment-item">
-                        <div class="segment-station">Central Station</div>
-                        <div class="segment-line"></div>
-                        <div class="segment-station">Midtown</div>
-                        <div class="segment-line"></div>
-                        <div class="segment-station">Uptown</div>
-                        <div class="segment-line"></div>
-                        <div class="segment-station">North Terminal</div>
-                    </div>
+                    <p>Loading segments...</p>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -104,14 +114,25 @@
                 const row = `
                         <tr>
                             <td>${route.routeName}</td>
-                            <td>${route.departureStationId}</td>
-                            <td>${route.arrivalStationId}</td>
-                            <td>${route.segmentCount}</td>
-                            <td><span class="badge bg-success">${route.isActive==true? "ACTIVE" :"INACTIVE"} </span></td>
+                                <td>${route.departureStationName}</td>
+                            <td>${route.arrivalStationName}</td>
+                            <td>${route.segments.length}</td>
+                                <td><span class="badge bg-${route.isActive ? "success" : "danger"}">
+                            ${route.isActive ? "Hoạt động" : "Không hoạt động"}
+                        </span></td>
                             <td>
-                                <button class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></button>
-                                <button class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                    <button class="btn btn-sm btn-primary btn-view" data-id="${route.routeId}" data-toggle="modal" data-target="#routeModal">
+                                    <i class="bi bi-eye"></i>
+                                        </button>
+                                    <a asp-action="Edit" asp-route-id="${route.routeId}" class="btn btn-sm btn-warning">
+        <i class="bi bi-pencil"></i>
+    </a>
+                                    <form asp-action="Delete" asp-route-id="${route.routeId}" method="delete" class="d-inline"
+          onsubmit="return confirm('Bạn có chắc chắn muốn xóa tuyến đường này không?');">
+        <button type="submit" class="btn btn-sm btn-danger">
+            <i class="bi bi-trash"></i>
+        </button>
+    </form>
                             </td>
                         </tr>`;
                 tbody.insertAdjacentHTML('beforeend', row);
@@ -125,3 +146,51 @@
     // Gọi khi load xong trang
     document.addEventListener('DOMContentLoaded', loadRoutes);
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadRoutes();
+        const apiBaseUrl = '@ViewBag.ApiBaseUrl';
+        // Gắn sự kiện khi bấm nút "View"
+        document.querySelector('table').addEventListener('click', async (e) => {
+            const button = e.target.closest('.btn-view');
+            if (button) {
+                const routeId = button.getAttribute('data-id');
+
+                try {
+                    const response = await fetch(`${apiBaseUrl}/api/Route/${routeId}`);
+                    if (!response.ok) throw new Error("Failed to fetch route detail");
+
+                    const route = await response.json();
+
+                    // Cập nhật nội dung modal
+                    document.querySelector('#routeModal .modal-title').textContent = `Route Details: ${route.routeName}`;
+                    const segmentDiv = document.querySelector('#routeModal .route-segments');
+                    segmentDiv.innerHTML = '';
+
+                    if (route.segments && route.segments.length > 0) {
+                        let html = '<div class="segment-item">';
+                        route.segments.forEach((seg, index) => {
+                            html += `<div class="segment-station">${seg.fromStationName} - ${seg.toStationName}</div>`;
+                            if (index < route.segments.length - 1) {
+                                html += `<div class="segment-line"></div>`;
+                            }
+                        });
+                        html += '</div>';
+                        segmentDiv.innerHTML = html;
+                    } else {
+                        segmentDiv.innerHTML = '<p>No segments found.</p>';
+                    }
+
+                    // ✅ Gọi modal hiện ra
+                    $('#routeModal').modal('show');
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Failed to load route details.");
+                }
+            }
+        });
+    });
+</script>
+
+<

@@ -32,7 +32,7 @@ namespace Project.Models
         public DateTime? CancelledAt { get; set; }
 
         // Total price for the booking
-        public decimal TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; } 
 
         // Navigation properties
         public ICollection<SeatSegment> SeatSegments { get; set; } = new List<SeatSegment>();

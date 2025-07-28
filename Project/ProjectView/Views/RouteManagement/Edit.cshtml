@@ -1,0 +1,53 @@
+﻿@model ProjectView.Models.Admin.Route.UpdateRouteRequest
+@{
+    ViewData["Title"] = "Cập nhật tuyến đường";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">@ViewData["Title"]</h4>
+        </div>
+        <div class="card-body">
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="DepartureStationId" class="form-label">Ga đi</label>
+                    <select asp-for="DepartureStationId" class="form-select" asp-items="ViewBag.Stations">
+                        <option value="">-- Chọn ga đi --</option>
+                    </select>
+                    <span asp-validation-for="DepartureStationId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ArrivalStationId" class="form-label">Ga đến</label>
+                    <select asp-for="ArrivalStationId" class="form-select" asp-items="ViewBag.Stations">
+                        <option value="">-- Chọn ga đến --</option>
+                    </select>
+                    <span asp-validation-for="ArrivalStationId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TotalDistance" class="form-label">Tổng quãng đường (km)</label>
+                    <input asp-for="TotalDistance" class="form-control" />
+                    <span asp-validation-for="TotalDistance" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a asp-action="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-success">Cập nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
